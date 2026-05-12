@@ -31,6 +31,24 @@ const featuredDishes = [
   },
 ]
 
+const heroGallery = [
+  {
+    name: 'Pasta cremosa al centro',
+    image:
+      'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    name: 'Spaguetti recién servido',
+    image:
+      'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    name: 'Penne con salsa intensa',
+    image:
+      'https://images.unsplash.com/photo-1516100882582-96c3a05fe590?auto=format&fit=crop&w=1400&q=80',
+  },
+]
+
 const menuSections = [
   {
     title: 'Pastas básicas',
@@ -165,22 +183,40 @@ function App() {
             </div>
             <h1>Pasta fresca, recetas con carácter y una experiencia hecha para antojar.</h1>
             <p className="hero__lead">
-              Pastas frescas, combinaciones reconfortantes y una propuesta pensada para antojar desde la primera visita, especialmente en celular.
+              Pastas frescas, combinaciones reconfortantes y una propuesta pensada para abrir el apetito desde la primera vista.
             </p>
             <div className="hero__actions">
-              <a className="button button--primary" href="#platillos">
-                Ver platillos
-              </a>
-              <a className="button button--secondary" href={PDF_MENU_PATH} target="_blank" rel="noreferrer">
-                Descargar menú
-              </a>
-              <button className="button button--ghost" type="button" onClick={() => setChatOpen(true)}>
+              <button className="button button--primary" type="button" onClick={() => setChatOpen(true)}>
                 Pedir por WhatsApp
               </button>
+              <a className="button button--secondary" href="#platillos">
+                Ver platillos
+              </a>
+              <a className="button button--ghost" href={PDF_MENU_PATH} target="_blank" rel="noreferrer">
+                Descargar menú
+              </a>
             </div>
             <div className="hero__mini-note">
-              <strong>Hecho para pedir fácil.</strong>
-              <span>Menú claro, acceso directo a WhatsApp y una presencia cálida que abre el apetito desde el primer scroll.</span>
+              <strong>Hecho para antojar desde el primer scroll.</strong>
+              <span>Imagen cálida, menú claro y acceso directo para pedir sin fricción.</span>
+            </div>
+          </div>
+
+          <div className="hero__gallery" aria-label="Galería destacada de pastas">
+            <article className="hero__gallery-main">
+              <img src={heroGallery[0].image} alt={heroGallery[0].name} />
+              <div className="hero__gallery-caption">
+                <span>Selección de la casa</span>
+                <strong>Sabores que entran primero por los ojos</strong>
+              </div>
+            </article>
+
+            <div className="hero__gallery-stack">
+              {heroGallery.slice(1).map((item) => (
+                <article className="hero__gallery-card" key={item.name}>
+                  <img src={item.image} alt={item.name} />
+                </article>
+              ))}
             </div>
           </div>
         </div>
@@ -299,7 +335,7 @@ function App() {
                 Cancelar
               </button>
               <button className="button button--primary" type="button" onClick={handleSendWhatsApp}>
-                Send
+                Enviar
               </button>
             </div>
           </div>
