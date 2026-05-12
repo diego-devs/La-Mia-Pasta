@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 const WHATSAPP_NUMBER = '5210000000000'
+const PDF_MENU_PATH = '/La-Mia-Pasta/LA_MIA_PASTA.pdf'
 
 const featuredDishes = [
   {
@@ -91,7 +92,7 @@ function MenuItem({ item }) {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [chatOpen, setChatOpen] = useState(false)
-  const [message, setMessage] = useState('Hola, quiero información sobre La Mia Pasta.')
+  const [message, setMessage] = useState('Hola! Quiero información sobre La Mia Pasta.')
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -112,7 +113,7 @@ function App() {
   ]
 
   const handleSendWhatsApp = () => {
-    const encodedMessage = encodeURIComponent(message.trim() || 'Hola, quiero información sobre La Mia Pasta.')
+    const encodedMessage = encodeURIComponent(message.trim() || 'Hola! Quiero información sobre La Mia Pasta.')
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank', 'noopener,noreferrer')
   }
 
@@ -154,7 +155,7 @@ function App() {
         <div className="hero__content">
           <div className="hero__text">
             <p className="eyebrow">Pasión por la pasta</p>
-            <h1>Pasta artesanal con una identidad elegante y sabor memorable.</h1>
+            <h1>Pasta fresca, recetas con carácter y una experiencia hecha para antojar.</h1>
             <p className="hero__lead">
               Pastas frescas, combinaciones reconfortantes y una propuesta pensada para antojar desde la primera visita, especialmente en celular.
             </p>
@@ -162,15 +163,12 @@ function App() {
               <a className="button button--primary" href="#platillos">
                 Ver platillos
               </a>
-              <button className="button button--secondary" type="button" onClick={() => setChatOpen(true)}>
+              <a className="button button--secondary" href={PDF_MENU_PATH} target="_blank" rel="noreferrer">
+                Descargar menú
+              </a>
+              <button className="button button--ghost" type="button" onClick={() => setChatOpen(true)}>
                 Pedir por WhatsApp
               </button>
-            </div>
-          </div>
-
-          <div className="hero__visual">
-            <div className="hero__logo-card">
-              <LogoMark />
             </div>
           </div>
         </div>
@@ -180,7 +178,7 @@ function App() {
         <section className="section dishes" id="platillos">
           <div className="section-heading section-heading--compact">
             <p className="eyebrow">Platillos destacados</p>
-            <h2>Sabores que entran primero por los ojos y se quedan por el sabor.</h2>
+            <h2>Platillos preparados para disfrutarse desde el primer vistazo hasta el último bocado.</h2>
           </div>
 
           <div className="dish-grid">
@@ -205,19 +203,19 @@ function App() {
         <section className="section brand-strip">
           <div>
             <p className="eyebrow">Nuestra esencia</p>
-            <h2>Una marca con carácter visual, platos apetecibles y experiencia simple para pedir.</h2>
+            <h2>Cocinamos pasta fresca con salsas intensas, ingredientes generosos y ese toque casero que siempre se antoja.</h2>
           </div>
           <div className="brand-strip__points">
-            <span>Diseño limpio y enfocado en producto</span>
-            <span>Navegación cómoda en celular</span>
-            <span>Acceso directo a pedido por WhatsApp</span>
+            <span>Pasta fresca preparada al momento</span>
+            <span>Salsas cremosas, intensas y reconfortantes</span>
+            <span>Porciones generosas para disfrutar y compartir</span>
           </div>
         </section>
 
         <section className="section menu-section" id="menu">
           <div className="section-heading">
             <p className="eyebrow">Menú</p>
-            <h2>Una carta clara, ordenada y fácil de recorrer desde el teléfono.</h2>
+            <h2>Recetas clásicas y especialidades pensadas para satisfacer cualquier antojo.</h2>
           </div>
 
           {menuSections.map((section) => (
@@ -275,14 +273,13 @@ function App() {
             <div className="chat-modal__header">
               <div>
                 <strong>La Mia Pasta</strong>
-                <p>Escribe tu mensaje y te llevamos a WhatsApp.</p>
+                <p>hola! En qué podemos ayudarte? Te respondemos en seguida!</p>
               </div>
               <button className="chat-modal__close" type="button" aria-label="Cerrar" onClick={() => setChatOpen(false)}>
                 ×
               </button>
             </div>
             <label className="chat-modal__body">
-              <span>Mensaje</span>
               <textarea value={message} onChange={(event) => setMessage(event.target.value)} rows="5" />
             </label>
             <div className="chat-modal__actions">

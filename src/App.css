@@ -1,11 +1,14 @@
 :root {
-  --bg: #f5f1eb;
-  --surface: #fffdf9;
-  --surface-soft: #f2ede6;
-  --ink: #171717;
-  --muted: #626262;
-  --line: rgba(23, 23, 23, 0.1);
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+  --bg: #f7f1e7;
+  --surface: #fffaf3;
+  --surface-soft: #efe1cb;
+  --surface-accent: #d8c1a0;
+  --ink: #2f1c12;
+  --muted: #725847;
+  --brand: #8d5b36;
+  --brand-dark: #6c4225;
+  --line: rgba(88, 54, 30, 0.14);
+  --shadow: 0 18px 50px rgba(96, 61, 35, 0.12);
   --wa: #25d366;
   --wa-dark: #128c4a;
 }
@@ -20,7 +23,7 @@ html {
 
 body {
   margin: 0;
-  background: linear-gradient(180deg, #f7f4ef 0%, #f1ece4 100%);
+  background: linear-gradient(180deg, #fbf6ef 0%, #f0e2cf 100%);
   color: var(--ink);
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
@@ -52,8 +55,8 @@ img {
   position: relative;
   width: min(1200px, calc(100% - 20px));
   margin: 10px auto;
-  background: rgba(255, 253, 249, 0.96);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 250, 243, 0.96);
+  border: 1px solid rgba(88, 54, 30, 0.08);
   border-radius: 28px;
   box-shadow: var(--shadow);
   overflow: hidden;
@@ -89,7 +92,7 @@ img {
   padding: 0 10px;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 250, 243, 0.9);
 }
 
 .menu-toggle span {
@@ -130,7 +133,7 @@ img {
 .topbar__whatsapp {
   padding: 12px 16px;
   border-radius: 999px;
-  background: #111111;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
   color: white;
   font-size: 0.92rem;
   font-weight: 700;
@@ -161,12 +164,13 @@ img {
   border: 1px solid var(--line);
   color: var(--ink);
   font-weight: 600;
+  text-align: right;
 }
 
 .hero {
   display: grid;
   gap: 26px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(243, 238, 230, 0.95));
+  background: linear-gradient(180deg, rgba(255, 250, 243, 0.92), rgba(239, 225, 203, 0.9));
 }
 
 .hero__content {
@@ -176,8 +180,14 @@ img {
   align-items: center;
 }
 
-.hero__text {
-  text-align: center;
+.hero__text,
+.section-heading,
+.menu-block__header div,
+.dish-card__body,
+.menu-item,
+.brand-strip__points span,
+.footer__text {
+  text-align: right;
 }
 
 .eyebrow {
@@ -205,7 +215,7 @@ img {
 .hero__text h1 {
   font-size: clamp(2.5rem, 10vw, 5rem);
   max-width: 12ch;
-  margin-inline: auto;
+  margin-left: auto;
 }
 
 .hero__lead,
@@ -220,7 +230,7 @@ img {
 }
 
 .hero__lead {
-  margin: 18px auto 0;
+  margin: 18px 0 0 auto;
   max-width: 34rem;
   font-size: 1rem;
 }
@@ -230,6 +240,7 @@ img {
   flex-direction: column;
   gap: 12px;
   margin-top: 24px;
+  align-items: stretch;
 }
 
 .button {
@@ -245,41 +256,29 @@ img {
 }
 
 .button--primary {
-  background: #111111;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
   color: white;
+  box-shadow: 0 12px 26px rgba(141, 91, 54, 0.24);
 }
 
 .button--secondary {
-  background: transparent;
-  border-color: rgba(0, 0, 0, 0.14);
-  color: var(--ink);
+  background: rgba(216, 193, 160, 0.22);
+  border-color: rgba(141, 91, 54, 0.25);
+  color: var(--brand-dark);
 }
 
-.hero__visual {
-  display: grid;
+.button--ghost {
+  background: rgba(255, 250, 243, 0.65);
+  border-color: var(--surface-accent);
+  color: var(--brand-dark);
 }
 
-.hero__logo-card,
 .menu-item,
 .brand-strip,
 .footer,
 .chat-modal__panel {
   background: var(--surface);
   border: 1px solid var(--line);
-}
-
-.hero__logo-card {
-  border-radius: 28px;
-  min-height: 320px;
-  display: grid;
-  place-items: center;
-  padding: 28px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 241, 234, 0.98));
-}
-
-.hero__logo-card .logo-image {
-  width: min(100%, 310px);
-  margin-inline: auto;
 }
 
 .section {
@@ -311,7 +310,7 @@ img {
   border: 1px solid var(--line);
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px rgba(96, 61, 35, 0.08);
 }
 
 .dish-card__image-wrap {
@@ -333,8 +332,8 @@ img {
   left: 16px;
   padding: 8px 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--ink);
+  background: rgba(255, 250, 243, 0.95);
+  color: var(--brand-dark);
 }
 
 .dish-card__body {
@@ -374,7 +373,7 @@ img {
 
 .menu-block__header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: end;
   gap: 14px;
 }
@@ -408,6 +407,7 @@ img {
 .menu-item__top {
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
   gap: 16px;
   align-items: baseline;
   margin-bottom: 10px;
@@ -428,7 +428,7 @@ img {
 }
 
 .menu-item__top span {
-  color: var(--ink);
+  color: var(--brand-dark);
   white-space: nowrap;
 }
 
@@ -436,7 +436,7 @@ img {
   display: grid;
   justify-items: center;
   gap: 16px;
-  text-align: center;
+  text-align: right;
   border-radius: 0;
 }
 
@@ -518,12 +518,12 @@ img {
   align-items: start;
   justify-content: space-between;
   gap: 16px;
-  background: #111111;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
   color: white;
 }
 
 .chat-modal__header p {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.84);
 }
 
 .chat-modal__close {
@@ -535,12 +535,6 @@ img {
 .chat-modal__body {
   display: grid;
   gap: 10px;
-}
-
-.chat-modal__body span {
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: var(--ink);
 }
 
 .chat-modal__body textarea {
@@ -596,24 +590,15 @@ img {
   }
 
   .hero__content {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+    grid-template-columns: 1fr;
     gap: 32px;
-  }
-
-  .hero__text {
-    text-align: left;
-  }
-
-  .hero__text h1,
-  .hero__lead {
-    margin-inline: 0;
   }
 
   .hero__actions,
   .chat-modal__actions {
     grid-auto-flow: column;
     grid-auto-columns: max-content;
-    justify-content: start;
+    justify-content: end;
   }
 
   .button {
@@ -644,7 +629,7 @@ img {
     grid-template-columns: auto 1fr;
     justify-items: stretch;
     align-items: center;
-    text-align: left;
+    text-align: right;
   }
 
   .footer__text {
