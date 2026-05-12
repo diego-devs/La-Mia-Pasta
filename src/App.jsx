@@ -1,8 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
 const WHATSAPP_NUMBER = '524424230777'
 const PDF_MENU_PATH = '/La-Mia-Pasta/LA_MIA_PASTA.pdf'
+const DISH_IMAGES = {
+  fetucciniPoblano: '/La-Mia-Pasta/images/dishes/fetuccini-poblano.jpg',
+  spaguettiBolognesa: '/La-Mia-Pasta/images/dishes/spaguetti-bolognesa.jpg',
+  penneChipotle: '/La-Mia-Pasta/images/dishes/penne-chipotle.jpg',
+}
+const HERO_IMAGES = {
+  pastaCremosa: '/La-Mia-Pasta/images/hero/pasta-cremosa.jpg',
+  spaguettiServido: '/La-Mia-Pasta/images/hero/spaguetti-servido.jpg',
+  penneSalsa: '/La-Mia-Pasta/images/hero/penne-salsa.jpg',
+}
 
 const featuredDishes = [
   {
@@ -10,42 +20,36 @@ const featuredDishes = [
     category: 'Favorito de la casa',
     description: 'Salsa cremosa de chile poblano, pasta fresca y un acabado delicado con parmesano.',
     price: '$130',
-    image:
-      'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=1200&q=80',
+    image: DISH_IMAGES.fetucciniPoblano,
   },
   {
     name: 'Spaguetti boloñesa',
     category: 'Clásico reconfortante',
     description: 'Una preparación generosa, cálida y muy antojable para abrir el apetito desde el primer vistazo.',
     price: '$130',
-    image:
-      'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1200&q=80',
+    image: DISH_IMAGES.spaguettiBolognesa,
   },
   {
     name: 'Penne chipotle',
     category: 'Toque mexicano',
     description: 'Una versión con carácter, cremosa y ligeramente picante, pensada para una marca con identidad propia.',
     price: '$130',
-    image:
-      'https://images.unsplash.com/photo-1516100882582-96c3a05fe590?auto=format&fit=crop&w=1200&q=80',
+    image: DISH_IMAGES.penneChipotle,
   },
 ]
 
 const heroGallery = [
   {
     name: 'Pasta cremosa al centro',
-    image:
-      'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=1400&q=80',
+    image: HERO_IMAGES.pastaCremosa,
   },
   {
     name: 'Spaguetti recién servido',
-    image:
-      'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1400&q=80',
+    image: HERO_IMAGES.spaguettiServido,
   },
   {
     name: 'Penne con salsa intensa',
-    image:
-      'https://images.unsplash.com/photo-1516100882582-96c3a05fe590?auto=format&fit=crop&w=1400&q=80',
+    image: HERO_IMAGES.penneSalsa,
   },
 ]
 
@@ -111,6 +115,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [chatOpen, setChatOpen] = useState(false)
   const [message, setMessage] = useState('Hola! Quiero información sobre La Mia Pasta.')
+  const closeButtonRef = useRef(null)
   const heroHighlights = ['Pasta fresca', 'Salsas caseras', 'Pedidos por WhatsApp']
 
   useEffect(() => {
@@ -124,6 +129,18 @@ function App() {
     window.addEventListener('keydown', closeOnEscape)
     return () => window.removeEventListener('keydown', closeOnEscape)
   }, [])
+
+  useEffect(() => {
+    if (!chatOpen) return undefined
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    closeButtonRef.current?.focus()
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [chatOpen])
 
   const navItems = [
     { href: '#platillos', label: 'Platillos' },
@@ -145,8 +162,9 @@ function App() {
           <button
             className={`menu-toggle ${menuOpen ? 'menu-toggle--active' : ''}`}
             type="button"
-            aria-label="Abrir menú"
+            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={menuOpen}
+            aria-controls="site-navigation"
             onClick={() => setMenuOpen((value) => !value)}
           >
             <span />
@@ -158,12 +176,20 @@ function App() {
             <LogoMark />
           </a>
 
+          <div className="topbar__links" aria-label="Navegación principal">
+            {navItems.map((item) => (
+              <a href={item.href} key={item.href}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+
           <button className="topbar__whatsapp" type="button" onClick={() => setChatOpen(true)}>
             WhatsApp
           </button>
         </nav>
 
-        <div className={`nav-drawer ${menuOpen ? 'nav-drawer--open' : ''}`}>
+        <div className={`nav-drawer ${menuOpen ? 'nav-drawer--open' : ''}`} id="site-navigation">
           {navItems.map((item) => (
             <a href={item.href} key={item.href} onClick={handleNavClick}>
               {item.label}
@@ -172,6 +198,24 @@ function App() {
         </div>
 
         <div className="hero__content">
+          <div className="hero__gallery hero__gallery--lead" aria-label="Galería destacada de pastas">
+            <article className="hero__gallery-main">
+              <img src={heroGallery[0].image} alt={heroGallery[0].name} />
+              <div className="hero__gallery-caption">
+                <span>Selección de la casa</span>
+                <strong>Sabores que entran primero por los ojos</strong>
+              </div>
+            </article>
+
+            <div className="hero__gallery-stack">
+              {heroGallery.slice(1).map((item) => (
+                <article className="hero__gallery-card" key={item.name}>
+                  <img src={item.image} alt={item.name} />
+                </article>
+              ))}
+            </div>
+          </div>
+
           <div className="hero__text">
             <p className="eyebrow">Pasión por la pasta</p>
             <div className="hero__kicker-row">
@@ -199,24 +243,6 @@ function App() {
             <div className="hero__mini-note">
               <strong>Hecho para antojar desde el primer scroll.</strong>
               <span>Imagen cálida, menú claro y acceso directo para pedir sin fricción.</span>
-            </div>
-          </div>
-
-          <div className="hero__gallery" aria-label="Galería destacada de pastas">
-            <article className="hero__gallery-main">
-              <img src={heroGallery[0].image} alt={heroGallery[0].name} />
-              <div className="hero__gallery-caption">
-                <span>Selección de la casa</span>
-                <strong>Sabores que entran primero por los ojos</strong>
-              </div>
-            </article>
-
-            <div className="hero__gallery-stack">
-              {heroGallery.slice(1).map((item) => (
-                <article className="hero__gallery-card" key={item.name}>
-                  <img src={item.image} alt={item.name} />
-                </article>
-              ))}
             </div>
           </div>
         </div>
@@ -323,12 +349,12 @@ function App() {
                 <strong>La Mia Pasta</strong>
                 <p>hola! En qué podemos ayudarte? Te respondemos en seguida!</p>
               </div>
-              <button className="chat-modal__close" type="button" aria-label="Cerrar" onClick={() => setChatOpen(false)}>
+              <button ref={closeButtonRef} className="chat-modal__close" type="button" aria-label="Cerrar" onClick={() => setChatOpen(false)}>
                 ×
               </button>
             </div>
             <label className="chat-modal__body">
-              <textarea value={message} onChange={(event) => setMessage(event.target.value)} rows="5" />
+              <textarea value={message} onChange={(event) => setMessage(event.target.value)} rows="5" aria-label="Escribe tu mensaje para WhatsApp" />
             </label>
             <div className="chat-modal__actions">
               <button className="button button--secondary" type="button" onClick={() => setChatOpen(false)}>

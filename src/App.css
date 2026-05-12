@@ -38,6 +38,13 @@ a {
   color: inherit;
 }
 
+a:focus-visible,
+button:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(141, 91, 54, 0.45);
+  outline-offset: 3px;
+}
+
 button {
   cursor: pointer;
 }
@@ -73,6 +80,10 @@ img {
   grid-template-columns: 48px 1fr auto;
   align-items: center;
   gap: 12px;
+}
+
+.topbar__links {
+  display: none;
 }
 
 .menu-toggle,
@@ -180,6 +191,10 @@ img {
   grid-template-columns: 1fr;
   gap: 26px;
   align-items: center;
+}
+
+.hero__gallery--lead {
+  order: -1;
 }
 
 .hero__text,
@@ -611,8 +626,10 @@ img {
 .chat-modal__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(15, 15, 15, 0.42);
+  width: 100%;
+  height: 100%;
   border: 0;
+  background: rgba(0, 0, 0, 0.32);
 }
 
 .chat-modal__panel {
@@ -621,6 +638,20 @@ img {
   border-radius: 26px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .chat-modal__header,
@@ -694,7 +725,49 @@ img {
   }
 
   .topbar {
-    grid-template-columns: 56px 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 18px;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .wordmark--centered {
+    justify-self: start;
+  }
+
+  .topbar__links {
+    display: inline-flex;
+    align-items: center;
+    justify-self: center;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(88, 54, 30, 0.08);
+    background: rgba(255, 250, 243, 0.82);
+    box-shadow: 0 10px 26px rgba(96, 61, 35, 0.08);
+  }
+
+  .topbar__links a {
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 999px;
+    color: var(--brand-dark);
+    font-size: 0.92rem;
+    font-weight: 700;
+  }
+
+  .topbar__links a:hover {
+    background: rgba(216, 193, 160, 0.28);
+  }
+
+  .topbar__links a:focus-visible {
+    background: rgba(216, 193, 160, 0.34);
+  }
+
+  .nav-drawer {
+    display: none;
   }
 
   .logo-image {
@@ -706,8 +779,8 @@ img {
   }
 
   .hero__content {
-    grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
-    gap: 36px;
+    grid-template-columns: minmax(340px, 0.96fr) minmax(0, 1.04fr);
+    gap: 44px;
   }
 
   .hero {
@@ -726,7 +799,16 @@ img {
   }
 
   .hero__text h1 {
-    max-width: 10ch;
+    max-width: 10.8ch;
+  }
+
+  .hero__lead {
+    max-width: 35rem;
+    font-size: 1.08rem;
+  }
+
+  .hero__gallery--lead {
+    order: 0;
   }
 
   .hero__gallery {
@@ -735,11 +817,19 @@ img {
   }
 
   .hero__gallery-main {
-    min-height: 430px;
+    min-height: 520px;
   }
 
   .hero__gallery-stack {
     gap: 16px;
+  }
+
+  .hero__gallery-card {
+    min-height: 210px;
+  }
+
+  .hero__mini-note {
+    max-width: 34rem;
   }
 
   .button {
