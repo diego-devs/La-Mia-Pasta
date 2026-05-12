@@ -1,100 +1,122 @@
 import './App.css'
 
-const basics = [
-  {
-    name: 'Spaguetti boloñesa',
-    description:
-      '300 g de pasta fresca acompañada de 8 oz de salsa boloñesa, una pieza de pan y queso parmesano.',
-    price: '$130',
-  },
-  {
-    name: 'Penne champiñones',
-    description:
-      '300 g de pasta fresca acompañada de 8 oz de salsa de champiñones, una pieza de pan y queso parmesano.',
-    price: '$130',
-  },
+const featuredDishes = [
   {
     name: 'Fetuccini poblano',
-    description:
-      '300 g de pasta fresca acompañada de 8 oz de salsa de chile poblano, una pieza de pan y queso parmesano.',
+    category: 'Favorito de la casa',
+    description: 'Salsa cremosa de chile poblano, pasta fresca y un acabado delicado con parmesano.',
     price: '$130',
+    image:
+      'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    name: 'Spaguetti boloñesa',
+    category: 'Clásico reconfortante',
+    description: 'Una preparación generosa, cálida y muy antojable para abrir el apetito desde el primer vistazo.',
+    price: '$130',
+    image:
+      'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'Penne chipotle',
-    description:
-      '300 g de pasta fresca acompañada de 8 oz de salsa de chipotle, una pieza de pan y queso parmesano. Ideal para quienes disfrutan un toque picante.',
+    category: 'Toque mexicano',
+    description: 'Una versión con carácter, cremosa y ligeramente picante, pensada para una marca con identidad propia.',
     price: '$130',
-  },
-  {
-    name: 'Macarrones cheddar',
-    description:
-      '300 g de pasta fresca acompañada de 8 oz de salsa de queso cheddar, una pieza de pan y queso parmesano.',
-    price: '$130',
+    image:
+      'https://images.unsplash.com/photo-1516100882582-96c3a05fe590?auto=format&fit=crop&w=1200&q=80',
   },
 ]
 
-const specialties = [
+const menuSections = [
   {
-    name: 'Spaguetti boloñesa con albóndigas',
-    description:
-      '300 g de pasta fresca, 8 oz de salsa boloñesa, 80 g de proteína, pan, queso parmesano y perejil.',
-    price: '$160',
+    title: 'Pastas básicas',
+    description: 'Opciones directas, apetecibles y perfectas para venta diaria.',
+    items: [
+      {
+        name: 'Spaguetti boloñesa',
+        description: '300 g de pasta fresca con 8 oz de salsa boloñesa, pan y queso parmesano.',
+        price: '$130',
+      },
+      {
+        name: 'Penne champiñones',
+        description: '300 g de pasta fresca con salsa cremosa de champiñones, pan y parmesano.',
+        price: '$130',
+      },
+      {
+        name: 'Fetuccini poblano',
+        description: '300 g de pasta fresca con salsa de chile poblano, pan y parmesano.',
+        price: '$130',
+      },
+      {
+        name: 'Penne chipotle',
+        description: '300 g de pasta fresca con salsa chipotle, pan y parmesano.',
+        price: '$130',
+      },
+      {
+        name: 'Macarrones cheddar',
+        description: '300 g de pasta fresca con salsa cheddar, pan y parmesano.',
+        price: '$130',
+      },
+    ],
   },
   {
-    name: 'Penne champiñones con camarones',
-    description:
-      '300 g de pasta fresca, 8 oz de salsa de champiñones, 80 g de proteína, pan, queso parmesano y perejil.',
-    price: '$170',
-  },
-  {
-    name: 'Fetuccini poblano con pollo',
-    description:
-      '300 g de pasta fresca, 8 oz de salsa de chile poblano, 80 g de proteína, pan, queso parmesano y perejil.',
-    price: '$160',
-  },
-  {
-    name: 'Penne chipotle con chuleta ahumada',
-    description:
-      '300 g de pasta fresca, 8 oz de salsa de chipotle, 80 g de proteína, pan, queso parmesano y perejil. Con ese punto ahumado y picante que distingue a la casa.',
-    price: '$160',
-  },
-  {
-    name: 'Macarrones cheddar con tocino',
-    description:
-      '300 g de pasta fresca, 8 oz de salsa de queso cheddar, 80 g de proteína, pan, queso parmesano y perejil.',
-    price: '$160',
+    title: 'Especialidades',
+    description: 'Platos más completos con proteína y más protagonismo visual.',
+    items: [
+      {
+        name: 'Spaguetti boloñesa con albóndigas',
+        description: 'Pasta fresca, salsa boloñesa, albóndigas, pan, parmesano y perejil.',
+        price: '$160',
+      },
+      {
+        name: 'Penne champiñones con camarones',
+        description: 'Pasta fresca, salsa de champiñones, camarones, pan, parmesano y perejil.',
+        price: '$170',
+      },
+      {
+        name: 'Fetuccini poblano con pollo',
+        description: 'Pasta fresca, salsa poblana, pollo, pan, parmesano y perejil.',
+        price: '$160',
+      },
+      {
+        name: 'Penne chipotle con chuleta ahumada',
+        description: 'Pasta fresca, salsa chipotle, chuleta ahumada, pan, parmesano y perejil.',
+        price: '$160',
+      },
+      {
+        name: 'Macarrones cheddar con tocino',
+        description: 'Pasta fresca, salsa cheddar, tocino, pan, parmesano y perejil.',
+        price: '$160',
+      },
+    ],
   },
 ]
 
-const drinks = [
-  { name: 'Refrescos', description: 'Coca-Cola, Fanta, Sidral Mundet y agua mineral Peñafiel.', price: '$40' },
-  { name: 'Aguas artesanales', description: 'Jamaica, horchata y limón con chía.', price: '$35' },
-]
-
-const extras = [
-  { name: 'Extra de proteína', description: 'Camarones, pollo, albóndigas, chuleta ahumada o tocino.', price: '$40' },
-  { name: 'Extra de queso parmesano', description: 'El complemento perfecto para terminar el plato.', price: '$35' },
-]
-
-const features = [
+const complements = [
   {
-    title: 'Pasta fresca hecha por ellos',
-    text: 'La Mia Pasta produce su propia pasta para asegurar textura, frescura y una experiencia artesanal en cada plato.',
+    title: 'Bebidas',
+    items: [
+      { name: 'Refrescos', description: 'Coca-Cola, Fanta, Sidral Mundet y agua mineral Peñafiel.', price: '$40' },
+      { name: 'Aguas artesanales', description: 'Jamaica, horchata y limón con chía.', price: '$35' },
+    ],
   },
   {
-    title: 'Fusión México-Italiana',
-    text: 'La propuesta mezcla cortes tradicionales italianos con ingredientes y salsas inspiradas en sabores mexicanos.',
-  },
-  {
-    title: 'Línea de pasta seca con personalidad',
-    text: 'Además del menú preparado, la marca proyecta una línea de pasta seca con sabores como espinaca, remolacha y chile poblano.',
+    title: 'Extras',
+    items: [
+      { name: 'Extra de proteína', description: 'Camarones, pollo, albóndigas, chuleta ahumada o tocino.', price: '$40' },
+      { name: 'Extra de parmesano', description: 'El remate ideal para cualquier plato.', price: '$35' },
+    ],
   },
 ]
 
-function MenuCard({ item }) {
+function LogoMark() {
+  return <img className="logo-image" src="/La-Mia-Pasta/logo.jpg" alt="Logo de La Mia Pasta" />
+}
+
+function MenuItem({ item }) {
   return (
-    <article className="menu-card">
-      <div className="menu-card__top">
+    <article className="menu-item">
+      <div className="menu-item__top">
         <h3>{item.name}</h3>
         <span>{item.price}</span>
       </div>
@@ -108,179 +130,129 @@ function App() {
     <div className="site-shell">
       <header className="hero">
         <nav className="topbar">
-          <div className="brand-mark">
-            <div className="brand-mark__seal">✦</div>
-            <div>
-              <p className="eyebrow">LA MIA PASTA</p>
-              <span>Pasión por la pasta</span>
-            </div>
-          </div>
+          <a className="wordmark" href="#inicio" aria-label="Ir al inicio">
+            <LogoMark />
+          </a>
           <div className="nav-links">
+            <a href="#platillos">Platillos</a>
             <a href="#menu">Menú</a>
-            <a href="#story">Nuestra esencia</a>
             <a href="#contacto">Contacto</a>
           </div>
         </nav>
 
-        <div className="hero__content">
+        <div className="hero__content" id="inicio">
           <div className="hero__text">
-            <p className="eyebrow">Fusión México-Italiana</p>
-            <h1>Pasta artesanal con alma italiana y sabores profundamente mexicanos.</h1>
+            <p className="eyebrow">Pasión por la pasta</p>
+            <h1>Una presentación más limpia, visual y antojable para La Mia Pasta.</h1>
             <p className="hero__lead">
-              Un demo visual para presentar una marca de comida casera que transforma ingredientes mexicanos en una experiencia de pasta fresca, cálida y memorable.
+              Simplificamos el discurso, reducimos ruido visual y ponemos la atención donde debe estar: marca, platillos y deseo de compra.
             </p>
             <div className="hero__actions">
-              <a className="button button--primary" href="#menu">
-                Ver menú
+              <a className="button button--primary" href="#platillos">
+                Ver platillos
               </a>
-              <a className="button button--ghost" href="#story">
-                Conocer la marca
+              <a className="button button--secondary" href="#menu">
+                Ver menú completo
               </a>
             </div>
           </div>
 
-          <div className="hero__card">
-            <div className="plate plate--main">
-              <span className="plate__label">Especialidad de la casa</span>
-              <h2>Fetuccini poblano</h2>
-              <p>
-                Pasta fresca con salsa cremosa de chile poblano, terminada con parmesano. Una mezcla elegante entre comfort food y cocina de autor casera.
-              </p>
+          <div className="hero__visual">
+            <div className="hero__logo-card">
+              <LogoMark />
             </div>
-            <div className="plate plate--accent">
-              <span className="plate__label">Próximamente</span>
-              <h3>Pasta seca de sabores</h3>
-              <p>Espinaca, remolacha, chile poblano y otras fusiones para llevar la marca a más mesas.</p>
+            <div className="hero__note">
+              <span>Identidad más consistente</span>
+              <p>Menos tipografías, más aire y una presencia visual que acompaña mejor el logo.</p>
             </div>
           </div>
         </div>
       </header>
 
       <main>
-        <section className="section intro-grid">
-          {features.map((feature) => (
-            <article className="feature-card" key={feature.title}>
-              <h3>{feature.title}</h3>
-              <p>{feature.text}</p>
-            </article>
-          ))}
-        </section>
-
-        <section className="section story" id="story">
-          <div className="story__text">
-            <p className="eyebrow">Nuestra esencia</p>
-            <h2>Tradición, precisión artesanal y una identidad que se siente propia.</h2>
-            <p>
-              La Mia Pasta nace desde la idea de unir la tradición italiana con ingredientes representativos de México. Su identidad parte de un sello florentino: simetría, orden, detalle y herencia artesanal.
-            </p>
-            <p>
-              La marca busca ofrecer una experiencia gastronómica auténtica, fresca y creativa. No solo vende platos de pasta: propone una cocina reconocible, hecha con dedicación, calidad y una visión muy clara de producto.
-            </p>
+        <section className="section dishes" id="platillos">
+          <div className="section-heading section-heading--compact">
+            <p className="eyebrow">Platillos destacados</p>
+            <h2>Imágenes primero, texto justo y una sensación mucho más comercial.</h2>
           </div>
-          <div className="story__panel">
-            <div className="seal-showcase">
-              <div className="seal-showcase__icon">✺</div>
-              <h3>Sello Florentino</h3>
-              <p>
-                Un emblema que comunica perfección, tradición y cuidado en cada detalle, evocando cortes clásicos de pasta y la belleza ornamental italiana.
-              </p>
-            </div>
+
+          <div className="dish-grid">
+            {featuredDishes.map((dish) => (
+              <article className="dish-card" key={dish.name}>
+                <div className="dish-card__image-wrap">
+                  <img className="dish-card__image" src={dish.image} alt={dish.name} />
+                  <span className="dish-card__badge">{dish.category}</span>
+                </div>
+                <div className="dish-card__body">
+                  <div className="menu-item__top">
+                    <h3>{dish.name}</h3>
+                    <span>{dish.price}</span>
+                  </div>
+                  <p>{dish.description}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
-        <section className="section mission-grid">
-          <article className="mission-card">
-            <p className="eyebrow">Misión</p>
-            <p>
-              Crear experiencias gastronómicas únicas mediante la fusión de cocina italiana y mexicana, elaborando pastas propias con ingredientes de alta calidad, sabores auténticos y opciones creativas que también puedan sentirse saludables.
-            </p>
-          </article>
-          <article className="mission-card">
-            <p className="eyebrow">Visión</p>
-            <p>
-              Posicionarse como una marca referente en pasta artesanal en México, reconocida por su innovación, frescura y originalidad, llevando sabores mexicanos a más hogares sin perder la esencia tradicional italiana.
-            </p>
-          </article>
+        <section className="section brand-strip">
+          <div>
+            <p className="eyebrow">Dirección visual</p>
+            <h2>El logo ya tiene personalidad. El sitio ahora la acompaña en vez de competir con ella.</h2>
+          </div>
+          <div className="brand-strip__points">
+            <span>Una sola línea visual principal</span>
+            <span>Más espacio en blanco</span>
+            <span>Más protagonismo del producto</span>
+          </div>
         </section>
 
         <section className="section menu-section" id="menu">
           <div className="section-heading">
             <p className="eyebrow">Menú</p>
-            <h2>Sabores que ya cuentan su historia desde el primer bocado.</h2>
-            <p>
-              Tomamos como base el menú actual para construir una experiencia web elegante, apetecible y lista para convertirse después en un sitio más completo.
-            </p>
+            <h2>Una carta clara, ordenada y lista para enseñarse.</h2>
           </div>
 
-          <div className="menu-block">
-            <div className="menu-block__header">
-              <h3>Básicas</h3>
-              <p>Las combinaciones más directas y antojables del menú actual.</p>
+          {menuSections.map((section) => (
+            <div className="menu-block" key={section.title}>
+              <div className="menu-block__header">
+                <div>
+                  <h3>{section.title}</h3>
+                  <p>{section.description}</p>
+                </div>
+              </div>
+              <div className="menu-grid">
+                {section.items.map((item) => (
+                  <MenuItem item={item} key={item.name} />
+                ))}
+              </div>
             </div>
-            <div className="menu-grid">
-              {basics.map((item) => (
-                <MenuCard item={item} key={item.name} />
-              ))}
-            </div>
-          </div>
-
-          <div className="menu-block">
-            <div className="menu-block__header">
-              <h3>Especialidades</h3>
-              <p>Platos con proteína y perfiles más intensos para una experiencia más completa.</p>
-            </div>
-            <div className="menu-grid">
-              {specialties.map((item) => (
-                <MenuCard item={item} key={item.name} />
-              ))}
-            </div>
-          </div>
+          ))}
 
           <div className="menu-split">
-            <div>
-              <div className="menu-block__header">
-                <h3>Bebidas</h3>
+            {complements.map((group) => (
+              <div className="menu-side" key={group.title}>
+                <div className="menu-block__header">
+                  <h3>{group.title}</h3>
+                </div>
+                <div className="menu-grid menu-grid--compact">
+                  {group.items.map((item) => (
+                    <MenuItem item={item} key={item.name} />
+                  ))}
+                </div>
               </div>
-              <div className="menu-grid menu-grid--compact">
-                {drinks.map((item) => (
-                  <MenuCard item={item} key={item.name} />
-                ))}
-              </div>
-            </div>
-            <div>
-              <div className="menu-block__header">
-                <h3>Extras</h3>
-              </div>
-              <div className="menu-grid menu-grid--compact">
-                {extras.map((item) => (
-                  <MenuCard item={item} key={item.name} />
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
-        </section>
-
-        <section className="section showcase-band">
-          <div>
-            <p className="eyebrow">Lo que vende esta propuesta</p>
-            <h2>Una marca casera, refinada y distinta dentro de la comida italiana en México.</h2>
-          </div>
-          <p>
-            Esta primera demo propone una dirección visual cálida, artesanal y contemporánea. En cuanto compartas el logo y los materiales visuales, puedo aterrizar todavía mejor color, tipografía, iconografía y layout final.
-          </p>
         </section>
       </main>
 
       <footer className="footer" id="contacto">
-        <div>
-          <p className="eyebrow">LA MIA PASTA</p>
-          <h3>Pasión por la pasta</h3>
-          <p>Demo conceptual listo para afinar con logo, menú final en diseño y activos reales de la marca.</p>
+        <div className="footer__brand">
+          <LogoMark />
         </div>
-        <div className="footer__contact">
-          <span>Fusión México-Italiana</span>
-          <span>Pasta fresca artesanal</span>
-          <span>Ideal para venta directa y pasta seca de sabores</span>
+        <div className="footer__text">
+          <p>La Mia Pasta</p>
+          <span>Presentación conceptual con imágenes públicas temporales para mostrar intención visual.</span>
         </div>
       </footer>
     </div>
