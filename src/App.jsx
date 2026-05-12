@@ -93,6 +93,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [chatOpen, setChatOpen] = useState(false)
   const [message, setMessage] = useState('Hola! Quiero información sobre La Mia Pasta.')
+  const heroHighlights = ['Pasta fresca', 'Salsas caseras', 'Pedidos por WhatsApp']
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -155,6 +156,13 @@ function App() {
         <div className="hero__content">
           <div className="hero__text">
             <p className="eyebrow">Pasión por la pasta</p>
+            <div className="hero__kicker-row">
+              {heroHighlights.map((item) => (
+                <span className="hero__kicker-chip" key={item}>
+                  {item}
+                </span>
+              ))}
+            </div>
             <h1>Pasta fresca, recetas con carácter y una experiencia hecha para antojar.</h1>
             <p className="hero__lead">
               Pastas frescas, combinaciones reconfortantes y una propuesta pensada para antojar desde la primera visita, especialmente en celular.
@@ -169,6 +177,10 @@ function App() {
               <button className="button button--ghost" type="button" onClick={() => setChatOpen(true)}>
                 Pedir por WhatsApp
               </button>
+            </div>
+            <div className="hero__mini-note">
+              <strong>Hecho para pedir fácil.</strong>
+              <span>Menú claro, acceso directo a WhatsApp y una presencia cálida que abre el apetito desde el primer scroll.</span>
             </div>
           </div>
         </div>
