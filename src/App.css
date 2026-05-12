@@ -6,6 +6,8 @@
   --muted: #626262;
   --line: rgba(23, 23, 23, 0.1);
   --shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+  --wa: #25d366;
+  --wa-dark: #128c4a;
 }
 
 * {
@@ -23,8 +25,18 @@ body {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+a,
+button,
+textarea {
+  font: inherit;
+}
+
 a {
   color: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 img {
@@ -37,11 +49,12 @@ img {
 }
 
 .site-shell {
-  width: min(1200px, calc(100% - 32px));
-  margin: 16px auto;
-  background: rgba(255, 253, 249, 0.94);
+  position: relative;
+  width: min(1200px, calc(100% - 20px));
+  margin: 10px auto;
+  background: rgba(255, 253, 249, 0.96);
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 30px;
+  border-radius: 28px;
   box-shadow: var(--shadow);
   overflow: hidden;
 }
@@ -49,14 +62,54 @@ img {
 .hero,
 .section,
 .footer {
-  padding: 32px;
+  padding: 24px;
 }
 
 .topbar {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
+}
+
+.menu-toggle,
+.topbar__whatsapp,
+.chat-modal__close {
+  border: 0;
+  background: transparent;
+}
+
+.menu-toggle {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 999px;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.menu-toggle--active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle--active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle--active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .wordmark {
@@ -64,38 +117,67 @@ img {
   align-items: center;
 }
 
+.wordmark--centered {
+  justify-self: center;
+}
+
 .logo-image {
-  width: 140px;
+  width: 130px;
   height: auto;
   object-fit: contain;
 }
 
-.nav-links {
-  display: flex;
-  gap: 24px;
-  font-size: 0.95rem;
+.topbar__whatsapp {
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #111111;
+  color: white;
+  font-size: 0.92rem;
+  font-weight: 700;
 }
 
-.nav-links a {
+.nav-drawer {
+  display: grid;
+  gap: 10px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease, margin-top 0.2s ease;
+}
+
+.nav-drawer--open {
+  max-height: 220px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 16px;
+}
+
+.nav-drawer a {
   text-decoration: none;
-  color: var(--muted);
-}
-
-.nav-links a:hover {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
   color: var(--ink);
+  font-weight: 600;
 }
 
 .hero {
   display: grid;
-  gap: 32px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(243, 238, 230, 0.95));
+  gap: 26px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(243, 238, 230, 0.95));
 }
 
 .hero__content {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  gap: 32px;
+  grid-template-columns: 1fr;
+  gap: 24px;
   align-items: center;
+}
+
+.hero__text {
+  text-align: center;
 }
 
 .eyebrow {
@@ -114,14 +196,16 @@ img {
 .menu-item h3,
 .dish-card h3 {
   margin: 0;
+  color: var(--ink);
   font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   letter-spacing: -0.03em;
-  line-height: 0.98;
+  line-height: 1.02;
 }
 
 .hero__text h1 {
-  font-size: clamp(3rem, 6vw, 5.6rem);
-  max-width: 10ch;
+  font-size: clamp(2.5rem, 10vw, 5rem);
+  max-width: 12ch;
+  margin-inline: auto;
 }
 
 .hero__lead,
@@ -129,29 +213,31 @@ img {
 .dish-card p,
 .footer__text span,
 .brand-strip__points span,
-.menu-block__header p {
+.menu-block__header p,
+.chat-modal__header p {
   color: var(--muted);
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 .hero__lead {
-  margin-top: 20px;
-  max-width: 58ch;
-  font-size: 1.04rem;
+  margin: 18px auto 0;
+  max-width: 34rem;
+  font-size: 1rem;
 }
 
 .hero__actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 28px;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 22px;
+  width: 100%;
+  padding: 14px 20px;
   border-radius: 999px;
   text-decoration: none;
   font-weight: 700;
@@ -171,54 +257,34 @@ img {
 
 .hero__visual {
   display: grid;
-  gap: 18px;
 }
 
 .hero__logo-card,
-.hero__note,
 .menu-item,
 .brand-strip,
-.footer {
+.footer,
+.chat-modal__panel {
   background: var(--surface);
   border: 1px solid var(--line);
 }
 
 .hero__logo-card {
   border-radius: 28px;
-  min-height: 420px;
+  min-height: 320px;
   display: grid;
   place-items: center;
-  padding: 40px;
+  padding: 28px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 241, 234, 0.98));
 }
 
 .hero__logo-card .logo-image {
-  width: min(100%, 360px);
-}
-
-.hero__note {
-  border-radius: 24px;
-  padding: 22px;
-}
-
-.hero__note span,
-.menu-item__top span,
-.dish-card__badge,
-.footer__text p {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-weight: 700;
-}
-
-.hero__note p,
-.footer__text p {
-  margin: 10px 0 0;
+  width: min(100%, 310px);
+  margin-inline: auto;
 }
 
 .section {
   display: grid;
-  gap: 24px;
+  gap: 20px;
 }
 
 .section-heading {
@@ -231,13 +297,13 @@ img {
 
 .section-heading h2,
 .brand-strip h2 {
-  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-size: clamp(2rem, 8vw, 3.8rem);
 }
 
 .dish-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 18px;
 }
 
 .dish-card {
@@ -250,7 +316,7 @@ img {
 
 .dish-card__image-wrap {
   position: relative;
-  aspect-ratio: 4 / 4.6;
+  aspect-ratio: 4 / 4.2;
   overflow: hidden;
   background: var(--surface-soft);
 }
@@ -263,100 +329,102 @@ img {
 
 .dish-card__badge {
   position: absolute;
-  top: 18px;
-  left: 18px;
+  top: 16px;
+  left: 16px;
   padding: 8px 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--ink);
 }
 
 .dish-card__body {
-  padding: 22px;
-}
-
-.menu-section {
-  gap: 28px;
+  padding: 20px;
 }
 
 .brand-strip {
-  margin: 0 32px;
+  margin: 0 24px;
   border-radius: 28px;
-  padding: 28px;
+  padding: 24px;
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 18px;
   align-items: center;
 }
 
 .brand-strip__points {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .brand-strip__points span {
   display: block;
-  padding: 16px 18px;
+  padding: 15px 16px;
   border-radius: 18px;
   background: var(--surface-soft);
 }
 
+.menu-section {
+  gap: 24px;
+}
+
 .menu-block {
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 
 .menu-block__header {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  gap: 16px;
+  gap: 14px;
 }
 
 .menu-block__header h3 {
-  font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 .menu-grid,
 .menu-split {
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 
-.menu-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
+.menu-grid,
 .menu-grid--compact,
 .menu-split {
   grid-template-columns: 1fr;
 }
 
-.menu-split {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .menu-side {
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 
 .menu-item {
   border-radius: 22px;
-  padding: 22px;
+  padding: 20px;
 }
 
 .menu-item__top {
   display: flex;
   justify-content: space-between;
-  gap: 18px;
+  gap: 16px;
   align-items: baseline;
   margin-bottom: 10px;
 }
 
 .menu-item h3,
 .dish-card h3 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+}
+
+.menu-item__top span,
+.dish-card__badge,
+.footer__text p {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
 }
 
 .menu-item__top span {
@@ -365,72 +433,232 @@ img {
 }
 
 .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
   border-radius: 0;
 }
 
 .footer__brand .logo-image {
   width: 110px;
+  margin-inline: auto;
 }
 
 .footer__text {
-  text-align: right;
   max-width: 520px;
 }
 
-@media (max-width: 980px) {
-  .hero__content,
-  .dish-grid,
-  .brand-strip,
-  .menu-grid,
-  .menu-split,
-  .footer {
-    grid-template-columns: 1fr;
-  }
+.footer__text p,
+.chat-modal__header p {
+  margin: 6px 0 0;
+}
 
-  .topbar,
-  .menu-block__header,
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.whatsapp-fab {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--wa);
+  color: white;
+  box-shadow: 0 18px 36px rgba(37, 211, 102, 0.28);
+}
 
-  .footer__text {
-    text-align: left;
+.whatsapp-fab__label {
+  font-weight: 800;
+}
+
+.whatsapp-fab__pulse {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  animation: pulse 1.8s infinite;
+}
+
+.chat-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: end center;
+  padding: 14px;
+}
+
+.chat-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 15, 15, 0.42);
+  border: 0;
+}
+
+.chat-modal__panel {
+  position: relative;
+  width: min(100%, 420px);
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+}
+
+.chat-modal__header,
+.chat-modal__body,
+.chat-modal__actions {
+  padding: 18px;
+}
+
+.chat-modal__header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  background: #111111;
+  color: white;
+}
+
+.chat-modal__header p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.chat-modal__close {
+  color: white;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.chat-modal__body {
+  display: grid;
+  gap: 10px;
+}
+
+.chat-modal__body span {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.chat-modal__body textarea {
+  width: 100%;
+  resize: none;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 14px;
+  color: var(--ink);
+}
+
+.chat-modal__actions {
+  display: grid;
+  gap: 10px;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.65);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
 }
 
-@media (max-width: 720px) {
+@media (min-width: 721px) {
   .site-shell {
-    width: min(100%, calc(100% - 16px));
-    margin: 8px auto;
-    border-radius: 24px;
+    width: min(1200px, calc(100% - 32px));
+    margin: 16px auto;
+    border-radius: 30px;
   }
 
   .hero,
   .section,
   .footer {
-    padding: 22px;
+    padding: 32px;
   }
 
-  .brand-strip {
-    margin: 0 22px;
-    padding: 22px;
-  }
-
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 14px;
-  }
-
-  .hero__text h1 {
-    max-width: unset;
+  .topbar {
+    grid-template-columns: 56px 1fr auto;
   }
 
   .logo-image {
-    width: 120px;
+    width: 150px;
+  }
+
+  .nav-drawer--open {
+    margin-top: 18px;
+  }
+
+  .hero__content {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+    gap: 32px;
+  }
+
+  .hero__text {
+    text-align: left;
+  }
+
+  .hero__text h1,
+  .hero__lead {
+    margin-inline: 0;
+  }
+
+  .hero__actions,
+  .chat-modal__actions {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    justify-content: start;
+  }
+
+  .button {
+    width: auto;
+  }
+
+  .dish-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .brand-strip {
+    margin: 0 32px;
+    padding: 28px;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 24px;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .menu-split {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer {
+    grid-template-columns: auto 1fr;
+    justify-items: stretch;
+    align-items: center;
+    text-align: left;
+  }
+
+  .footer__text {
+    text-align: right;
+    justify-self: end;
+  }
+
+  .whatsapp-fab {
+    right: 26px;
+    bottom: 24px;
+  }
+
+  .chat-modal {
+    place-items: end end;
+    padding: 24px;
   }
 }
