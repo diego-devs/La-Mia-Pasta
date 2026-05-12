@@ -164,7 +164,7 @@ img {
   border: 1px solid var(--line);
   color: var(--ink);
   font-weight: 600;
-  text-align: right;
+  text-align: left;
 }
 
 .hero {
@@ -187,7 +187,7 @@ img {
 .menu-item,
 .brand-strip__points span,
 .footer__text {
-  text-align: right;
+  text-align: left;
 }
 
 .eyebrow {
@@ -215,7 +215,8 @@ img {
 .hero__text h1 {
   font-size: clamp(2.5rem, 10vw, 5rem);
   max-width: 12ch;
-  margin-left: auto;
+  margin-right: auto;
+  margin-left: 0;
 }
 
 .hero__lead,
@@ -230,7 +231,7 @@ img {
 }
 
 .hero__lead {
-  margin: 18px 0 0 auto;
+  margin: 18px auto 0 0;
   max-width: 34rem;
   font-size: 1rem;
 }
@@ -373,7 +374,7 @@ img {
 
 .menu-block__header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: end;
   gap: 14px;
 }
@@ -407,7 +408,6 @@ img {
 .menu-item__top {
   display: flex;
   justify-content: space-between;
-  flex-direction: row-reverse;
   gap: 16px;
   align-items: baseline;
   margin-bottom: 10px;
@@ -436,7 +436,7 @@ img {
   display: grid;
   justify-items: center;
   gap: 16px;
-  text-align: right;
+  text-align: center;
   border-radius: 0;
 }
 
@@ -598,7 +598,7 @@ img {
   .chat-modal__actions {
     grid-auto-flow: column;
     grid-auto-columns: max-content;
-    justify-content: end;
+    justify-content: start;
   }
 
   .button {
@@ -629,12 +629,12 @@ img {
     grid-template-columns: auto 1fr;
     justify-items: stretch;
     align-items: center;
-    text-align: right;
+    text-align: left;
   }
 
   .footer__text {
-    text-align: right;
-    justify-self: end;
+    text-align: left;
+    justify-self: start;
   }
 
   .whatsapp-fab {

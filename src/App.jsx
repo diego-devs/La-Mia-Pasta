@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
-const WHATSAPP_NUMBER = '5210000000000'
+const WHATSAPP_NUMBER = '524424230777'
 const PDF_MENU_PATH = '/La-Mia-Pasta/LA_MIA_PASTA.pdf'
 
 const featuredDishes = [
