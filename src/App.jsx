@@ -96,7 +96,7 @@ const complements = [
 ]
 
 function LogoMark() {
-  return <img className="logo-image" src="/La-Mia-Pasta/logo.jpg" alt="Logo de La Mia Pasta" />
+  return <img className="logo-image" src={`${import.meta.env.BASE_URL}logo.jpg`} alt="Logo de La Mia Pasta" />
 }
 
 function MenuItem({ item }) {

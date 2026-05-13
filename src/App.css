@@ -587,13 +587,16 @@ img {
 
 .whatsapp-fab {
   position: fixed;
-  right: 18px;
+  right: 12px;
   bottom: 18px;
   z-index: 30;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 18px;
+  justify-content: center;
+  width: auto;
+  max-width: calc(100vw - 24px);
+  gap: 8px;
+  padding: 12px 14px;
   border: 0;
   border-radius: 999px;
   background: var(--wa);
@@ -602,12 +605,15 @@ img {
 }
 
 .whatsapp-fab__label {
+  font-size: 0.95rem;
   font-weight: 800;
+  line-height: 1;
 }
 
 .whatsapp-fab__pulse {
-  width: 12px;
-  height: 12px;
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: white;
   box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
