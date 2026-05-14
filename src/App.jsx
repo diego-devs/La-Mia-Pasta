@@ -357,7 +357,9 @@ function App() {
 
       <footer className="footer" id="contacto">
         <div className="footer__brand-lockup">
-          <LogoMark />
+          <div className="wordmark wordmark--footer" aria-hidden="true">
+            <LogoMark />
+          </div>
           <div className="footer__brand-copy">
             <p>Momentos que importan,</p>
             <span>sabor que permanece.</span>

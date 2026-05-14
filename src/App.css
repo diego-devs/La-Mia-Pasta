@@ -145,6 +145,10 @@ svg {
   gap: 10px;
 }
 
+.wordmark--footer {
+  justify-self: start;
+}
+
 .logo-image {
   width: 132px;
   height: auto;
