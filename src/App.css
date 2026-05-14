@@ -221,6 +221,28 @@ svg {
   text-align: left;
 }
 
+.hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.hero__chips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(229, 212, 189, 0.12);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .eyebrow {
   margin: 0;
   text-transform: uppercase;
@@ -275,8 +297,16 @@ svg {
 
 .hero__lead {
   margin-top: 22px;
-  max-width: 31rem;
-  font-size: 1.02rem;
+  max-width: 29rem;
+  font-size: 1.04rem;
+}
+
+.hero__note {
+  margin: 18px 0 0;
+  max-width: 26rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
 }
 
 .hero__actions {
@@ -376,7 +406,7 @@ svg {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 22px;
+  margin-top: 18px;
 }
 
 .hero__phrases span {
@@ -385,7 +415,7 @@ svg {
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid var(--line-soft);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.025);
   color: var(--ink-soft);
   font-size: 0.84rem;
 }
@@ -402,6 +432,7 @@ svg {
   overflow: hidden;
   position: relative;
   box-shadow: 0 36px 70px rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(229, 212, 189, 0.12);
 }
 
 .hero__image-wrap::after {
@@ -518,6 +549,11 @@ svg {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.signature-card:hover .signature-card__image {
+  transform: scale(1.035);
 }
 
 .signature-card__badge {
@@ -633,6 +669,13 @@ svg {
 .menu-item {
   border-radius: 22px;
   padding: 18px;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 170, 114, 0.24);
+  background: linear-gradient(180deg, rgba(37, 27, 23, 0.96), rgba(22, 16, 14, 0.96));
 }
 
 .menu-item h3,
@@ -692,6 +735,7 @@ svg {
 .footer__actions {
   display: grid;
   gap: 12px;
+  align-items: start;
 }
 
 .whatsapp-fab {
@@ -733,6 +777,10 @@ svg {
   padding: 18px;
 }
 
+.chat-modal--open .chat-modal__backdrop {
+  animation: fadeInBackdrop 0.28s ease forwards;
+}
+
 .chat-modal__backdrop {
   position: absolute;
   inset: 0;
@@ -746,6 +794,8 @@ svg {
   width: min(100%, 440px);
   border-radius: 28px;
   overflow: hidden;
+  transform-origin: 85% 100%;
+  animation: chatPanelIn 0.34s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
 }
 
 .chat-modal__header,
@@ -808,6 +858,28 @@ svg {
   }
 }
 
+@keyframes fadeInBackdrop {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes chatPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (min-width: 760px) {
   .hero,
   .section,
@@ -818,6 +890,14 @@ svg {
   .hero__content {
     grid-template-columns: minmax(0, 1.02fr) minmax(420px, 0.98fr);
     gap: 32px;
+  }
+
+  .hero__text {
+    max-width: 35rem;
+  }
+
+  .hero__actions {
+    max-width: 380px;
   }
 
   .hero__visual {
@@ -897,6 +977,10 @@ svg {
     padding: 0;
   }
 
+  .hero__chips {
+    padding-right: 40px;
+  }
+
   .hero__seal {
     width: 136px;
     height: 136px;
@@ -905,5 +989,19 @@ svg {
 
   .footer {
     margin: 0 16px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

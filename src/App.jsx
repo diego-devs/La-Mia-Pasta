@@ -4,6 +4,7 @@ import './App.css'
 const WHATSAPP_NUMBER = '524424230777'
 const PDF_MENU_PATH = '/La-Mia-Pasta/LA_MIA_PASTA.pdf'
 const BASE_URL = import.meta.env.BASE_URL
+const WHATSAPP_ICON = `${BASE_URL}whatsapp-icon.svg`
 
 const DISH_IMAGES = {
   fetucciniPoblano: `${BASE_URL}images/dishes/fetuccini-poblano.jpg`,
@@ -13,7 +14,7 @@ const DISH_IMAGES = {
 
 const HERO_IMAGE = `${BASE_URL}images/hero/spaguetti-servido.jpg`
 
-const featuredPhrases = ['Ingredientes seleccionados', 'Recetas artesanales', 'Hechas con pasión']
+const featuredPhrases = ['Fusión México–italiana', 'Pasta fresca artesanal', 'Pedidos por WhatsApp']
 
 const signatureDishes = [
   {
@@ -41,42 +42,43 @@ const signatureDishes = [
 
 const menuSections = [
   {
-    title: 'Pastas básicas',
-    description: 'Opciones directas, apetecibles y perfectas para venta diaria.',
+    title: 'Básicas',
+    description: 'Pastas base de la casa con perfil italiano y guiños mexicanos como poblano y chipotle.',
     items: [
-      { name: 'Spaguetti boloñesa', description: '300 g de pasta fresca con 8 oz de salsa boloñesa, pan y queso parmesano.', price: '$130' },
-      { name: 'Penne champiñones', description: '300 g de pasta fresca con salsa cremosa de champiñones, pan y parmesano.', price: '$130' },
-      { name: 'Fetuccini poblano', description: '300 g de pasta fresca con salsa de chile poblano, pan y parmesano.', price: '$130' },
-      { name: 'Penne chipotle', description: '300 g de pasta fresca con salsa chipotle, pan y parmesano.', price: '$130' },
-      { name: 'Macarrones cheddar', description: '300 g de pasta fresca con salsa cheddar, pan y parmesano.', price: '$130' },
+      { name: 'Spaguetti boloñesa', description: '300 g de pasta fresca acompañada de 8 oz de salsa boloñesa y una pieza de pan, finalizada con queso parmesano.', price: '$130' },
+      { name: 'Penne champiñones', description: '300 g de pasta fresca acompañada de 8 oz de salsa de champiñones y una pieza de pan, finalizada con queso parmesano.', price: '$130' },
+      { name: 'Fetuccini poblano', description: '300 g de pasta fresca acompañada de 8 oz de salsa de chile poblano y una pieza de pan, finalizada con queso parmesano.', price: '$130' },
+      { name: 'Penne chipotle', description: '300 g de pasta fresca acompañada de 8 oz de salsa de chipotle y una pieza de pan, finalizada con queso parmesano. Ideal para quienes disfrutan un toque picante.', price: '$130' },
+      { name: 'Macarrones cheddar', description: '300 g de pasta fresca acompañada de 8 oz de salsa de queso cheddar y una pieza de pan, finalizada con queso parmesano.', price: '$130' },
     ],
   },
   {
     title: 'Especialidades',
-    description: 'Platos más completos con proteína y mayor protagonismo visual.',
+    description: 'Versiones más completas con proteína, más intensidad y ese sello casero de la casa.',
     items: [
-      { name: 'Spaguetti boloñesa con albóndigas', description: 'Pasta fresca, salsa boloñesa, albóndigas, pan, parmesano y perejil.', price: '$160' },
-      { name: 'Penne champiñones con camarones', description: 'Pasta fresca, salsa de champiñones, camarones, pan, parmesano y perejil.', price: '$170' },
-      { name: 'Fetuccini poblano con pollo', description: 'Pasta fresca, salsa poblana, pollo, pan, parmesano y perejil.', price: '$160' },
-      { name: 'Penne chipotle con chuleta ahumada', description: 'Pasta fresca, salsa chipotle, chuleta ahumada, pan, parmesano y perejil.', price: '$160' },
-      { name: 'Macarrones cheddar con tocino', description: 'Pasta fresca, salsa cheddar, tocino, pan, parmesano y perejil.', price: '$160' },
+      { name: 'Spaguetti boloñesa con albóndigas', description: '300 g de pasta fresca acompañada de 8 oz de salsa boloñesa, 80 g de proteína y una pieza de pan, finalizada con queso parmesano y perejil.', price: '$160' },
+      { name: 'Penne champiñones con camarones', description: '300 g de pasta fresca acompañada de 8 oz de salsa de champiñones, 80 g de proteína y una pieza de pan, finalizada con queso parmesano y perejil.', price: '$170' },
+      { name: 'Fetuccini poblano con pollo', description: '300 g de pasta fresca acompañada de 8 oz de salsa de chile poblano, 80 g de proteína y una pieza de pan, finalizada con queso parmesano y perejil.', price: '$160' },
+      { name: 'Penne chipotle con chuleta ahumada', description: '300 g de pasta fresca acompañada de 8 oz de salsa de chipotle, 80 g de proteína y una pieza de pan, finalizada con queso parmesano y perejil. Ideal para quienes disfrutan un toque picante.', price: '$160' },
+      { name: 'Macarrones cheddar con tocino', description: '300 g de pasta fresca acompañada de 8 oz de salsa de queso cheddar, 80 g de proteína y una pieza de pan, finalizada con queso parmesano y perejil.', price: '$160' },
     ],
   },
 ]
 
 const complements = [
   {
+    title: 'Extras',
+    items: [
+      { name: 'Extra de proteína', description: 'Camarones', price: '$40' },
+      { name: 'Extra de proteína', description: 'Pollo, albóndigas, chuleta ahumada o tocino.', price: '$30' },
+      { name: 'Extra de queso', description: 'Queso parmesano.', price: '$35' },
+    ],
+  },
+  {
     title: 'Bebidas',
     items: [
       { name: 'Refrescos', description: 'Coca-Cola, Fanta, Sidral Mundet y agua mineral Peñafiel.', price: '$40' },
       { name: 'Aguas artesanales', description: 'Jamaica, horchata y limón con chía.', price: '$35' },
-    ],
-  },
-  {
-    title: 'Extras',
-    items: [
-      { name: 'Extra de proteína', description: 'Camarones, pollo, albóndigas, chuleta ahumada o tocino.', price: '$40' },
-      { name: 'Extra de parmesano', description: 'El remate ideal para cualquier plato.', price: '$35' },
     ],
   },
 ]
@@ -102,7 +104,7 @@ const featureItems = [
     ),
   },
   {
-    title: 'Hechas con pasión',
+    title: 'Sabor con acento mexicano',
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden="true">
         <path d="M24 42c-8.4-5.6-14-11.2-14-18.8C10 17.8 13.8 14 18.5 14c2.9 0 5 1.2 5.5 4 0.5-2.8 2.6-4 5.5-4 4.7 0 8.5 3.8 8.5 9.2C38 30.8 32.4 36.4 24 42Z" />
@@ -110,7 +112,7 @@ const featureItems = [
     ),
   },
   {
-    title: 'Disfruta en casa',
+    title: 'Lista para disfrutar en casa',
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden="true">
         <path d="M8 23.5 24 11l16 12.5" />
@@ -138,11 +140,7 @@ function MenuItem({ item }) {
 }
 
 function WhatsAppIcon() {
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M27.2 4.7A15 15 0 0 0 3.7 22.8L2 30l7.4-1.9A15 15 0 1 0 27.2 4.7Zm-11.2 24a12.5 12.5 0 0 1-6.4-1.8l-.5-.3-4.4 1.1 1.2-4.3-.3-.5a12.5 12.5 0 1 1 10.4 5.8Zm6.8-9.3c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.9.2s-1 1.2-1.2 1.4c-.2.2-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.2-2.2-2.6-.2-.4 0-.6.1-.8l.6-.7.4-.6c.2-.3.1-.5 0-.7L11.8 9c-.1-.3-.3-.6-.7-.6h-.6c-.3 0-.7.1-1 .4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.8 5.9 5.1.8.4 1.5.6 2 .7.8.2 1.6.2 2.1.1.6-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.8-.1-.1-.4-.2-.8-.4Z" />
-    </svg>
-  )
+  return <img src={WHATSAPP_ICON} alt="" aria-hidden="true" />
 }
 
 function App() {
@@ -188,6 +186,8 @@ function App() {
   }
 
   const handleNavClick = () => setMenuOpen(false)
+  const openChat = () => setChatOpen(true)
+  const closeChat = () => setChatOpen(false)
 
   return (
     <div className={`site-shell ${menuOpen ? 'site-shell--menu-open' : ''}`}>
@@ -210,7 +210,7 @@ function App() {
             <LogoMark />
           </a>
 
-          <button className="topbar__whatsapp" type="button" onClick={() => setChatOpen(true)}>
+          <button className="topbar__whatsapp" type="button" onClick={openChat}>
             <WhatsAppIcon />
             <span>WhatsApp</span>
           </button>
@@ -226,17 +226,21 @@ function App() {
 
         <div className="hero__content">
           <div className="hero__text">
-            <p className="eyebrow">Pasión por la pasta</p>
+            <div className="hero__chips" aria-label="Puntos clave de La Mia Pasta">
+              <span>Hechas al momento</span>
+              <span>Poblano · chipotle · boloñesa</span>
+            </div>
+            <p className="eyebrow">Fusión México–italiana</p>
             <div className="hero__accent" aria-hidden="true" />
             <h1>
-              Pastas frescas, recetas con carácter y una experiencia hecha para <em>disfrutar.</em>
+              Pasta fresca con alma italiana y sabores mexicanos que se disfrutan desde el primer bocado.
             </h1>
             <p className="hero__lead">
-              Ingredientes seleccionados, combinaciones reconfortantes y el sabor de lo hecho en casa, en cada bocado.
+              Boloñesa, poblano, chipotle, cheddar y recetas caseras con ese equilibrio entre tradición italiana y antojo mexicano.
             </p>
 
             <div className="hero__actions">
-              <button className="button button--whatsapp" type="button" onClick={() => setChatOpen(true)}>
+              <button className="button button--whatsapp" type="button" onClick={openChat}>
                 <span className="button__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <path d="M6 4h12l2 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7l2-3Z" />
@@ -249,6 +253,8 @@ function App() {
                 </span>
               </button>
             </div>
+
+            <p className="hero__note">Una carta breve, cuidada y antojable para pedir sin vueltas.</p>
 
             <div className="hero__phrases" aria-label="Valores de la marca">
               {featuredPhrases.map((phrase) => (
@@ -278,7 +284,7 @@ function App() {
         <section className="section signature-section" id="especialidades">
           <div className="section-heading section-heading--narrow">
             <p className="eyebrow">Especialidades</p>
-            <h2>Selecciones con presencia, textura y ese estilo casero-premium que define a La Mia Pasta.</h2>
+            <h2>Pastas con sello casero donde Italia se encuentra con México: cremosidad, sazón y combinaciones con mucha personalidad.</h2>
           </div>
 
           <div className="signature-grid">
@@ -314,7 +320,7 @@ function App() {
         <section className="section menu-section" id="menu">
           <div className="section-heading">
             <p className="eyebrow">Menú</p>
-            <h2>Pastas básicas, especialidades y complementos para pedir fácil y disfrutar en casa.</h2>
+            <h2>Pastas básicas, especialidades, extras y bebidas con una propuesta México–italiana fácil de pedir y difícil de olvidar.</h2>
           </div>
 
           {menuSections.map((section) => (
@@ -364,27 +370,27 @@ function App() {
           <a className="button button--ghost" href={PDF_MENU_PATH} target="_blank" rel="noreferrer">
             Ver menú completo
           </a>
-          <button className="button button--primary" type="button" onClick={() => setChatOpen(true)}>
+          <button className="button button--primary" type="button" onClick={openChat}>
             Pedir ahora
           </button>
         </div>
       </footer>
 
-      <button className="whatsapp-fab" type="button" onClick={() => setChatOpen(true)} aria-label="Abrir chat de WhatsApp">
+      <button className="whatsapp-fab" type="button" onClick={openChat} aria-label="Abrir chat de WhatsApp">
         <span className="whatsapp-fab__pulse" />
         <WhatsAppIcon />
       </button>
 
       {chatOpen ? (
-        <div className="chat-modal" role="dialog" aria-modal="true" aria-label="Chat de WhatsApp">
-          <button className="chat-modal__backdrop" type="button" aria-label="Cerrar chat" onClick={() => setChatOpen(false)} />
+        <div className="chat-modal chat-modal--open" role="dialog" aria-modal="true" aria-label="Chat de WhatsApp">
+          <button className="chat-modal__backdrop" type="button" aria-label="Cerrar chat" onClick={closeChat} />
           <div className="chat-modal__panel">
             <div className="chat-modal__header">
               <div>
                 <strong>La Mia Pasta</strong>
-                <p>Hola. Cuéntanos qué pasta se te antoja y te respondemos en seguida.</p>
+                <p>Cuéntanos qué pasta se te antoja y preparamos tu pedido con el toque de la casa.</p>
               </div>
-              <button ref={closeButtonRef} className="chat-modal__close" type="button" aria-label="Cerrar" onClick={() => setChatOpen(false)}>
+              <button ref={closeButtonRef} className="chat-modal__close" type="button" aria-label="Cerrar" onClick={closeChat}>
                 ×
               </button>
             </div>
@@ -392,7 +398,7 @@ function App() {
               <textarea value={message} onChange={(event) => setMessage(event.target.value)} rows="5" aria-label="Escribe tu mensaje para WhatsApp" />
             </label>
             <div className="chat-modal__actions">
-              <button className="button button--secondary" type="button" onClick={() => setChatOpen(false)}>
+              <button className="button button--secondary" type="button" onClick={closeChat}>
                 Cancelar
               </button>
               <button className="button button--primary" type="button" onClick={handleSendWhatsApp}>
