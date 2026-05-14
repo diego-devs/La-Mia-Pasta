@@ -227,16 +227,16 @@ function App() {
         <div className="hero__content">
           <div className="hero__text">
             <div className="hero__chips" aria-label="Puntos clave de La Mia Pasta">
-              <span>Hechas al momento</span>
-              <span>Poblano · chipotle · boloñesa</span>
+              <span>Pasta fresca artesanal</span>
+              <span>Pedidos por WhatsApp</span>
             </div>
             <p className="eyebrow">Fusión México–italiana</p>
             <div className="hero__accent" aria-hidden="true" />
             <h1>
-              Pasta fresca con alma italiana y sabores mexicanos que se disfrutan desde el primer bocado.
+              Pasta fresca con alma <span className="hero__word hero__word--italiana">italiana</span> y sabores <span className="hero__word hero__word--mexicanos">mexicanos</span> que se disfrutan desde el primer bocado.
             </h1>
             <p className="hero__lead">
-              Boloñesa, poblano, chipotle, cheddar y recetas caseras con ese equilibrio entre tradición italiana y antojo mexicano.
+              Recetas caseras con una personalidad cuidada, elegantes a la vista y fáciles de pedir para disfrutar en casa.
             </p>
 
             <div className="hero__actions">

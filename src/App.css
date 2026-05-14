@@ -140,12 +140,30 @@ svg {
 .wordmark {
   display: inline-flex;
   justify-self: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .logo-image {
   width: 132px;
   height: auto;
   object-fit: contain;
+}
+
+.wordmark::after {
+  content: '';
+  width: 74px;
+  height: 4px;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--green) 0 28%,
+      rgba(244, 239, 230, 0.96) 28% 62%,
+      var(--red) 62% 100%
+    );
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .topbar__whatsapp {
@@ -274,7 +292,7 @@ svg {
 
 .hero__text h1 {
   margin-top: 20px;
-  max-width: 8.8ch;
+  max-width: 10.8ch;
   font-size: clamp(3.25rem, 11vw, 6.25rem);
   text-wrap: balance;
 }
@@ -283,6 +301,24 @@ svg {
   font-style: italic;
   color: var(--gold);
   font-weight: 600;
+}
+
+.hero__word {
+  display: inline-block;
+  font-family: 'Brush Script MT', 'Segoe Script', 'Snell Roundhand', cursive;
+  font-size: 1.05em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  line-height: 0.92;
+}
+
+.hero__word--italiana {
+  color: #4f9b5f;
+}
+
+.hero__word--mexicanos {
+  color: #b84a43;
 }
 
 .hero__lead,
