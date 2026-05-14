@@ -267,14 +267,13 @@ function App() {
             <div className="hero__image-wrap">
               <img className="hero__image" src={HERO_IMAGE} alt="Plato de spaghetti cremoso con albahaca fresca" />
             </div>
-            <aside className="hero__seal" aria-label="Hechas con pasión, sabor que reconforta">
+            <aside className="hero__seal" aria-label="Hechas con pasión">
               <div className="hero__seal-icon" aria-hidden="true">
                 <svg viewBox="0 0 48 48">
                   <path d="M24 42c7.8-5 12-10.7 12-17.9 0-5.7-3.6-9.6-8.5-9.6-2.8 0-4.9 1.2-6.5 3.5-1.6-2.3-3.7-3.5-6.5-3.5-4.9 0-8.5 3.9-8.5 9.6C12 31.3 16.2 37 24 42Z" />
                 </svg>
               </div>
               <p>Hechas con pasión</p>
-              <span>Sabor que reconforta</span>
             </aside>
           </div>
         </div>
