@@ -759,11 +759,7 @@ svg {
 
 .footer__brand-copy i {
   display: block;
-  width: 76px;
-  height: 5px;
-  margin-top: 16px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--green) 0 33%, #f4efe6 33% 66%, var(--red) 66%);
+  display: none;
 }
 
 .footer__actions {
@@ -826,6 +822,8 @@ svg {
   position: relative;
   z-index: 1;
   width: min(100%, 440px);
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
   border-radius: 28px;
   overflow: hidden;
   transform-origin: 85% 100%;
@@ -865,13 +863,16 @@ svg {
 
 .chat-modal textarea {
   width: 100%;
+  max-width: 100%;
   min-height: 140px;
+  height: min(140px, 28dvh);
   resize: vertical;
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 16px;
   background: rgba(255, 255, 255, 0.03);
   color: var(--ink);
+  box-sizing: border-box;
 }
 
 .chat-modal__actions {
