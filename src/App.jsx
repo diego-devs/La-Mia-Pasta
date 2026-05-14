@@ -269,8 +269,8 @@ function App() {
             </div>
             <aside className="hero__seal" aria-label="Hechas con pasión">
               <div className="hero__seal-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48">
-                  <path d="M24 42c7.8-5 12-10.7 12-17.9 0-5.7-3.6-9.6-8.5-9.6-2.8 0-4.9 1.2-6.5 3.5-1.6-2.3-3.7-3.5-6.5-3.5-4.9 0-8.5 3.9-8.5 9.6C12 31.3 16.2 37 24 42Z" />
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 21.35 10.55 20.03C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6 6 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54Z" />
                 </svg>
               </div>
               <p>Hechas con pasión</p>
