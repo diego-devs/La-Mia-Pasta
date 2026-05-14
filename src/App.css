@@ -153,17 +153,17 @@ svg {
 
 .wordmark::after {
   content: '';
-  width: 74px;
+  width: 78px;
   height: 4px;
-  border-radius: 999px;
   background:
     linear-gradient(
       90deg,
-      var(--green) 0 28%,
-      rgba(244, 239, 230, 0.96) 28% 62%,
-      var(--red) 62% 100%
+      var(--green) 0 22px,
+      transparent 22px 28px,
+      rgba(244, 239, 230, 0.96) 28px 50px,
+      transparent 50px 56px,
+      var(--red) 56px 78px
     );
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .topbar__whatsapp {
