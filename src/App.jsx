@@ -124,7 +124,16 @@ const featureItems = [
 ]
 
 function LogoMark() {
-  return <img className="logo-image" src={`${BASE_URL}logo-white-clean.png`} alt="Logo de La Mia Pasta" />
+  return (
+    <>
+      <img className="logo-image" src={`${BASE_URL}logo-white-clean.png`} alt="Logo de La Mia Pasta" />
+      <span className="logo-slogan" aria-label="Pasión por la pasta">
+        <span className="logo-slogan__green">Pasión</span>
+        <span className="logo-slogan__white">Por la</span>
+        <span className="logo-slogan__red">Pasta</span>
+      </span>
+    </>
+  )
 }
 
 function MenuItem({ item }) {
