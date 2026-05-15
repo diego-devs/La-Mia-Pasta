@@ -143,6 +143,7 @@ svg {
   flex-direction: column;
   align-items: center;
   gap: 14px;
+  text-decoration: none;
 }
 
 .wordmark--footer {
@@ -223,6 +224,7 @@ svg {
 .topbar__whatsapp img {
   width: 16px;
   height: 16px;
+  filter: brightness(0) invert(1);
 }
 
 .topbar__whatsapp span {
