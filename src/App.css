@@ -142,32 +142,70 @@ svg {
   justify-self: center;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
 }
 
 .wordmark--footer {
   justify-self: start;
+  gap: 12px;
 }
 
 .logo-image {
-  width: 132px;
+  width: 146px;
   height: auto;
   object-fit: contain;
 }
 
 .wordmark::after {
   content: '';
-  width: 78px;
-  height: 4px;
+  width: 68px;
+  height: 3px;
   background:
     linear-gradient(
       90deg,
-      var(--green) 0 22px,
-      transparent 22px 28px,
-      rgba(244, 239, 230, 0.96) 28px 50px,
-      transparent 50px 56px,
-      var(--red) 56px 78px
+      var(--green) 0 19px,
+      transparent 19px 24.5px,
+      rgba(244, 239, 230, 0.96) 24.5px 43.5px,
+      transparent 43.5px 49px,
+      var(--red) 49px 68px
     );
+}
+
+.logo-slogan {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.42rem;
+  font-size: 0.54rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.logo-slogan__green {
+  color: var(--green);
+}
+
+.logo-slogan__white {
+  color: rgba(244, 239, 230, 0.96);
+}
+
+.logo-slogan__red {
+  color: var(--red);
+}
+
+.topbar .wordmark {
+  transform: translateY(2px);
+}
+
+.footer .logo-image {
+  width: 154px;
+}
+
+.footer .logo-slogan {
+  justify-content: flex-start;
 }
 
 .topbar__whatsapp {
