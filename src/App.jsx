@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 
 const WHATSAPP_NUMBER = '524424230777'
@@ -156,7 +156,60 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [chatOpen, setChatOpen] = useState(false)
   const [message, setMessage] = useState('Hola! Quiero hacer un pedido en La Mia Pasta.')
+  const [activeMobileCategory, setActiveMobileCategory] = useState('Básicas')
   const closeButtonRef = useRef(null)
+
+  const mobileMenuCategories = useMemo(
+    () => [
+      {
+        title: 'Básicas',
+        shortLabel: 'Básicas',
+        icon: '🍝',
+        description: 'Nuestras recetas base con sabor casero y toque italo-mexicano.',
+        items: menuSections[0].items.map((item) => ({
+          ...item,
+          image:
+            item.name === 'Spaguetti boloñesa'
+              ? DISH_IMAGES.spaguettiBolognesa
+              : item.name === 'Fetuccini poblano'
+                ? DISH_IMAGES.fetucciniPoblano
+                : DISH_IMAGES.penneChipotle,
+        })),
+      },
+      {
+        title: 'Especialidades',
+        shortLabel: 'Especiales',
+        icon: '✨',
+        description: 'Versiones más completas y protagonistas, listas para pedir.',
+        items: menuSections[1].items.map((item) => ({
+          ...item,
+          image:
+            item.name === 'Spaguetti boloñesa con albóndigas'
+              ? DISH_IMAGES.spaguettiBolognesa
+              : item.name === 'Fetuccini poblano con pollo'
+                ? DISH_IMAGES.fetucciniPoblano
+                : DISH_IMAGES.penneChipotle,
+        })),
+      },
+      {
+        title: 'Extras',
+        shortLabel: 'Extras',
+        icon: '🧀',
+        description: 'Añade proteína o queso para personalizar tu pasta.',
+        items: complements[0].items.map((item) => ({ ...item, image: DISH_IMAGES.fetucciniPoblano })),
+      },
+      {
+        title: 'Bebidas',
+        shortLabel: 'Bebidas',
+        icon: '🥤',
+        description: 'Bebidas para acompañar y redondear el pedido.',
+        items: complements[1].items.map((item) => ({ ...item, image: DISH_IMAGES.spaguettiBolognesa })),
+      },
+    ],
+    [],
+  )
+
+  const activeMobileSection = mobileMenuCategories.find((category) => category.title === activeMobileCategory) ?? mobileMenuCategories[0]
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -326,40 +379,102 @@ function App() {
         </section>
 
         <section className="section menu-section" id="menu">
-          <div className="section-heading">
+          <div className="section-heading menu-heading">
             <p className="eyebrow">Menú</p>
             <h2>Pastas básicas, especialidades, extras y bebidas con una propuesta México–italiana fácil de pedir y difícil de olvidar.</h2>
+            <p className="menu-heading__intro">Explora por categorías y descubre una carta visual, clara y antojable pensada para móvil.</p>
+            <div className="menu-heading__accent" aria-hidden="true">
+              <span className="menu-heading__line menu-heading__line--green" />
+              <span className="menu-heading__line menu-heading__line--white" />
+              <span className="menu-heading__line menu-heading__line--red" />
+            </div>
           </div>
 
-          {menuSections.map((section) => (
-            <div className="menu-block" key={section.title}>
-              <div className="menu-block__header">
+          <div className="mobile-menu-experience" aria-label="Menú móvil por categorías">
+            <div className="mobile-menu-experience__header">
+              <p className="mobile-menu-experience__eyebrow">Categorías</p>
+              <h3>Elige una categoría</h3>
+            </div>
+
+            <div className="mobile-category-tabs" role="tablist" aria-label="Categorías del menú">
+              {mobileMenuCategories.map((category) => {
+                const isActive = category.title === activeMobileSection.title
+                return (
+                  <button
+                    key={category.title}
+                    className={`mobile-category-tab ${isActive ? 'mobile-category-tab--active' : ''}`}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => setActiveMobileCategory(category.title)}
+                  >
+                    <span className="mobile-category-tab__icon" aria-hidden="true">{category.icon}</span>
+                    <span className="mobile-category-tab__label">{category.shortLabel}</span>
+                  </button>
+                )
+              })}
+            </div>
+
+            <article className="mobile-category-panel" aria-live="polite">
+              <div className="mobile-category-panel__top">
                 <div>
-                  <h3>{section.title}</h3>
-                  <p>{section.description}</p>
+                  <p className="mobile-category-panel__eyebrow">{activeMobileSection.title}</p>
+                  <h3>{activeMobileSection.shortLabel}</h3>
                 </div>
+                <span className="mobile-category-panel__count">{activeMobileSection.items.length} opciones</span>
               </div>
-              <div className="menu-grid">
-                {section.items.map((item) => (
-                  <MenuItem item={item} key={item.name} />
+              <p className="mobile-category-panel__description">{activeMobileSection.description}</p>
+
+              <div className="mobile-menu-cards">
+                {activeMobileSection.items.map((item) => (
+                  <article className="mobile-menu-card" key={`${activeMobileSection.title}-${item.name}`}>
+                    <div className="mobile-menu-card__media">
+                      <img src={item.image} alt={item.name} />
+                    </div>
+                    <div className="mobile-menu-card__body">
+                      <div className="mobile-menu-card__top">
+                        <h4>{item.name}</h4>
+                        <span>{item.price}</span>
+                      </div>
+                      <p>{item.description}</p>
+                    </div>
+                  </article>
                 ))}
               </div>
-            </div>
-          ))}
+            </article>
+          </div>
 
-          <div className="menu-split">
-            {complements.map((group) => (
-              <div className="menu-side" key={group.title}>
+          <div className="menu-desktop-layout">
+            {menuSections.map((section) => (
+              <div className="menu-block" key={section.title}>
                 <div className="menu-block__header">
-                  <h3>{group.title}</h3>
+                  <div>
+                    <h3>{section.title}</h3>
+                    <p>{section.description}</p>
+                  </div>
                 </div>
-                <div className="menu-grid menu-grid--compact">
-                  {group.items.map((item) => (
+                <div className="menu-grid">
+                  {section.items.map((item) => (
                     <MenuItem item={item} key={item.name} />
                   ))}
                 </div>
               </div>
             ))}
+
+            <div className="menu-split">
+              {complements.map((group) => (
+                <div className="menu-side" key={group.title}>
+                  <div className="menu-block__header">
+                    <h3>{group.title}</h3>
+                  </div>
+                  <div className="menu-grid menu-grid--compact">
+                    {group.items.map((item) => (
+                      <MenuItem item={item} key={item.name} />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </main>
