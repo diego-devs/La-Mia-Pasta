@@ -267,6 +267,7 @@ svg {
 }
 
 .hero__content {
+  position: relative;
   display: grid;
   gap: 26px;
   align-items: center;
@@ -499,38 +500,41 @@ svg {
 }
 
 .hero__visual {
-  position: relative;
-  display: grid;
-  justify-items: center;
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero__image-wrap {
-  width: min(100%, 640px);
+  width: 100%;
+  height: 100%;
   border-radius: 32px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 36px 70px rgba(0, 0, 0, 0.38);
-  border: 1px solid rgba(229, 212, 189, 0.12);
 }
 
 .hero__image-wrap::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top, transparent 42%, rgba(0, 0, 0, 0.24) 100%);
+  background:
+    radial-gradient(circle at 78% 20%, rgba(212, 170, 114, 0.18), transparent 20%),
+    linear-gradient(180deg, rgba(8, 6, 5, 0.22) 0%, rgba(8, 6, 5, 0.66) 58%, rgba(8, 6, 5, 0.92) 100%);
   pointer-events: none;
 }
 
 .hero__image {
   width: 100%;
-  aspect-ratio: 0.95;
+  height: 100%;
   object-fit: cover;
 }
 
 .hero__seal {
   position: absolute;
-  right: 8px;
-  bottom: 10px;
+  right: 18px;
+  bottom: 18px;
   width: 162px;
   height: 162px;
   padding: 24px 18px;
@@ -586,6 +590,10 @@ svg {
 
 .signature-section {
   padding-top: 8px;
+}
+
+.signature-section--desktop {
+  display: none;
 }
 
 .signature-grid {
@@ -660,53 +668,6 @@ svg {
   white-space: nowrap;
 }
 
-.features-panel {
-  display: grid;
-  grid-template-columns: 1fr;
-  overflow: hidden;
-  border-radius: 34px;
-  border: 1px solid rgba(229, 212, 189, 0.22);
-  background: linear-gradient(180deg, #ead8bf 0%, #dcc6a7 100%);
-}
-
-.feature-card {
-  display: grid;
-  gap: 14px;
-  place-items: center;
-  padding: 28px 24px;
-  text-align: center;
-  color: var(--panel-ink);
-}
-
-.feature-card + .feature-card {
-  border-top: 1px solid rgba(56, 38, 30, 0.12);
-}
-
-.feature-card__icon {
-  width: 46px;
-  height: 46px;
-  color: rgba(56, 38, 30, 0.86);
-}
-
-.feature-card__icon svg {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.feature-card p {
-  margin: 0;
-  max-width: 10ch;
-  font-size: 0.88rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  line-height: 1.4;
-}
 
 .menu-section {
   gap: 24px;
@@ -966,6 +927,10 @@ svg {
     display: none;
   }
 
+  .signature-section--desktop {
+    display: grid;
+  }
+
   .menu-desktop-layout {
     display: grid;
     gap: 22px;
@@ -976,7 +941,30 @@ svg {
     gap: 32px;
   }
 
+  .hero__visual {
+    position: relative;
+    inset: auto;
+    display: grid;
+    justify-items: end;
+    pointer-events: auto;
+  }
+
+  .hero__image-wrap {
+    width: min(100%, 640px);
+    height: auto;
+    border-radius: 32px;
+    box-shadow: 0 36px 70px rgba(0, 0, 0, 0.38);
+    border: 1px solid rgba(229, 212, 189, 0.12);
+  }
+
+  .hero__image {
+    aspect-ratio: 0.95;
+    height: auto;
+  }
+
   .hero__text {
+    position: relative;
+    z-index: 1;
     max-width: 35rem;
   }
 
@@ -984,22 +972,11 @@ svg {
     max-width: 380px;
   }
 
-  .hero__visual {
-    justify-items: end;
-  }
 
   .signature-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .features-panel {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .feature-card + .feature-card {
-    border-top: 0;
-    border-left: 1px solid rgba(56, 38, 30, 0.12);
-  }
 
   .menu-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1086,16 +1063,26 @@ svg {
   .hero {
     gap: 20px;
     padding-bottom: 28px;
+    min-height: 650px;
   }
 
   .hero__content {
-    grid-template-columns: minmax(0, 1.08fr) minmax(126px, 0.92fr);
-    gap: 14px;
-    align-items: start;
+    min-height: 540px;
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-items: end;
   }
 
   .hero__chips {
     display: none;
+  }
+
+  .hero__text {
+    position: relative;
+    z-index: 1;
+    align-self: end;
+    max-width: 16.5rem;
+    padding: 250px 4px 0;
   }
 
   .hero__text h1 {
@@ -1107,7 +1094,7 @@ svg {
 
   .hero__lead {
     margin-top: 14px;
-    max-width: 18rem;
+    max-width: 14.5rem;
     font-size: 0.94rem;
     line-height: 1.5;
   }
@@ -1119,23 +1106,23 @@ svg {
   }
 
   .hero__visual {
-    align-self: stretch;
-    justify-items: stretch;
-    padding-top: 18px;
+    inset: 86px 0 0;
+    display: block;
   }
 
   .hero__image-wrap {
     width: 100%;
-    border-radius: 28px;
+    height: 100%;
+    border-radius: 0;
   }
 
   .hero__image {
-    aspect-ratio: 0.76;
+    aspect-ratio: auto;
   }
 
   .hero__seal {
-    right: -10px;
-    bottom: -14px;
+    right: 16px;
+    bottom: 112px;
     width: 112px;
     height: 112px;
     padding: 16px 12px;
@@ -1189,6 +1176,11 @@ svg {
   .mobile-menu-experience {
     display: grid;
     gap: 16px;
+  }
+
+  .mobile-specialties {
+    display: grid;
+    gap: 14px;
   }
 
   .mobile-menu-experience__header {
@@ -1347,6 +1339,10 @@ svg {
     color: var(--gold);
     font-weight: 700;
     white-space: nowrap;
+  }
+
+  .signature-section {
+    display: none;
   }
 
   .menu-desktop-layout {

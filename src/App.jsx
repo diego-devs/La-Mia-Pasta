@@ -83,45 +83,7 @@ const complements = [
   },
 ]
 
-const featureItems = [
-  {
-    title: 'Ingredientes seleccionados',
-    icon: (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M24 41c8.5-5.6 13-12 13-20.1 0-6.1-4.2-10.4-9.6-10.4-3.5 0-6.2 1.7-8.4 4.9-2.2-3.2-4.9-4.9-8.4-4.9C5.2 10.5 1 14.8 1 20.9 1 29 5.5 35.4 14 41c3.3 2.2 6.7 4 10 5.8 3.3-1.8 6.7-3.6 10-5.8Z" />
-        <path d="M24 17c2.7 4.4 6 7.5 10 9.2" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Recetas artesanales',
-    icon: (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M10 36h28" />
-        <path d="M14 36V18c0-5.5 4.5-10 10-10s10 4.5 10 10v18" />
-        <path d="M18 14c1.8 2.2 4 3.3 6 3.3s4.2-1.1 6-3.3" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Sabor con acento mexicano',
-    icon: (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M24 42c-8.4-5.6-14-11.2-14-18.8C10 17.8 13.8 14 18.5 14c2.9 0 5 1.2 5.5 4 0.5-2.8 2.6-4 5.5-4 4.7 0 8.5 3.8 8.5 9.2C38 30.8 32.4 36.4 24 42Z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Lista para disfrutar en casa',
-    icon: (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M8 23.5 24 11l16 12.5" />
-        <path d="M14 21v16h20V21" />
-        <path d="M21 37V27h6v10" />
-      </svg>
-    ),
-  },
-]
+
 
 function LogoMark() {
   return (
@@ -287,6 +249,20 @@ function App() {
         </div>
 
         <div className="hero__content">
+          <div className="hero__visual" aria-hidden="true">
+            <div className="hero__image-wrap">
+              <img className="hero__image" src={HERO_IMAGE} alt="" />
+            </div>
+            <aside className="hero__seal" aria-label="Hechas con pasión">
+              <div className="hero__seal-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 21.35 10.55 20.03C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6 6 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54Z" />
+                </svg>
+              </div>
+              <p>Hechas con pasión</p>
+            </aside>
+          </div>
+
           <div className="hero__text">
             <div className="hero__chips" aria-label="Puntos clave de La Mia Pasta">
               <span>Pasta fresca artesanal</span>
@@ -324,60 +300,10 @@ function App() {
               ))}
             </div>
           </div>
-
-          <div className="hero__visual">
-            <div className="hero__image-wrap">
-              <img className="hero__image" src={HERO_IMAGE} alt="Plato de spaghetti cremoso con albahaca fresca" />
-            </div>
-            <aside className="hero__seal" aria-label="Hechas con pasión">
-              <div className="hero__seal-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 21.35 10.55 20.03C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6 6 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54Z" />
-                </svg>
-              </div>
-              <p>Hechas con pasión</p>
-            </aside>
-          </div>
         </div>
       </header>
 
       <main>
-        <section className="section signature-section" id="especialidades">
-          <div className="section-heading section-heading--narrow">
-            <p className="eyebrow">Especialidades</p>
-            <h2>Pastas con sello casero donde Italia se encuentra con México: cremosidad, sazón y combinaciones con mucha personalidad.</h2>
-          </div>
-
-          <div className="signature-grid">
-            {signatureDishes.map((dish) => (
-              <article className="signature-card" key={dish.name}>
-                <div className="signature-card__image-wrap">
-                  <img className="signature-card__image" src={dish.image} alt={dish.name} />
-                  <span className="signature-card__badge">{dish.category}</span>
-                </div>
-                <div className="signature-card__body">
-                  <div className="menu-item__top">
-                    <h3>{dish.name}</h3>
-                    <span>{dish.price}</span>
-                  </div>
-                  <p>{dish.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section features-section" aria-label="Valores principales de La Mia Pasta">
-          <div className="features-panel">
-            {featureItems.map((feature) => (
-              <article className="feature-card" key={feature.title}>
-                <div className="feature-card__icon">{feature.icon}</div>
-                <p>{feature.title}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section className="section menu-section" id="menu">
           <div className="section-heading menu-heading">
             <p className="eyebrow">Menú</p>
@@ -442,7 +368,57 @@ function App() {
                 ))}
               </div>
             </article>
+
+            <div className="mobile-specialties" id="especialidades">
+              <div className="mobile-menu-experience__header">
+                <p className="mobile-menu-experience__eyebrow">Especialidades</p>
+                <h3>Favoritas de la casa</h3>
+              </div>
+
+              <div className="signature-grid">
+                {signatureDishes.map((dish) => (
+                  <article className="signature-card" key={dish.name}>
+                    <div className="signature-card__image-wrap">
+                      <img className="signature-card__image" src={dish.image} alt={dish.name} />
+                      <span className="signature-card__badge">{dish.category}</span>
+                    </div>
+                    <div className="signature-card__body">
+                      <div className="menu-item__top">
+                        <h3>{dish.name}</h3>
+                        <span>{dish.price}</span>
+                      </div>
+                      <p>{dish.description}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
+
+          <section className="section signature-section signature-section--desktop" id="especialidades">
+            <div className="section-heading section-heading--narrow">
+              <p className="eyebrow">Especialidades</p>
+              <h2>Pastas con sello casero donde Italia se encuentra con México: cremosidad, sazón y combinaciones con mucha personalidad.</h2>
+            </div>
+
+            <div className="signature-grid">
+              {signatureDishes.map((dish) => (
+                <article className="signature-card" key={dish.name}>
+                  <div className="signature-card__image-wrap">
+                    <img className="signature-card__image" src={dish.image} alt={dish.name} />
+                    <span className="signature-card__badge">{dish.category}</span>
+                  </div>
+                  <div className="signature-card__body">
+                    <div className="menu-item__top">
+                      <h3>{dish.name}</h3>
+                      <span>{dish.price}</span>
+                    </div>
+                    <p>{dish.description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
 
           <div className="menu-desktop-layout">
             {menuSections.map((section) => (
