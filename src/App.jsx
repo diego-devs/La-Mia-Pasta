@@ -115,9 +115,12 @@ function LogoMark() {
     <>
       <img className="logo-image" src={`${BASE_URL}logo-white-clean.png`} alt="Logo de La Mia Pasta" />
       <span className="logo-slogan" aria-label="Pasión por la pasta">
-        <span className="logo-slogan__green">Pasión</span>
-        <span className="logo-slogan__white">Por la</span>
-        <span className="logo-slogan__red">Pasta</span>
+        <span className="logo-slogan__flag" aria-hidden="true">
+          <span className="logo-slogan__green" />
+          <span className="logo-slogan__white" />
+          <span className="logo-slogan__red" />
+        </span>
+        <span className="logo-slogan__text">Pasión por la pasta</span>
       </span>
     </>
   )
