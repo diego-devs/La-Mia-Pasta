@@ -8,10 +8,16 @@ const WHATSAPP_ICON = `${BASE_URL}whatsapp-icon.svg`
 
 const DISH_IMAGES = {
   fetucciniPoblano: `${BASE_URL}images/dishes/fetuccini-poblano.jpg`,
-  spaguettiBolognesa: `${BASE_URL}images/dishes/spaguetti-bolognesa.jpg`,
+  fetucciniPoblanoPollo: `${BASE_URL}images/dishes/fetuccini-poblano-pollo.jpg`,
+  spaguettiBolognesa: `${BASE_URL}images/dishes/spaguetti-bolognesa-real.jpg`,
+  spaguettiBolognesaAlbndigas: `${BASE_URL}images/dishes/spaguetti-bolognesa-albondigas.jpg`,
   penneChipotle: `${BASE_URL}images/dishes/penne-chipotle.jpg`,
+  penneChipotleChuleta: `${BASE_URL}images/dishes/penne-chipotle-chuleta.jpg`,
   macarronesCheddar: `${BASE_URL}images/dishes/macarrones-cheddar.jpg`,
+  macarronesCheddarTocino: `${BASE_URL}images/dishes/macarrones-cheddar-tocino.jpg`,
   penneChampinones: `${BASE_URL}images/dishes/penne-champinones.jpg`,
+  penneChampinonesCamarones: `${BASE_URL}images/dishes/penne-champinones-camarones.jpg`,
+  albondigas: `${BASE_URL}images/dishes/albondigas.jpg`,
   proteinPollo: `${BASE_URL}images/dishes/protein-pollo.jpg`,
   proteinChuletaAhumada: `${BASE_URL}images/dishes/protein-chuleta-ahumada.jpg`,
   proteinCamarones: `${BASE_URL}images/dishes/protein-camarones.jpg`,
@@ -32,18 +38,18 @@ const signatureDishes = [
     image: DISH_IMAGES.spaguettiBolognesa,
   },
   {
-    name: 'Fetuccini poblano',
+    name: 'Fetuccini poblano con pollo',
     category: 'Favorito de la casa',
-    description: 'Salsa cremosa de chile poblano, pasta fresca y un acabado delicado para una experiencia con carácter.',
-    price: '$130',
-    image: DISH_IMAGES.fetucciniPoblano,
+    description: 'Salsa cremosa de chile poblano, pasta fresca y pollo a la plancha para una combinación con carácter.',
+    price: '$160',
+    image: DISH_IMAGES.fetucciniPoblanoPollo,
   },
   {
-    name: 'Penne chipotle',
+    name: 'Penne chipotle con chuleta ahumada',
     category: 'Toque mexicano',
-    description: 'Una combinación cremosa y ligeramente picante pensada para quienes quieren pasta con personalidad.',
-    price: '$130',
-    image: DISH_IMAGES.penneChipotle,
+    description: 'Una combinación cremosa y ligeramente picante con chuleta ahumada, pensada para quienes quieren pasta con personalidad.',
+    price: '$160',
+    image: DISH_IMAGES.penneChipotleChuleta,
   },
 ]
 
@@ -79,7 +85,7 @@ const complements = [
     items: [
       { name: 'Camarones', description: 'Extra de proteína.', price: '$40', image: DISH_IMAGES.proteinCamarones },
       { name: 'Pollo', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinPollo },
-      { name: 'Albóndigas', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.spaguettiBolognesa },
+      { name: 'Albóndigas', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.albondigas },
       { name: 'Chuleta ahumada', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinChuletaAhumada },
       { name: 'Tocino', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinTocino },
       { name: 'Queso parmesano', description: 'Extra de queso.', price: '$35', image: DISH_IMAGES.proteinParmesano },
@@ -152,9 +158,13 @@ function App() {
           image:
             item.name === 'Spaguetti boloñesa'
               ? DISH_IMAGES.spaguettiBolognesa
-              : item.name === 'Fetuccini poblano'
-                ? DISH_IMAGES.fetucciniPoblano
-                : DISH_IMAGES.penneChipotle,
+              : item.name === 'Penne champiñones'
+                ? DISH_IMAGES.penneChampinones
+                : item.name === 'Fetuccini poblano'
+                  ? DISH_IMAGES.fetucciniPoblano
+                  : item.name === 'Penne chipotle'
+                    ? DISH_IMAGES.penneChipotle
+                    : DISH_IMAGES.macarronesCheddar,
         })),
       },
       {
@@ -166,10 +176,14 @@ function App() {
           ...item,
           image:
             item.name === 'Spaguetti boloñesa con albóndigas'
-              ? DISH_IMAGES.spaguettiBolognesa
-              : item.name === 'Fetuccini poblano con pollo'
-                ? DISH_IMAGES.fetucciniPoblano
-                : DISH_IMAGES.penneChipotle,
+              ? DISH_IMAGES.spaguettiBolognesaAlbndigas
+              : item.name === 'Penne champiñones con camarones'
+                ? DISH_IMAGES.penneChampinonesCamarones
+                : item.name === 'Fetuccini poblano con pollo'
+                  ? DISH_IMAGES.fetucciniPoblanoPollo
+                  : item.name === 'Penne chipotle con chuleta ahumada'
+                    ? DISH_IMAGES.penneChipotleChuleta
+                    : DISH_IMAGES.macarronesCheddarTocino,
         })),
       },
       {
