@@ -12,6 +12,11 @@ const DISH_IMAGES = {
   penneChipotle: `${BASE_URL}images/dishes/penne-chipotle.jpg`,
   macarronesCheddar: `${BASE_URL}images/dishes/macarrones-cheddar.jpg`,
   penneChampinones: `${BASE_URL}images/dishes/penne-champinones.jpg`,
+  proteinPollo: `${BASE_URL}images/dishes/protein-pollo.jpg`,
+  proteinChuletaAhumada: `${BASE_URL}images/dishes/protein-chuleta-ahumada.jpg`,
+  proteinCamarones: `${BASE_URL}images/dishes/protein-camarones.jpg`,
+  proteinTocino: `${BASE_URL}images/dishes/protein-tocino.jpg`,
+  proteinParmesano: `${BASE_URL}images/dishes/protein-parmesano.jpg`,
 }
 
 const HERO_IMAGE = `${BASE_URL}images/hero/spaguetti-servido.jpg`
@@ -72,12 +77,12 @@ const complements = [
     title: 'Extras',
     description: 'Personaliza tu pasta con proteína o queso extra.',
     items: [
-      { name: 'Camarones', description: 'Extra de proteína.', price: '$40', image: DISH_IMAGES.penneChampinones },
-      { name: 'Pollo', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.fetucciniPoblano },
+      { name: 'Camarones', description: 'Extra de proteína.', price: '$40', image: DISH_IMAGES.proteinCamarones },
+      { name: 'Pollo', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinPollo },
       { name: 'Albóndigas', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.spaguettiBolognesa },
-      { name: 'Chuleta ahumada', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.penneChipotle },
-      { name: 'Tocino', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.macarronesCheddar },
-      { name: 'Queso parmesano', description: 'Extra de queso.', price: '$35', image: DISH_IMAGES.fetucciniPoblano },
+      { name: 'Chuleta ahumada', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinChuletaAhumada },
+      { name: 'Tocino', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinTocino },
+      { name: 'Queso parmesano', description: 'Extra de queso.', price: '$35', image: DISH_IMAGES.proteinParmesano },
     ],
   },
 ]
