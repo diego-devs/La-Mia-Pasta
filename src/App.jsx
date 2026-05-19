@@ -10,11 +10,13 @@ const DISH_IMAGES = {
   fetucciniPoblano: `${BASE_URL}images/dishes/fetuccini-poblano.jpg`,
   spaguettiBolognesa: `${BASE_URL}images/dishes/spaguetti-bolognesa.jpg`,
   penneChipotle: `${BASE_URL}images/dishes/penne-chipotle.jpg`,
+  macarronesCheddar: `${BASE_URL}images/dishes/macarrones-cheddar.jpg`,
+  penneChampinones: `${BASE_URL}images/dishes/penne-champinones.jpg`,
 }
 
 const HERO_IMAGE = `${BASE_URL}images/hero/spaguetti-servido.jpg`
 
-const featuredPhrases = ['Fusión México–italiana', 'Pasta fresca artesanal', 'Pedidos por WhatsApp']
+const featuredPhrases = ['Pasta fresca artesanal', 'Recetas hechas al momento', 'Pedidos por WhatsApp']
 
 const signatureDishes = [
   {
@@ -68,22 +70,34 @@ const menuSections = [
 const complements = [
   {
     title: 'Extras',
+    description: 'Personaliza tu pasta con proteína o queso extra.',
     items: [
-      { name: 'Extra de proteína', description: 'Camarones', price: '$40' },
-      { name: 'Extra de proteína', description: 'Pollo, albóndigas, chuleta ahumada o tocino.', price: '$30' },
-      { name: 'Extra de queso', description: 'Queso parmesano.', price: '$35' },
-    ],
-  },
-  {
-    title: 'Bebidas',
-    items: [
-      { name: 'Refrescos', description: 'Coca-Cola, Fanta, Sidral Mundet y agua mineral Peñafiel.', price: '$40' },
-      { name: 'Aguas artesanales', description: 'Jamaica, horchata y limón con chía.', price: '$35' },
+      { name: 'Camarones', description: 'Extra de proteína.', price: '$40', image: DISH_IMAGES.penneChampinones },
+      { name: 'Pollo', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.fetucciniPoblano },
+      { name: 'Albóndigas', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.spaguettiBolognesa },
+      { name: 'Chuleta ahumada', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.penneChipotle },
+      { name: 'Tocino', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.macarronesCheddar },
+      { name: 'Queso parmesano', description: 'Extra de queso.', price: '$35', image: DISH_IMAGES.fetucciniPoblano },
     ],
   },
 ]
 
-
+const orderChannels = [
+  {
+    title: 'Pide y recoge',
+    description: 'Haz tu pedido directo por WhatsApp y coordinamos la recolección contigo.',
+    actionLabel: 'Pedir por WhatsApp',
+    actionType: 'whatsapp',
+  },
+  {
+    title: 'Entrega a domicilio',
+    description: 'Si prefieres envío, te llevamos a tu app favorita para completar el pedido en Uber Eats o DiDi Food.',
+    links: [
+      { label: 'Uber Eats', href: 'https://www.ubereats.com/' },
+      { label: 'DiDi Food', href: 'https://www.didi-food.com/es-MX' },
+    ],
+  },
+]
 
 function LogoMark() {
   return (
@@ -126,7 +140,7 @@ function App() {
       {
         title: 'Básicas',
         shortLabel: 'Básicas',
-        icon: '🍝',
+        icon: '◌',
         description: 'Nuestras recetas base con sabor casero y toque italo-mexicano.',
         items: menuSections[0].items.map((item) => ({
           ...item,
@@ -141,7 +155,7 @@ function App() {
       {
         title: 'Especialidades',
         shortLabel: 'Especiales',
-        icon: '✨',
+        icon: '✦',
         description: 'Versiones más completas y protagonistas, listas para pedir.',
         items: menuSections[1].items.map((item) => ({
           ...item,
@@ -156,16 +170,9 @@ function App() {
       {
         title: 'Extras',
         shortLabel: 'Extras',
-        icon: '🧀',
+        icon: '✢',
         description: 'Añade proteína o queso para personalizar tu pasta.',
-        items: complements[0].items.map((item) => ({ ...item, image: DISH_IMAGES.fetucciniPoblano })),
-      },
-      {
-        title: 'Bebidas',
-        shortLabel: 'Bebidas',
-        icon: '🥤',
-        description: 'Bebidas para acompañar y redondear el pedido.',
-        items: complements[1].items.map((item) => ({ ...item, image: DISH_IMAGES.spaguettiBolognesa })),
+        items: complements[0].items,
       },
     ],
     [],
@@ -307,7 +314,7 @@ function App() {
         <section className="section menu-section" id="menu">
           <div className="section-heading menu-heading">
             <p className="eyebrow">Menú</p>
-            <h2>Pastas básicas, especialidades, extras y bebidas con una propuesta México–italiana fácil de pedir y difícil de olvidar.</h2>
+            <h2>Pastas básicas, especialidades y extras con una propuesta México–italiana fácil de pedir y difícil de olvidar.</h2>
             <p className="menu-heading__intro">Explora por categorías y descubre una carta visual, clara y antojable pensada para móvil.</p>
             <div className="menu-heading__accent" aria-hidden="true">
               <span className="menu-heading__line menu-heading__line--green" />
@@ -442,6 +449,7 @@ function App() {
                 <div className="menu-side" key={group.title}>
                   <div className="menu-block__header">
                     <h3>{group.title}</h3>
+                    <p>{group.description}</p>
                   </div>
                   <div className="menu-grid menu-grid--compact">
                     {group.items.map((item) => (
@@ -451,6 +459,34 @@ function App() {
                 </div>
               ))}
             </div>
+
+            <section className="ordering-section" aria-label="Opciones para ordenar">
+              <div className="menu-block__header">
+                <h3>Cómo ordenar</h3>
+                <p>Pedidos directos para recoger y accesos rápidos a apps de delivery cuando prefieran envío.</p>
+              </div>
+              <div className="ordering-grid">
+                {orderChannels.map((channel) => (
+                  <article className="ordering-card" key={channel.title}>
+                    <h4>{channel.title}</h4>
+                    <p>{channel.description}</p>
+                    {channel.actionType === 'whatsapp' ? (
+                      <button className="button button--primary ordering-card__button" type="button" onClick={openChat}>
+                        {channel.actionLabel}
+                      </button>
+                    ) : (
+                      <div className="ordering-links">
+                        {channel.links.map((link) => (
+                          <a key={link.label} className="button button--ghost ordering-card__button" href={link.href} target="_blank" rel="noreferrer">
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </article>
+                ))}
+              </div>
+            </section>
           </div>
         </section>
       </main>
