@@ -23,6 +23,9 @@ const DISH_IMAGES = {
   proteinCamarones: `${BASE_URL}images/dishes/protein-camarones.jpg`,
   proteinTocino: `${BASE_URL}images/dishes/protein-tocino.jpg`,
   proteinParmesano: `${BASE_URL}images/dishes/protein-parmesano.jpg`,
+  bebidaJamaica: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
+  bebidaLimon: `${BASE_URL}images/dishes/bebida-limon.jpg`,
+  bebidaHorchata: `${BASE_URL}images/dishes/bebida-horchata.jpg`,
 }
 
 const HERO_IMAGE = `${BASE_URL}images/hero/spaguetti-servido.jpg`
@@ -55,7 +58,7 @@ const signatureDishes = [
 
 const menuSections = [
   {
-    title: 'Básicas',
+    title: 'Tradicional',
     description: 'Pastas base de la casa con perfil italiano y guiños mexicanos como poblano y chipotle.',
     items: [
       { name: 'Spaguetti boloñesa', description: '300 g de pasta fresca acompañada de 8 oz de salsa boloñesa y una pieza de pan, finalizada con queso parmesano.', price: '$130' },
@@ -88,7 +91,16 @@ const complements = [
       { name: 'Albóndigas', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.albondigas },
       { name: 'Chuleta ahumada', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinChuletaAhumada },
       { name: 'Tocino', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinTocino },
-      { name: 'Queso parmesano', description: 'Extra de queso.', price: '$35', image: DISH_IMAGES.proteinParmesano },
+      { name: 'Queso parmesano', description: 'Extra de queso.', price: '$30', image: DISH_IMAGES.proteinParmesano },
+    ],
+  },
+  {
+    title: 'Bebidas',
+    description: 'Aguas artesanales frías para acompañar tu pasta.',
+    items: [
+      { name: 'Jamaica artesanal', description: 'Bebida fría artesanal.', price: '$30', image: DISH_IMAGES.bebidaJamaica },
+      { name: 'Limón artesanal', description: 'Bebida fría artesanal.', price: '$30', image: DISH_IMAGES.bebidaLimon },
+      { name: 'Horchata artesanal', description: 'Bebida fría artesanal.', price: '$30', image: DISH_IMAGES.bebidaHorchata },
     ],
   },
 ]
@@ -139,21 +151,25 @@ function MenuItem({ item }) {
 }
 
 function WhatsAppIcon() {
-  return <img src={WHATSAPP_ICON} alt="" aria-hidden="true" />
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .18 5.34.18 11.89c0 2.09.55 4.13 1.59 5.92L0 24l6.38-1.67a11.87 11.87 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.17-1.24-6.15-3.45-8.41Zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.79.99 1.01-3.7-.23-.38a9.88 9.88 0 0 1-1.51-5.22C2.13 6.43 6.61 1.95 12.07 1.95c2.63 0 5.1 1.03 6.95 2.89a9.76 9.76 0 0 1 2.87 6.95c0 5.46-4.45 9.99-9.82 9.99Zm5.43-7.43c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.69.15-.2.3-.79.98-.97 1.19-.18.2-.35.23-.65.08-.3-.15-1.27-.47-2.41-1.5-.89-.79-1.49-1.76-1.67-2.06-.18-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.69-1.66-.95-2.27-.25-.59-.5-.51-.69-.52h-.59c-.2 0-.53.08-.81.38-.28.3-1.07 1.04-1.07 2.53 0 1.49 1.1 2.94 1.25 3.14.15.2 2.15 3.28 5.2 4.6.73.32 1.3.51 1.75.65.74.24 1.41.21 1.94.13.59-.09 1.78-.73 2.03-1.44.25-.71.25-1.32.18-1.44-.08-.12-.28-.2-.58-.35Z" />
+    </svg>
+  )
 }
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [chatOpen, setChatOpen] = useState(false)
   const [message, setMessage] = useState('Hola! Quiero hacer un pedido en La Mia Pasta.')
-  const [activeMobileCategory, setActiveMobileCategory] = useState('Básicas')
+  const [activeMobileCategory, setActiveMobileCategory] = useState('Tradicional')
   const closeButtonRef = useRef(null)
 
   const mobileMenuCategories = useMemo(
     () => [
       {
-        title: 'Básicas',
-        shortLabel: 'Básicas',
+        title: 'Tradicional',
+        shortLabel: 'Tradicional',
         icon: '◌',
         description: 'Nuestras recetas base con sabor casero y toque italo-mexicano.',
         items: menuSections[0].items.map((item) => ({
@@ -195,6 +211,13 @@ function App() {
         icon: '✢',
         description: 'Añade proteína o queso para personalizar tu pasta.',
         items: complements[0].items,
+      },
+      {
+        title: 'Bebidas',
+        shortLabel: 'Bebidas',
+        icon: '◒',
+        description: 'Aguas artesanales frías para acompañar tu pedido.',
+        items: complements[1].items,
       },
     ],
     [],
@@ -336,7 +359,7 @@ function App() {
         <section className="section menu-section" id="menu">
           <div className="section-heading menu-heading">
             <p className="eyebrow">Menú</p>
-            <h2>Pastas básicas, especialidades y extras con una propuesta México–italiana fácil de pedir y difícil de olvidar.</h2>
+            <h2>Pastas tradicionales, especialidades, extras y bebidas con una propuesta México–italiana fácil de pedir y difícil de olvidar.</h2>
             <p className="menu-heading__intro">Explora por categorías y descubre una carta visual, clara y antojable pensada para móvil.</p>
             <div className="menu-heading__accent" aria-hidden="true">
               <span className="menu-heading__line menu-heading__line--green" />

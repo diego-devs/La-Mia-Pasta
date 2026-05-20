@@ -231,10 +231,11 @@ svg {
   box-shadow: none;
 }
 
-.topbar__whatsapp img {
-  width: 16px;
-  height: 16px;
-  filter: sepia(1) saturate(1.8) hue-rotate(336deg) brightness(1.02);
+.topbar__whatsapp svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  display: block;
 }
 
 .topbar__whatsapp span {
