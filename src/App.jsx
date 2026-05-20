@@ -4,7 +4,7 @@ import './App.css'
 const WHATSAPP_NUMBER = '524424230777'
 const PDF_MENU_PATH = '/La-Mia-Pasta/LA_MIA_PASTA.pdf'
 const BASE_URL = import.meta.env.BASE_URL
-const WHATSAPP_ICON = `${BASE_URL}whatsapp-icon.svg`
+const LOCATION_URL = 'https://maps.app.goo.gl/KEtNE7oAnCdgHQxDA?g_st=iw'
 
 const DISH_IMAGES = {
   fetucciniPoblano: `${BASE_URL}images/dishes/fetuccini-poblano.jpg`,
@@ -61,10 +61,10 @@ const menuSections = [
     title: 'Tradicional',
     description: 'Pastas base de la casa con perfil italiano y guiños mexicanos como poblano y chipotle.',
     items: [
-      { name: 'Spaguetti boloñesa', description: '300 g de pasta fresca acompañada de 8 oz de salsa boloñesa y una pieza de pan, finalizada con queso parmesano.', price: '$130' },
-      { name: 'Penne champiñones', description: '300 g de pasta fresca acompañada de 8 oz de salsa de champiñones y una pieza de pan, finalizada con queso parmesano.', price: '$130' },
-      { name: 'Fetuccini poblano', description: '300 g de pasta fresca acompañada de 8 oz de salsa de chile poblano y una pieza de pan, finalizada con queso parmesano.', price: '$130' },
-      { name: 'Penne chipotle', description: '300 g de pasta fresca acompañada de 8 oz de salsa de chipotle y una pieza de pan, finalizada con queso parmesano. Ideal para quienes disfrutan un toque picante.', price: '$130' },
+      { name: 'Spaguetti boloñesa', description: '300 g de pasta fresca acompañada de 8 oz de salsa boloñesa y una pieza de pan, finalizada con queso parmesano y perejil.', price: '$130' },
+      { name: 'Penne champiñones', description: '300 g de pasta fresca acompañada de 8 oz de salsa de champiñones y una pieza de pan, finalizada con queso parmesano y perejil.', price: '$130' },
+      { name: 'Fetuccini poblano', description: '300 g de pasta fresca acompañada de 8 oz de salsa de chile poblano y una pieza de pan, finalizada con queso parmesano y perejil.', price: '$130' },
+      { name: 'Penne chipotle', description: '300 g de pasta fresca acompañada de 8 oz de salsa de chipotle y una pieza de pan, finalizada con queso parmesano y perejil. Ideal para quienes disfrutan un toque picante.', price: '$130' },
       { name: 'Macarrones cheddar', description: '300 g de pasta fresca acompañada de 8 oz de salsa de queso cheddar y una pieza de pan, finalizada con queso parmesano.', price: '$130' },
     ],
   },
@@ -96,11 +96,11 @@ const complements = [
   },
   {
     title: 'Bebidas',
-    description: 'Aguas artesanales frías para acompañar tu pasta.',
+    description: 'Bebidas frías para acompañar tu pasta.',
     items: [
-      { name: 'Jamaica artesanal', description: 'Bebida fría artesanal.', price: '$30', image: DISH_IMAGES.bebidaJamaica },
-      { name: 'Limón artesanal', description: 'Bebida fría artesanal.', price: '$30', image: DISH_IMAGES.bebidaLimon },
-      { name: 'Horchata artesanal', description: 'Bebida fría artesanal.', price: '$30', image: DISH_IMAGES.bebidaHorchata },
+      { name: 'Limón con chía', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaLimon },
+      { name: 'Horchata', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaHorchata },
+      { name: 'Jamaica', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaJamaica },
     ],
   },
 ]
@@ -216,7 +216,7 @@ function App() {
         title: 'Bebidas',
         shortLabel: 'Bebidas',
         icon: '◒',
-        description: 'Aguas artesanales frías para acompañar tu pedido.',
+        description: 'Bebidas frías para acompañar tu pedido.',
         items: complements[1].items,
       },
     ],
@@ -542,9 +542,11 @@ function App() {
             <LogoMark />
           </div>
           <div className="footer__brand-copy">
-            <p>Momentos que importan,</p>
-            <span>sabor que permanece.</span>
-            <i aria-hidden="true" />
+            <p>Martes a domingo: 12:00pm - 8:00pm</p>
+            <span>Visítanos y pide tu favorita.</span>
+            <a className="footer__location-link" href={LOCATION_URL} target="_blank" rel="noreferrer">
+              Ver ubicación
+            </a>
           </div>
         </div>
 
