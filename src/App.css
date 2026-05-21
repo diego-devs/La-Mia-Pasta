@@ -789,6 +789,11 @@ svg {
   border-radius: 30px;
 }
 
+.footer__top {
+  display: grid;
+  gap: 24px;
+}
+
 .footer__brand-lockup {
   display: grid;
   gap: 18px;
@@ -817,19 +822,165 @@ svg {
   color: var(--ink);
 }
 
-.footer__location-link {
-  display: inline-flex;
-  width: fit-content;
-  margin-top: 16px;
-  color: #e2b18e;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(226, 177, 142, 0.45);
-  padding-bottom: 2px;
+.location-card {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  border-radius: 28px;
+  border: 1px solid rgba(212, 170, 114, 0.18);
+  background:
+    radial-gradient(circle at top right, rgba(212, 170, 114, 0.18), transparent 34%),
+    linear-gradient(180deg, rgba(15, 11, 10, 0.96), rgba(8, 6, 5, 0.98));
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
 }
 
-.footer__location-link:hover {
-  color: #f1c9a9;
-  border-bottom-color: rgba(241, 201, 169, 0.82);
+.location-card__intro {
+  display: grid;
+  gap: 20px;
+}
+
+.location-card__copy {
+  display: grid;
+  gap: 8px;
+}
+
+.location-card__eyebrow,
+.location-card__socials p {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.location-card__maps-link {
+  width: fit-content;
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 7vw, 3rem);
+  line-height: 0.92;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.location-card__maps-link:hover {
+  color: #fff2df;
+}
+
+.location-card__note {
+  color: var(--ink-soft);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.location-card__map {
+  position: relative;
+  min-height: 188px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 170, 114, 0.18);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(212, 170, 114, 0.08)),
+    linear-gradient(180deg, #12100f 0%, #1d1714 100%);
+}
+
+.location-card__map::before,
+.location-card__map::after,
+.location-card__map-grid::before,
+.location-card__map-grid::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.location-card__map::before {
+  width: 150%;
+  height: 2px;
+  top: 30%;
+  left: -12%;
+  transform: rotate(-12deg);
+}
+
+.location-card__map::after {
+  width: 150%;
+  height: 2px;
+  top: 58%;
+  left: -10%;
+  transform: rotate(9deg);
+}
+
+.location-card__map-grid::before {
+  width: 2px;
+  height: 140%;
+  left: 34%;
+  top: -14%;
+  transform: rotate(18deg);
+}
+
+.location-card__map-grid::after {
+  width: 2px;
+  height: 130%;
+  right: 22%;
+  top: -8%;
+  transform: rotate(-9deg);
+}
+
+.location-card__pin {
+  position: absolute;
+  top: 50%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #f2d6ae 0%, #d4aa72 48%, #b8814c 100%);
+  box-shadow: 0 12px 28px rgba(184, 129, 76, 0.35);
+}
+
+.location-card__pin svg {
+  width: 28px;
+  height: 28px;
+  fill: #1a1310;
+}
+
+.location-card__socials {
+  display: grid;
+  gap: 14px;
+}
+
+.location-card__social-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.location-card__social-grid a {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(212, 170, 114, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.location-card__social-grid a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 170, 114, 0.32);
+  background: rgba(212, 170, 114, 0.06);
+}
+
+.location-card__social-grid span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.location-card__social-grid small {
+  color: var(--ink-soft);
 }
 
 .footer__actions {
@@ -1060,8 +1211,22 @@ svg {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .footer__top,
+  .location-card__intro,
+  .location-card__social-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .footer__brand-lockup {
     align-items: center;
+  }
+
+  .location-card {
+    align-self: stretch;
+  }
+
+  .location-card__map {
+    min-height: 100%;
   }
 
   .footer__actions {
@@ -1093,8 +1258,13 @@ svg {
   }
 
   .footer {
-    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
-    align-items: center;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .footer__top {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: stretch;
   }
 }
 

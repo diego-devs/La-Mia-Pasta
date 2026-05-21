@@ -537,17 +537,55 @@ function App() {
       </main>
 
       <footer className="footer" id="contacto">
-        <div className="footer__brand-lockup">
-          <div className="wordmark wordmark--footer" aria-hidden="true">
-            <LogoMark />
+        <div className="footer__top">
+          <div className="footer__brand-lockup">
+            <div className="wordmark wordmark--footer" aria-hidden="true">
+              <LogoMark />
+            </div>
+            <div className="footer__brand-copy">
+              <p>Martes a domingo: 12:00pm - 8:00pm</p>
+              <span>Visítanos y pide tu favorita.</span>
+            </div>
           </div>
-          <div className="footer__brand-copy">
-            <p>Martes a domingo: 12:00pm - 8:00pm</p>
-            <span>Visítanos y pide tu favorita.</span>
-            <a className="footer__location-link" href={LOCATION_URL} target="_blank" rel="noreferrer">
-              Ver ubicación
-            </a>
-          </div>
+
+          <section className="location-card" aria-label="Ubicación y redes sociales">
+            <div className="location-card__intro">
+              <div className="location-card__copy">
+                <p className="location-card__eyebrow">Encuéntranos en</p>
+                <a className="location-card__maps-link" href={LOCATION_URL} target="_blank" rel="noreferrer">
+                  Google Maps
+                </a>
+                <span className="location-card__note">Toca para llegar fácilmente</span>
+              </div>
+
+              <a className="location-card__map" href={LOCATION_URL} target="_blank" rel="noreferrer" aria-label="Abrir ubicación de La Mia Pasta en Google Maps">
+                <span className="location-card__map-grid" aria-hidden="true" />
+                <span className="location-card__pin" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Zm0-9.25A2.75 2.75 0 1 1 12 7.25a2.75 2.75 0 0 1 0 5.5Z" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+
+            <div className="location-card__socials">
+              <p>Síguenos en</p>
+              <div className="location-card__social-grid">
+                <a href="https://www.facebook.com/share/15nVQhV4ZW/?mibextid=wwXIfr" target="_blank" rel="noreferrer">
+                  <span>Facebook</span>
+                  <small>/LaMiaPasta</small>
+                </a>
+                <a href="https://www.instagram.com/lamiapastamx?igsh=MXM0emV6d3BqYnp0cA==" target="_blank" rel="noreferrer">
+                  <span>Instagram</span>
+                  <small>@lamiapastamx</small>
+                </a>
+                <a href="https://www.tiktok.com/@lamiapastamx" target="_blank" rel="noreferrer">
+                  <span>TikTok</span>
+                  <small>@lamiapastamx</small>
+                </a>
+              </div>
+            </div>
+          </section>
         </div>
 
         <div className="footer__actions">
