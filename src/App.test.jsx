@@ -30,9 +30,9 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByText(/toca para llegar fácilmente/i)).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /abrir ubicación de la mia pasta en google maps/i })).toBeInTheDocument()
     expect(screen.getByText(/síguenos en/i)).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /facebook\s*\/lamiapasta/i })).toHaveAttribute('href', 'https://www.facebook.com/share/15nVQhV4ZW/?mibextid=wwXIfr')
-    expect(screen.getByRole('link', { name: /instagram\s*@lamiapastamx/i })).toHaveAttribute('href', 'https://www.instagram.com/lamiapastamx?igsh=MXM0emV6d3BqYnp0cA==')
-    expect(screen.getByRole('link', { name: /tiktok\s*@lamiapastamx/i })).toHaveAttribute('href', 'https://www.tiktok.com/@lamiapastamx')
+    expect(screen.getByRole('link', { name: /facebook de la mia pasta/i })).toHaveAttribute('href', 'https://www.facebook.com/share/15nVQhV4ZW/?mibextid=wwXIfr')
+    expect(screen.getByRole('link', { name: /instagram de la mia pasta/i })).toHaveAttribute('href', 'https://www.instagram.com/lamiapastamx?igsh=MXM0emV6d3BqYnp0cA==')
+    expect(screen.getByRole('link', { name: /tiktok de la mia pasta/i })).toHaveAttribute('href', 'https://www.tiktok.com/@lamiapastamx')
   })
 
   it('shows all mobile categories and updates the active panel content when switching tabs', () => {
