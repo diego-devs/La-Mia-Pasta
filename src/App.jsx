@@ -6,6 +6,39 @@ const PDF_MENU_PATH = '/La-Mia-Pasta/LA_MIA_PASTA.pdf'
 const BASE_URL = import.meta.env.BASE_URL
 const LOCATION_URL = 'https://maps.app.goo.gl/KEtNE7oAnCdgHQxDA?g_st=iw'
 
+const SOCIAL_LINKS = [
+  {
+    name: 'Facebook',
+    handle: '/LaMiaPasta',
+    href: 'https://www.facebook.com/share/15nVQhV4ZW/?mibextid=wwXIfr',
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6h1.5V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 4V11H8v3h2.6v8h2.9Z" />
+      </svg>
+    ),
+  },
+  {
+    name: 'Instagram',
+    handle: '@lamiapastamx',
+    href: 'https://www.instagram.com/lamiapastamx?igsh=MXM0emV6d3BqYnp0cA==',
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.8A2.7 2.7 0 0 0 4.8 7.5v9a2.7 2.7 0 0 0 2.7 2.7h9a2.7 2.7 0 0 0 2.7-2.7v-9a2.7 2.7 0 0 0-2.7-2.7h-9Zm9.8 1.4a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7.3a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Z" />
+      </svg>
+    ),
+  },
+  {
+    name: 'TikTok',
+    handle: '@lamiapastamx',
+    href: 'https://www.tiktok.com/@lamiapastamx',
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14.7 3c.3 1.8 1.4 3.3 3.1 4.1.9.4 1.8.6 2.7.6v3.1c-1.5 0-3-.4-4.3-1.1v5.1a6 6 0 1 1-5.2-6v3.2a2.9 2.9 0 1 0 2.3 2.8V3h1.4Z" />
+      </svg>
+    ),
+  },
+]
+
 const DISH_IMAGES = {
   fetucciniPoblano: `${BASE_URL}images/dishes/fetuccini-poblano.jpg`,
   fetucciniPoblanoPollo: `${BASE_URL}images/dishes/fetuccini-poblano-pollo.jpg`,
@@ -551,15 +584,30 @@ function App() {
           <section className="location-card" aria-label="Ubicación y redes sociales">
             <div className="location-card__intro">
               <div className="location-card__copy">
-                <p className="location-card__eyebrow">Encuéntranos en</p>
-                <a className="location-card__maps-link" href={LOCATION_URL} target="_blank" rel="noreferrer">
-                  Google Maps
-                </a>
+                <div className="location-card__hero">
+                  <span className="location-card__hero-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Zm0-9.25A2.75 2.75 0 1 1 12 7.25a2.75 2.75 0 0 1 0 5.5Z" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p className="location-card__eyebrow">Encuéntranos en</p>
+                    <a className="location-card__maps-link" href={LOCATION_URL} target="_blank" rel="noreferrer">
+                      Google Maps
+                    </a>
+                  </div>
+                </div>
+                <span className="location-card__divider" aria-hidden="true">
+                  <span />
+                </span>
                 <span className="location-card__note">Toca para llegar fácilmente</span>
               </div>
 
               <a className="location-card__map" href={LOCATION_URL} target="_blank" rel="noreferrer" aria-label="Abrir ubicación de La Mia Pasta en Google Maps">
                 <span className="location-card__map-grid" aria-hidden="true" />
+                <span className="location-card__map-label location-card__map-label--primary" aria-hidden="true">Av. Principal</span>
+                <span className="location-card__map-label location-card__map-label--secondary" aria-hidden="true">Calle 45</span>
+                <span className="location-card__map-label location-card__map-label--tertiary" aria-hidden="true">Carrera 20</span>
                 <span className="location-card__pin" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Zm0-9.25A2.75 2.75 0 1 1 12 7.25a2.75 2.75 0 0 1 0 5.5Z" />
@@ -571,18 +619,12 @@ function App() {
             <div className="location-card__socials">
               <p>Síguenos en</p>
               <div className="location-card__social-grid">
-                <a href="https://www.facebook.com/share/15nVQhV4ZW/?mibextid=wwXIfr" target="_blank" rel="noreferrer">
-                  <span>Facebook</span>
-                  <small>/LaMiaPasta</small>
-                </a>
-                <a href="https://www.instagram.com/lamiapastamx?igsh=MXM0emV6d3BqYnp0cA==" target="_blank" rel="noreferrer">
-                  <span>Instagram</span>
-                  <small>@lamiapastamx</small>
-                </a>
-                <a href="https://www.tiktok.com/@lamiapastamx" target="_blank" rel="noreferrer">
-                  <span>TikTok</span>
-                  <small>@lamiapastamx</small>
-                </a>
+                {SOCIAL_LINKS.map((social) => (
+                  <a key={social.name} href={social.href} target="_blank" rel="noreferrer" aria-label={`${social.name} de La Mia Pasta`}>
+                    <span className="location-card__social-icon" aria-hidden="true">{social.icon}</span>
+                    <small>{social.handle}</small>
+                  </a>
+                ))}
               </div>
             </div>
           </section>

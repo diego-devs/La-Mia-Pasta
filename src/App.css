@@ -824,65 +824,118 @@ svg {
 
 .location-card {
   display: grid;
-  gap: 20px;
-  padding: 24px;
-  border-radius: 28px;
-  border: 1px solid rgba(212, 170, 114, 0.18);
-  background:
-    radial-gradient(circle at top right, rgba(212, 170, 114, 0.18), transparent 34%),
-    linear-gradient(180deg, rgba(15, 11, 10, 0.96), rgba(8, 6, 5, 0.98));
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+  gap: 32px;
+  padding: 24px 20px 22px;
+  border-radius: 32px;
+  border: 1.5px solid rgba(212, 170, 114, 0.45);
+  background: linear-gradient(180deg, #090909 0%, #050505 100%);
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.34);
 }
 
 .location-card__intro {
   display: grid;
-  gap: 20px;
+  border: 1.5px solid rgba(212, 170, 114, 0.45);
+  border-radius: 28px;
+  overflow: hidden;
+  background: #080808;
 }
 
 .location-card__copy {
   display: grid;
-  gap: 8px;
+  align-content: center;
+  gap: 22px;
+  padding: 28px 24px;
+  background: linear-gradient(180deg, #090909 0%, #050505 100%);
+}
+
+.location-card__hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 18px;
+}
+
+.location-card__hero-icon {
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 3px solid var(--gold);
+  color: var(--gold);
+}
+
+.location-card__hero-icon svg {
+  width: 34px;
+  height: 34px;
+  fill: currentColor;
 }
 
 .location-card__eyebrow,
 .location-card__socials p {
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  font-size: 0.74rem;
   font-weight: 700;
   color: var(--gold);
 }
 
 .location-card__maps-link {
+  display: inline-block;
+  margin-top: 8px;
   width: fit-content;
   font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  font-size: clamp(2rem, 7vw, 3rem);
-  line-height: 0.92;
-  color: var(--ink);
+  font-size: clamp(3rem, 7vw, 4.25rem);
+  line-height: 0.88;
+  color: #f7f0e7;
   text-decoration: none;
 }
 
 .location-card__maps-link:hover {
-  color: #fff2df;
+  color: #fff7ee;
+}
+
+.location-card__divider {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: min(180px, 100%);
+  color: rgba(212, 170, 114, 0.9);
+}
+
+.location-card__divider::before,
+.location-card__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+}
+
+.location-card__divider span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: currentColor;
 }
 
 .location-card__note {
-  color: var(--ink-soft);
-  letter-spacing: 0.16em;
+  max-width: 14ch;
+  color: var(--gold);
+  letter-spacing: 0.22em;
+  line-height: 1.75;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .location-card__map {
   position: relative;
-  min-height: 188px;
-  border-radius: 24px;
+  min-height: 260px;
   overflow: hidden;
-  border: 1px solid rgba(212, 170, 114, 0.18);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(212, 170, 114, 0.08)),
-    linear-gradient(180deg, #12100f 0%, #1d1714 100%);
+    radial-gradient(circle at 20% 22%, rgba(255, 255, 255, 0.06), transparent 18%),
+    linear-gradient(180deg, #151515 0%, #0e0e0e 100%);
 }
 
 .location-card__map::before,
@@ -891,96 +944,217 @@ svg {
 .location-card__map-grid::after {
   content: '';
   position: absolute;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(245, 245, 245, 0.16);
 }
 
 .location-card__map::before {
-  width: 150%;
-  height: 2px;
-  top: 30%;
-  left: -12%;
-  transform: rotate(-12deg);
+  width: 155%;
+  height: 6px;
+  top: 28%;
+  left: -20%;
+  border-radius: 999px;
+  transform: rotate(-15deg);
 }
 
 .location-card__map::after {
-  width: 150%;
-  height: 2px;
-  top: 58%;
-  left: -10%;
-  transform: rotate(9deg);
+  width: 140%;
+  height: 4px;
+  top: 59%;
+  left: -14%;
+  border-radius: 999px;
+  transform: rotate(12deg);
 }
 
 .location-card__map-grid::before {
-  width: 2px;
-  height: 140%;
-  left: 34%;
-  top: -14%;
-  transform: rotate(18deg);
+  width: 5px;
+  height: 150%;
+  left: 37%;
+  top: -20%;
+  border-radius: 999px;
+  transform: rotate(22deg);
 }
 
 .location-card__map-grid::after {
-  width: 2px;
-  height: 130%;
-  right: 22%;
-  top: -8%;
-  transform: rotate(-9deg);
+  width: 3px;
+  height: 134%;
+  right: 18%;
+  top: -10%;
+  border-radius: 999px;
+  transform: rotate(-11deg);
+}
+
+.location-card__map-label {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.location-card__map-label--primary {
+  top: 24%;
+  left: 18%;
+  transform: rotate(-15deg);
+}
+
+.location-card__map-label--secondary {
+  top: 57%;
+  left: 50%;
+  transform: rotate(10deg);
+}
+
+.location-card__map-label--tertiary {
+  top: 14%;
+  right: 9%;
+  transform: rotate(79deg);
+  transform-origin: center;
 }
 
 .location-card__pin {
   position: absolute;
-  top: 50%;
-  left: 58%;
+  top: 52%;
+  left: 56%;
   transform: translate(-50%, -50%);
-  width: 58px;
-  height: 58px;
+  width: 76px;
+  height: 76px;
   display: grid;
   place-items: center;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, #f2d6ae 0%, #d4aa72 48%, #b8814c 100%);
-  box-shadow: 0 12px 28px rgba(184, 129, 76, 0.35);
+  color: var(--gold);
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.5));
 }
 
 .location-card__pin svg {
-  width: 28px;
-  height: 28px;
-  fill: #1a1310;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 .location-card__socials {
   display: grid;
-  gap: 14px;
+  gap: 22px;
+}
+
+.location-card__socials p {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.location-card__socials p::before,
+.location-card__socials p::after {
+  content: '';
+  height: 1px;
+  background: rgba(212, 170, 114, 0.45);
 }
 
 .location-card__social-grid {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid rgba(212, 170, 114, 0.2);
+  border-bottom: 1px solid rgba(212, 170, 114, 0.2);
 }
 
 .location-card__social-grid a {
   display: grid;
-  gap: 4px;
-  padding: 14px 16px;
-  border-radius: 18px;
-  border: 1px solid rgba(212, 170, 114, 0.14);
-  background: rgba(255, 255, 255, 0.03);
+  justify-items: center;
+  gap: 14px;
+  padding: 12px 18px 4px;
   text-decoration: none;
-  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  position: relative;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.location-card__social-grid a:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  right: 0;
+  width: 1px;
+  background: rgba(212, 170, 114, 0.28);
 }
 
 .location-card__social-grid a:hover {
   transform: translateY(-2px);
-  border-color: rgba(212, 170, 114, 0.32);
-  background: rgba(212, 170, 114, 0.06);
+  opacity: 0.92;
 }
 
-.location-card__social-grid span {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--ink);
+.location-card__social-icon {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 2px solid rgba(212, 170, 114, 0.9);
+  color: rgba(212, 170, 114, 0.95);
+}
+
+.location-card__social-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
 }
 
 .location-card__social-grid small {
-  color: var(--ink-soft);
+  color: #f0e5d5;
+  font-size: 0.94rem;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 900px) {
+  .location-card {
+    padding: 32px 32px 28px;
+  }
+
+  .location-card__intro {
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+  }
+
+  .location-card__copy {
+    padding: 40px 40px 36px;
+  }
+
+  .location-card__map {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 699px) {
+  .location-card__hero {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .location-card__hero-icon {
+    width: 66px;
+    height: 66px;
+  }
+
+  .location-card__maps-link {
+    font-size: clamp(2.6rem, 12vw, 3.5rem);
+  }
+
+  .location-card__note {
+    max-width: none;
+    font-size: 0.8rem;
+  }
+
+  .location-card__social-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    border: 0;
+  }
+
+  .location-card__social-grid a {
+    padding: 0 0 8px;
+  }
+
+  .location-card__social-grid a:not(:last-child)::after {
+    display: none;
+  }
 }
 
 .footer__actions {
