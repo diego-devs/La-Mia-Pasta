@@ -578,7 +578,10 @@ function App() {
             </div>
             <div className="footer__brand-copy">
               <p>Martes a domingo: 12:00pm - 8:00pm</p>
-              <span>Visítanos y pide tu favorita.</span>
+              <span className="footer__tagline" aria-label="Visítanos y pide tu favorita.">
+                <span className="footer__tagline-line">Visítanos y</span>
+                <span className="footer__tagline-line footer__tagline-line--accent">pide tu favorita.</span>
+              </span>
             </div>
           </div>
 
