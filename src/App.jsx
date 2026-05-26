@@ -4,7 +4,8 @@ import './App.css'
 const WHATSAPP_NUMBER = '524424230777'
 const PDF_MENU_PATH = '/La-Mia-Pasta/LA_MIA_PASTA.pdf'
 const BASE_URL = import.meta.env.BASE_URL
-const LOCATION_URL = 'https://maps.app.goo.gl/KEtNE7oAnCdgHQxDA?g_st=iw'
+const LOCATION_URL = 'https://maps.app.goo.gl/jfcreP4xnpdYLhX9A?g_st=ic'
+const GOOGLE_MAPS_EMBED_URL = 'https://www.google.com/maps?q=Blvd.+Jurica+la+Campana+1192,+Manzanares,+76230+Juriquilla,+Qro.&output=embed'
 
 const SOCIAL_LINKS = [
   {
@@ -603,17 +604,19 @@ function App() {
                 <span className="location-card__note">Toca para llegar fácilmente</span>
               </div>
 
-              <a className="location-card__map" href={LOCATION_URL} target="_blank" rel="noreferrer" aria-label="Abrir ubicación de La Mia Pasta en Google Maps">
-                <span className="location-card__map-grid" aria-hidden="true" />
-                <span className="location-card__map-label location-card__map-label--primary" aria-hidden="true">Av. Principal</span>
-                <span className="location-card__map-label location-card__map-label--secondary" aria-hidden="true">Calle 45</span>
-                <span className="location-card__map-label location-card__map-label--tertiary" aria-hidden="true">Carrera 20</span>
-                <span className="location-card__pin" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Zm0-9.25A2.75 2.75 0 1 1 12 7.25a2.75 2.75 0 0 1 0 5.5Z" />
-                  </svg>
-                </span>
-              </a>
+              <div className="location-card__map-frame-wrap">
+                <iframe
+                  className="location-card__map-frame"
+                  title="Ubicación de La Mia Pasta en Google Maps"
+                  src={GOOGLE_MAPS_EMBED_URL}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+                <a className="location-card__map-overlay" href={LOCATION_URL} target="_blank" rel="noreferrer" aria-label="Abrir ubicación de La Mia Pasta en Google Maps">
+                  <span className="location-card__map-badge">Abrir en Google Maps</span>
+                </a>
+              </div>
             </div>
 
             <div className="location-card__socials">
