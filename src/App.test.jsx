@@ -82,6 +82,17 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('button', { name: /abrir menú/i })).toHaveAttribute('aria-expanded', 'false')
   })
 
+  it('renders the floating WhatsApp button icon smaller and inheriting white fill', () => {
+    render(<App />)
+
+    const fab = screen.getByRole('button', { name: /abrir chat de whatsapp/i })
+    const icon = fab.querySelector('svg')
+
+    expect(icon).not.toBeNull()
+    expect(icon).toHaveAttribute('viewBox', '0 0 24 24')
+    expect(fab).toContainElement(icon)
+  })
+
   it('opens the WhatsApp modal, focuses the close button, locks scroll and closes from backdrop and escape', () => {
     render(<App />)
 

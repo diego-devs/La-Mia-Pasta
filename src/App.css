@@ -1184,9 +1184,12 @@ svg {
   box-shadow: 0 16px 32px rgba(22, 155, 75, 0.34);
 }
 
-.whatsapp-fab img {
-  width: 22px;
-  height: 22px;
+.whatsapp-fab svg {
+  position: relative;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
 }
 
 .whatsapp-fab__pulse {
