@@ -1321,33 +1321,32 @@ svg {
   .hero,
   .section,
   .footer {
-    padding: 38px;
+    padding: 40px;
   }
 
   .menu-heading__intro,
   .menu-heading__accent,
-  .mobile-menu-experience {
+  .mobile-menu-experience,
+  .menu-toggle,
+  .whatsapp-fab {
     display: none;
   }
 
   .signature-section--desktop {
     display: grid;
-    gap: 26px;
+    gap: 30px;
   }
 
   .menu-desktop-layout {
     display: grid;
-    gap: 24px;
+    gap: 28px;
   }
 
   .topbar {
-    grid-template-columns: auto 1fr auto;
-    gap: 18px;
-  }
-
-  .menu-toggle {
-    align-self: start;
-    margin-top: 6px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 24px;
+    padding-top: 8px;
   }
 
   .wordmark--centered {
@@ -1361,37 +1360,48 @@ svg {
 
   .topbar__whatsapp {
     justify-self: end;
+    padding-inline: 22px;
   }
 
   .nav-drawer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
     max-height: none;
     overflow: visible;
     opacity: 1;
     transform: none;
-    margin-top: 22px;
-    padding: 16px 20px;
-    grid-template-columns: repeat(4, minmax(0, max-content));
-    justify-content: start;
-    align-items: center;
+    margin-top: 0;
+    margin-left: auto;
+    padding: 0;
     gap: 12px;
-    border-radius: 24px;
-    border: 1px solid var(--line-soft);
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  .nav-drawer a {
-    padding: 12px 16px;
+    border: 0;
     background: transparent;
   }
 
+  .nav-drawer a {
+    padding: 11px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
   .hero {
-    gap: 34px;
+    gap: 48px;
   }
 
   .hero__content {
-    grid-template-columns: minmax(0, 0.94fr) minmax(480px, 1.06fr);
-    gap: 46px;
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(460px, 1.08fr);
+    gap: clamp(36px, 4.5vw, 72px);
+    align-items: stretch;
+  }
+
+  .hero__text {
+    position: relative;
+    z-index: 1;
+    max-width: 42rem;
+    padding: 28px 0;
+    align-self: center;
   }
 
   .hero__visual {
@@ -1400,38 +1410,32 @@ svg {
     display: grid;
     justify-items: end;
     align-self: stretch;
+    min-width: 0;
     pointer-events: auto;
   }
 
   .hero__image-wrap {
-    width: min(100%, 700px);
-    min-height: 100%;
+    width: min(100%, 100%);
+    min-height: 640px;
     height: 100%;
-    border-radius: 34px;
+    border-radius: 36px;
     box-shadow: 0 36px 70px rgba(0, 0, 0, 0.38);
     border: 1px solid rgba(229, 212, 189, 0.12);
   }
 
   .hero__image {
-    aspect-ratio: 0.86;
+    aspect-ratio: auto;
     height: 100%;
   }
 
-  .hero__text {
-    position: relative;
-    z-index: 1;
-    max-width: 31rem;
-    padding-block: 12px;
-  }
-
   .hero__text h1 {
-    max-width: 9.2ch;
-    font-size: clamp(4.1rem, 5.8vw, 6rem);
+    max-width: 11.5ch;
+    font-size: clamp(4rem, 4.9vw, 6rem);
   }
 
   .hero__lead {
-    max-width: 26rem;
-    font-size: 1rem;
+    max-width: 36rem;
+    font-size: 1.04rem;
   }
 
   .hero__actions {
@@ -1439,21 +1443,21 @@ svg {
   }
 
   .hero__note {
-    max-width: 22rem;
+    max-width: 29rem;
   }
 
   .hero__phrases {
-    max-width: 32rem;
+    max-width: 36rem;
   }
 
   .hero__seal {
-    right: 26px;
-    bottom: 24px;
+    right: 30px;
+    bottom: 30px;
   }
 
   .signature-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px;
+    gap: 24px;
   }
 
   .signature-card__image-wrap {
@@ -1462,7 +1466,7 @@ svg {
 
   .menu-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    gap: 20px;
   }
 
   .menu-split,
