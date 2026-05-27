@@ -2,8 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 
 const WHATSAPP_NUMBER = '524424230777'
-const PDF_MENU_PATH = '/La-Mia-Pasta/LA_MIA_PASTA.pdf'
 const BASE_URL = import.meta.env.BASE_URL
+const PDF_MENU_PATH = `${BASE_URL}LA_MIA_PASTA.pdf`
 const LOCATION_URL = 'https://maps.app.goo.gl/jfcreP4xnpdYLhX9A?g_st=ic'
 const GOOGLE_MAPS_EMBED_URL = 'https://www.google.com/maps?q=Blvd.+Jurica+la+Campana+1192,+Manzanares,+76230+Juriquilla,+Qro.&output=embed'
 

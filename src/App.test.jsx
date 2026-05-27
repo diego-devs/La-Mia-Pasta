@@ -24,7 +24,7 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('button', { name: /pedidos por whatsapp/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 2, name: /pastas tradicionales, especialidades, extras y bebidas/i })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /^pedir ahora$/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /ver menú completo/i })).toHaveAttribute('href', '/La-Mia-Pasta/LA_MIA_PASTA.pdf')
+    expect(screen.getByRole('link', { name: /ver menú completo/i })).toHaveAttribute('href', '/LA_MIA_PASTA.pdf')
     expect(screen.getByText(/encuéntranos en/i)).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /^google maps$/i })).toHaveAttribute('href', 'https://maps.app.goo.gl/jfcreP4xnpdYLhX9A?g_st=ic')
     expect(screen.getByText(/toca para llegar fácilmente/i)).toBeInTheDocument()
