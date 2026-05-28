@@ -6,6 +6,16 @@ const BASE_URL = import.meta.env.BASE_URL
 const PDF_MENU_PATH = `${BASE_URL}LA_MIA_PASTA.pdf`
 const LOCATION_URL = 'https://maps.app.goo.gl/jfcreP4xnpdYLhX9A?g_st=ic'
 const GOOGLE_MAPS_EMBED_URL = 'https://www.google.com/maps?q=Blvd.+Jurica+la+Campana+1192,+Manzanares,+76230+Juriquilla,+Qro.&output=embed'
+const DOWNLOADABLE_MENU_FILENAME = 'La_Mia_Pasta_Menu_Sin_Bordes_v2.pdf'
+
+const aboutContent = {
+  mission:
+    'Crear experiencias reconfortantes con pasta fresca y sazón casera, combinando el alma italiana con sabores mexicanos en cada pedido.',
+  vision:
+    'Ser una referencia local de pasta hecha con pasión, reconocida por su identidad cálida, su propuesta México–italiana y su cercanía con cada cliente.',
+  logoMeaning:
+    'El logotipo representa la identidad de La Mia Pasta: una firma visual elegante que celebra la pasión por la pasta y la unión de inspiración italiana con carácter mexicano.',
+}
 
 const SOCIAL_LINKS = [
   {
@@ -60,6 +70,30 @@ const DISH_IMAGES = {
   bebidaJamaica: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
   bebidaLimon: `${BASE_URL}images/dishes/bebida-limon.jpg`,
   bebidaHorchata: `${BASE_URL}images/dishes/bebida-horchata.jpg`,
+  bebidaRefresco: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
+}
+
+const beverages = {
+  title: 'Bebidas artesanales',
+  description: 'Acompaña tu pasta con aguas artesanales o refrescos del menú actual.',
+  sections: [
+    {
+      title: 'Aguas artesanales',
+      description: 'Aguas artesanales con personalidad propia para acompañar la fusión México–italiana.',
+      items: [
+        { name: 'Limón con chía', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaLimon },
+        { name: 'Horchata', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaHorchata },
+        { name: 'Jamaica', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaJamaica },
+      ],
+    },
+    {
+      title: 'Refrescos',
+      description: 'Refrescos clásicos para quienes prefieren una opción tradicional.',
+      items: [
+        { name: 'Coca Cola', description: 'Refresco frío.', price: '$35', image: DISH_IMAGES.bebidaRefresco },
+      ],
+    },
+  ],
 }
 
 const HERO_IMAGE = `${BASE_URL}images/hero/spaguetti-servido.jpg`
@@ -73,6 +107,13 @@ const signatureDishes = [
     description: 'Una receta cálida y generosa con salsa boloñesa, parmesano y ese sabor casero que siempre se antoja.',
     price: '$130',
     image: DISH_IMAGES.spaguettiBolognesa,
+  },
+  {
+    name: 'Spaguetti boloñesa con albóndigas',
+    category: 'Con proteína',
+    description: 'La versión más completa de la casa: salsa boloñesa, albóndigas y parmesano para un antojo con más cuerpo.',
+    price: '$160',
+    image: DISH_IMAGES.spaguettiBolognesaAlbndigas,
   },
   {
     name: 'Fetuccini poblano con pollo',
@@ -120,21 +161,12 @@ const complements = [
     title: 'Extras',
     description: 'Personaliza tu pasta con proteína o queso extra.',
     items: [
-      { name: 'Camarones', description: 'Extra de proteína.', price: '$40', image: DISH_IMAGES.proteinCamarones },
-      { name: 'Pollo', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinPollo },
+      { name: 'Camarones a la mantequilla', description: 'Extra de proteína.', price: '$40', image: DISH_IMAGES.proteinCamarones },
+      { name: 'Pollo al Grill', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinPollo },
       { name: 'Albóndigas', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.albondigas },
       { name: 'Chuleta ahumada', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinChuletaAhumada },
       { name: 'Tocino', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinTocino },
       { name: 'Queso parmesano', description: 'Extra de queso.', price: '$30', image: DISH_IMAGES.proteinParmesano },
-    ],
-  },
-  {
-    title: 'Bebidas',
-    description: 'Bebidas frías para acompañar tu pasta.',
-    items: [
-      { name: 'Limón con chía', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaLimon },
-      { name: 'Horchata', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaHorchata },
-      { name: 'Jamaica', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaJamaica },
     ],
   },
 ]
@@ -247,17 +279,24 @@ function App() {
         items: complements[0].items,
       },
       {
-        title: 'Bebidas',
+        title: beverages.title,
         shortLabel: 'Bebidas',
         icon: '◒',
-        description: 'Bebidas frías para acompañar tu pedido.',
-        items: complements[1].items,
+        description: beverages.description,
+        sections: beverages.sections,
+        items: beverages.sections.flatMap((section) => section.items),
       },
     ],
     [],
   )
 
   const activeMobileSection = mobileMenuCategories.find((category) => category.title === activeMobileCategory) ?? mobileMenuCategories[0]
+
+  useEffect(() => {
+    if (activeMobileCategory === 'Bebidas') {
+      setActiveMobileCategory('Bebidas artesanales')
+    }
+  }, [activeMobileCategory])
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -287,6 +326,7 @@ function App() {
     { href: '#inicio', label: 'Inicio' },
     { href: '#especialidades', label: 'Especialidades' },
     { href: '#menu', label: 'Menú' },
+    { href: '#nosotros', label: 'Nosotros' },
     { href: '#contacto', label: 'Contacto' },
   ]
 
@@ -438,20 +478,45 @@ function App() {
               <p className="mobile-category-panel__description">{activeMobileSection.description}</p>
 
               <div className="mobile-menu-cards">
-                {activeMobileSection.items.map((item) => (
-                  <article className="mobile-menu-card" key={`${activeMobileSection.title}-${item.name}`}>
-                    <div className="mobile-menu-card__media">
-                      <img src={item.image} alt={item.name} />
-                    </div>
-                    <div className="mobile-menu-card__body">
-                      <div className="mobile-menu-card__top">
-                        <h4>{item.name}</h4>
-                        <span>{item.price}</span>
-                      </div>
-                      <p>{item.description}</p>
-                    </div>
-                  </article>
-                ))}
+                {activeMobileSection.sections
+                  ? activeMobileSection.sections.map((section) => (
+                      <section className="mobile-menu-subsection" key={`${activeMobileSection.title}-${section.title}`}>
+                        <div className="mobile-menu-subsection__header">
+                          <h4>{section.title}</h4>
+                          <p>{section.description}</p>
+                        </div>
+                        <div className="mobile-menu-cards">
+                          {section.items.map((item) => (
+                            <article className="mobile-menu-card" key={`${section.title}-${item.name}`}>
+                              <div className="mobile-menu-card__media">
+                                <img src={item.image} alt={item.name} />
+                              </div>
+                              <div className="mobile-menu-card__body">
+                                <div className="mobile-menu-card__top">
+                                  <h4>{item.name}</h4>
+                                  <span>{item.price}</span>
+                                </div>
+                                <p>{item.description}</p>
+                              </div>
+                            </article>
+                          ))}
+                        </div>
+                      </section>
+                    ))
+                  : activeMobileSection.items.map((item) => (
+                      <article className="mobile-menu-card" key={`${activeMobileSection.title}-${item.name}`}>
+                        <div className="mobile-menu-card__media">
+                          <img src={item.image} alt={item.name} />
+                        </div>
+                        <div className="mobile-menu-card__body">
+                          <div className="mobile-menu-card__top">
+                            <h4>{item.name}</h4>
+                            <span>{item.price}</span>
+                          </div>
+                          <p>{item.description}</p>
+                        </div>
+                      </article>
+                    ))}
               </div>
             </article>
 
@@ -523,20 +588,59 @@ function App() {
               </div>
             ))}
 
+            <section className="about-section" id="nosotros">
+              <div className="section-heading section-heading--narrow">
+                <p className="eyebrow">Nosotros</p>
+                <h2>La esencia de La Mia Pasta vive en cada receta, en su identidad visual y en la manera cercana de compartir la mesa.</h2>
+              </div>
+              <div className="about-grid">
+                <article className="about-card">
+                  <h3>Misión</h3>
+                  <p>{aboutContent.mission}</p>
+                </article>
+                <article className="about-card">
+                  <h3>Visión</h3>
+                  <p>{aboutContent.vision}</p>
+                </article>
+                <article className="about-card about-card--wide">
+                  <h3>Significado del logotipo</h3>
+                  <p>{aboutContent.logoMeaning}</p>
+                </article>
+              </div>
+            </section>
+
             <div className="menu-split">
-              {complements.map((group) => (
-                <div className="menu-side" key={group.title}>
-                  <div className="menu-block__header">
-                    <h3>{group.title}</h3>
-                    <p>{group.description}</p>
-                  </div>
-                  <div className="menu-grid menu-grid--compact">
-                    {group.items.map((item) => (
-                      <MenuItem item={item} key={item.name} />
-                    ))}
-                  </div>
+              <div className="menu-side" key={complements[0].title}>
+                <div className="menu-block__header">
+                  <h3>{complements[0].title}</h3>
+                  <p>{complements[0].description}</p>
                 </div>
-              ))}
+                <div className="menu-grid menu-grid--compact">
+                  {complements[0].items.map((item) => (
+                    <MenuItem item={item} key={item.name} />
+                  ))}
+                </div>
+              </div>
+
+              <div className="menu-side" key={beverages.title}>
+                <div className="menu-block__header">
+                  <h3>{beverages.title}</h3>
+                  <p>{beverages.description}</p>
+                </div>
+                {beverages.sections.map((section) => (
+                  <div className="menu-subsection" key={section.title}>
+                    <div className="menu-subsection__header">
+                      <h4>{section.title}</h4>
+                      <p>{section.description}</p>
+                    </div>
+                    <div className="menu-grid menu-grid--compact">
+                      {section.items.map((item) => (
+                        <MenuItem item={item} key={item.name} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <section className="ordering-section" aria-label="Opciones para ordenar">
@@ -637,7 +741,7 @@ function App() {
         </div>
 
         <div className="footer__actions">
-          <a className="button button--ghost" href={PDF_MENU_PATH} target="_blank" rel="noreferrer">
+          <a className="button button--ghost" href={PDF_MENU_PATH} target="_blank" rel="noreferrer" download={DOWNLOADABLE_MENU_FILENAME}>
             Ver menú completo
           </a>
           <button className="button button--primary" type="button" onClick={openChat}>

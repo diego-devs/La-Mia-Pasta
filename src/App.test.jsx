@@ -51,15 +51,44 @@ describe('La Mia Pasta main page regression coverage', () => {
     fireEvent.click(within(tablist).getByRole('tab', { name: /bebidas/i }))
 
     expect(within(tablist).getByRole('tab', { name: /bebidas/i })).toHaveAttribute('aria-selected', 'true')
-    expect(screen.getByText(/3 opciones/i)).toBeInTheDocument()
+    expect(screen.getByText(/4 opciones/i)).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /^jamaica$/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /^horchata$/i })).toBeInTheDocument()
   })
 
-  it('renders specialties and desktop ordering options', () => {
+  it('shows split beverage sections and updated extra protein names', () => {
+    render(<App />)
+
+    const tablist = screen.getByRole('tablist', { name: /categorías del menú/i })
+    fireEvent.click(within(tablist).getByRole('tab', { name: /bebidas/i }))
+
+    expect(screen.getAllByText(/bebidas artesanales/i).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/aguas artesanales/i).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/refrescos/i).length).toBeGreaterThan(0)
+    expect(screen.getByRole('heading', { level: 4, name: /^jamaica$/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /^horchata$/i })).toBeInTheDocument()
+
+    fireEvent.click(within(tablist).getByRole('tab', { name: /especiales/i }))
+
+    expect(screen.getByRole('heading', { level: 4, name: /spaguetti boloñesa con albóndigas/i })).toBeInTheDocument()
+
+    fireEvent.click(within(tablist).getByRole('tab', { name: /extras/i }))
+
+    fireEvent.click(within(tablist).getByRole('tab', { name: /extras/i }))
+
+    expect(screen.getByRole('heading', { level: 4, name: /pollo al grill/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /camarones a la mantequilla/i })).toBeInTheDocument()
+  })
+
+  it('renders specialties, nosotros content and desktop ordering options', () => {
     render(<App />)
 
     expect(screen.getAllByText(/fetuccini poblano con pollo/i).length).toBeGreaterThan(0)
+    expect(screen.getAllByRole('link', { name: /^nosotros$/i }).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/^nosotros$/i).length).toBeGreaterThan(1)
+    expect(screen.getByText(/misión/i)).toBeInTheDocument()
+    expect(screen.getByText(/visión/i)).toBeInTheDocument()
+    expect(screen.getByText(/significado del logotipo/i)).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 3, name: /cómo ordenar/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /pide y recoge/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /entrega a domicilio/i })).toBeInTheDocument()
