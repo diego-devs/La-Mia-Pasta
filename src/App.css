@@ -1511,62 +1511,173 @@ svg {
   .hero,
   .section,
   .footer {
-    padding: 46px;
+    padding: clamp(52px, 4vw, 72px);
   }
 
   .site-shell {
-    width: min(1320px, calc(100% - 40px));
+    width: min(1420px, calc(100% - 56px));
     margin: 20px auto;
   }
 
+  .section-heading {
+    max-width: 980px;
+  }
+
+  .section-heading--narrow {
+    max-width: 860px;
+  }
+
   .nav-drawer {
-    margin-top: 24px;
-    padding-inline: 22px;
+    margin-top: 0;
+    padding-inline: 0;
+    max-width: 100%;
+  }
+
+  .nav-drawer a {
+    padding: 10px 18px;
   }
 
   .menu-grid--compact {
     grid-template-columns: 1fr;
   }
 
+  .hero {
+    gap: clamp(40px, 4vw, 68px);
+  }
+
   .hero__content {
-    grid-template-columns: minmax(0, 0.88fr) minmax(560px, 1.12fr);
-    gap: 56px;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
+    gap: clamp(40px, 4vw, 72px);
+    align-items: stretch;
   }
 
   .hero__text {
-    max-width: 33rem;
+    max-width: 42rem;
+    padding: 28px 0;
   }
 
   .hero__text h1 {
-    max-width: 8.8ch;
-    font-size: clamp(4.6rem, 5.2vw, 6.6rem);
+    max-width: 9.8ch;
+    font-size: clamp(4.7rem, 4.6vw, 6.7rem);
   }
 
   .hero__lead {
-    max-width: 27rem;
-    font-size: 1.05rem;
+    max-width: 30rem;
+    font-size: 1.08rem;
   }
 
   .hero__actions {
-    max-width: 340px;
+    max-width: 360px;
+  }
+
+  .hero__note {
+    max-width: 28rem;
+  }
+
+  .hero__phrases {
+    max-width: 34rem;
+  }
+
+  .hero__visual {
+    justify-items: stretch;
   }
 
   .hero__image-wrap {
     width: min(100%, 760px);
+    min-height: 640px;
+    max-height: none;
+    aspect-ratio: 0.92;
   }
 
   .hero__image {
-    aspect-ratio: 0.82;
+    aspect-ratio: 0.92;
+  }
+
+  .hero__seal {
+    right: 34px;
+    bottom: 34px;
+    width: 176px;
+    height: 176px;
+  }
+
+  .menu-desktop-layout {
+    gap: 34px;
+  }
+
+  .menu-block,
+  .menu-side,
+  .ordering-section {
+    padding: 32px;
+    border-radius: 34px;
+  }
+
+  .menu-block__header {
+    margin-bottom: 24px;
+  }
+
+  .menu-grid {
+    gap: 22px;
+  }
+
+  .menu-item {
+    min-height: 100%;
+    padding: 22px;
+  }
+
+  .menu-item h3,
+  .signature-card h3 {
+    font-size: 2rem;
+  }
+
+  .signature-grid {
+    gap: 28px;
+  }
+
+  .menu-split,
+  .ordering-grid {
+    gap: 24px;
   }
 
   .footer {
     grid-template-columns: 1fr;
     align-items: stretch;
+    margin: 0;
   }
 
   .footer__top {
-    grid-template-columns: minmax(0, 0.76fr) minmax(0, 1.24fr);
+    grid-template-columns: minmax(340px, 0.78fr) minmax(0, 1.22fr);
     align-items: stretch;
+    gap: 28px;
+  }
+
+  .footer__brand-lockup,
+  .location-card {
+    min-height: 100%;
+  }
+
+  .footer__actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .site-shell {
+    width: min(1580px, calc(100% - 64px));
+  }
+
+  .hero__content {
+    grid-template-columns: minmax(0, 1fr) minmax(500px, 1.04fr);
+    gap: clamp(52px, 4.5vw, 88px);
+  }
+
+  .hero__text h1 {
+    font-size: clamp(5rem, 4.8vw, 7rem);
+  }
+
+  .hero__image-wrap {
+    min-height: 680px;
+    aspect-ratio: 0.92;
   }
 }
 
