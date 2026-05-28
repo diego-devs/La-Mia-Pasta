@@ -56,6 +56,23 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('heading', { level: 4, name: /^horchata$/i })).toBeInTheDocument()
   })
 
+  it('shows artisanal beverages and updated extra protein names', () => {
+    render(<App />)
+
+    const tablist = screen.getByRole('tablist', { name: /categorías del menú/i })
+    fireEvent.click(within(tablist).getByRole('tab', { name: /bebidas/i }))
+
+    expect(screen.getAllByText(/bebidas artesanales/i).length).toBeGreaterThan(0)
+    expect(screen.getByRole('heading', { level: 4, name: /^jamaica$/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /^horchata$/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /limón con chía/i })).toBeInTheDocument()
+
+    fireEvent.click(within(tablist).getByRole('tab', { name: /extras/i }))
+
+    expect(screen.getByRole('heading', { level: 4, name: /pollo al grill/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /camarones a la mantequilla/i })).toBeInTheDocument()
+  })
+
   it('renders specialties and desktop ordering options', () => {
     render(<App />)
 

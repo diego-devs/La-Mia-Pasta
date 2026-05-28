@@ -6,6 +6,7 @@ const BASE_URL = import.meta.env.BASE_URL
 const PDF_MENU_PATH = `${BASE_URL}LA_MIA_PASTA.pdf`
 const LOCATION_URL = 'https://maps.app.goo.gl/jfcreP4xnpdYLhX9A?g_st=ic'
 const GOOGLE_MAPS_EMBED_URL = 'https://www.google.com/maps?q=Blvd.+Jurica+la+Campana+1192,+Manzanares,+76230+Juriquilla,+Qro.&output=embed'
+const DOWNLOADABLE_MENU_FILENAME = 'La_Mia_Pasta_Menu_Sin_Bordes_v2.pdf'
 
 const SOCIAL_LINKS = [
   {
@@ -120,8 +121,8 @@ const complements = [
     title: 'Extras',
     description: 'Personaliza tu pasta con proteína o queso extra.',
     items: [
-      { name: 'Camarones', description: 'Extra de proteína.', price: '$40', image: DISH_IMAGES.proteinCamarones },
-      { name: 'Pollo', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinPollo },
+      { name: 'Camarones a la mantequilla', description: 'Extra de proteína.', price: '$40', image: DISH_IMAGES.proteinCamarones },
+      { name: 'Pollo al Grill', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinPollo },
       { name: 'Albóndigas', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.albondigas },
       { name: 'Chuleta ahumada', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinChuletaAhumada },
       { name: 'Tocino', description: 'Extra de proteína.', price: '$30', image: DISH_IMAGES.proteinTocino },
@@ -129,8 +130,8 @@ const complements = [
     ],
   },
   {
-    title: 'Bebidas',
-    description: 'Bebidas frías para acompañar tu pasta.',
+    title: 'Bebidas artesanales',
+    description: 'Aguas artesanales con personalidad propia para acompañar la fusión México–italiana.',
     items: [
       { name: 'Limón con chía', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaLimon },
       { name: 'Horchata', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaHorchata },
@@ -247,10 +248,10 @@ function App() {
         items: complements[0].items,
       },
       {
-        title: 'Bebidas',
+        title: 'Bebidas artesanales',
         shortLabel: 'Bebidas',
         icon: '◒',
-        description: 'Bebidas frías para acompañar tu pedido.',
+        description: 'Aguas artesanales para acompañar tu pedido con identidad propia.',
         items: complements[1].items,
       },
     ],
@@ -258,6 +259,12 @@ function App() {
   )
 
   const activeMobileSection = mobileMenuCategories.find((category) => category.title === activeMobileCategory) ?? mobileMenuCategories[0]
+
+  useEffect(() => {
+    if (activeMobileCategory === 'Bebidas') {
+      setActiveMobileCategory('Bebidas artesanales')
+    }
+  }, [activeMobileCategory])
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -637,7 +644,7 @@ function App() {
         </div>
 
         <div className="footer__actions">
-          <a className="button button--ghost" href={PDF_MENU_PATH} target="_blank" rel="noreferrer">
+          <a className="button button--ghost" href={PDF_MENU_PATH} target="_blank" rel="noreferrer" download={DOWNLOADABLE_MENU_FILENAME}>
             Ver menú completo
           </a>
           <button className="button button--primary" type="button" onClick={openChat}>
