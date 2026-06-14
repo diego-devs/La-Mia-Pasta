@@ -255,7 +255,7 @@ svg {
 }
 
 .nav-drawer--open {
-  max-height: 260px;
+  max-height: 420px;
   opacity: 1;
   transform: translateY(0);
   margin-top: 18px;
@@ -738,6 +738,14 @@ svg {
 .about-section {
   display: grid;
   gap: 28px;
+}
+
+.about-section--mobile {
+  margin-top: 10px;
+}
+
+.about-section--desktop {
+  display: none;
 }
 
 .about-grid {
@@ -1566,6 +1574,14 @@ svg {
     margin-top: 0;
     padding-inline: 0;
     max-width: 100%;
+  }
+
+  .about-section--mobile {
+    display: none;
+  }
+
+  .about-section--desktop {
+    display: grid;
   }
 
   .nav-drawer a {

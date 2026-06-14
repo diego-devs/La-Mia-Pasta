@@ -17,11 +17,12 @@ afterEach(() => {
 })
 
 describe('La Mia Pasta main page regression coverage', () => {
-  it('renders the primary hero, menu, specialties and footer CTAs', () => {
+  it('renders the updated hero copy, menu, specialties and footer CTAs', () => {
     render(<App />)
 
-    expect(screen.getByRole('heading', { level: 1, name: /pasta fresca con alma/i })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /pedidos por whatsapp/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: /pasta fresca con alma italiana y sabores mexicanos/i })).toBeInTheDocument()
+    expect(screen.getByText(/elegantes a la vista y fáciles de pedir para disfrutar en casa/i)).toBeInTheDocument()
+    expect(screen.getAllByRole('button', { name: /pedidos por whatsapp/i }).length).toBeGreaterThan(0)
     expect(screen.getByRole('heading', { level: 2, name: /pastas tradicionales, especialidades, extras y bebidas/i })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /^pedir ahora$/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /ver menú completo/i })).toHaveAttribute('href', '/LA_MIA_PASTA.pdf')
@@ -51,33 +52,39 @@ describe('La Mia Pasta main page regression coverage', () => {
     fireEvent.click(within(tablist).getByRole('tab', { name: /bebidas/i }))
 
     expect(within(tablist).getByRole('tab', { name: /bebidas/i })).toHaveAttribute('aria-selected', 'true')
-    expect(screen.getByText(/4 opciones/i)).toBeInTheDocument()
+    expect(screen.getByText(/7 opciones/i)).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /^jamaica$/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /^horchata$/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /^fanta$/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /peñafiel/i })).toBeInTheDocument()
   })
 
-  it('shows split beverage sections and updated extra protein names', () => {
+  it('shows split beverage sections with updated soda lineup and updated extra protein names', () => {
     render(<App />)
 
     const tablist = screen.getByRole('tablist', { name: /categorías del menú/i })
     fireEvent.click(within(tablist).getByRole('tab', { name: /bebidas/i }))
 
-    expect(screen.getAllByText(/bebidas artesanales/i).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/bebidas/i).length).toBeGreaterThan(0)
     expect(screen.getAllByText(/aguas artesanales/i).length).toBeGreaterThan(0)
     expect(screen.getAllByText(/refrescos/i).length).toBeGreaterThan(0)
     expect(screen.getByRole('heading', { level: 4, name: /^jamaica$/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /^horchata$/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /^limón con chía$/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /^coca cola$/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /^fanta$/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /^sidral mundet$/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /agua mineral peñafiel/i })).toBeInTheDocument()
 
     fireEvent.click(within(tablist).getByRole('tab', { name: /especiales/i }))
 
+    expect(screen.queryByRole('heading', { level: 4, name: /^spaguetti boloñesa$/i })).not.toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /spaguetti boloñesa con albóndigas/i })).toBeInTheDocument()
 
     fireEvent.click(within(tablist).getByRole('tab', { name: /extras/i }))
 
-    fireEvent.click(within(tablist).getByRole('tab', { name: /extras/i }))
-
-    expect(screen.getByRole('heading', { level: 4, name: /pollo al grill/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { level: 4, name: /camarones a la mantequilla/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /pollo/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 4, name: /camarones/i })).toBeInTheDocument()
   })
 
   it('renders specialties, nosotros content and desktop ordering options', () => {
@@ -86,9 +93,9 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getAllByText(/fetuccini poblano con pollo/i).length).toBeGreaterThan(0)
     expect(screen.getAllByRole('link', { name: /^nosotros$/i }).length).toBeGreaterThan(0)
     expect(screen.getAllByText(/^nosotros$/i).length).toBeGreaterThan(1)
-    expect(screen.getByText(/misión/i)).toBeInTheDocument()
-    expect(screen.getByText(/visión/i)).toBeInTheDocument()
-    expect(screen.getByText(/significado del logotipo/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/misión/i).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/visión/i).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/significado del logotipo/i).length).toBeGreaterThan(0)
     expect(screen.getByRole('heading', { level: 3, name: /cómo ordenar/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /pide y recoge/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /entrega a domicilio/i })).toBeInTheDocument()

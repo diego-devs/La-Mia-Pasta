@@ -70,27 +70,33 @@ const DISH_IMAGES = {
   bebidaJamaica: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
   bebidaLimon: `${BASE_URL}images/dishes/bebida-limon.jpg`,
   bebidaHorchata: `${BASE_URL}images/dishes/bebida-horchata.jpg`,
-  bebidaRefresco: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
+  bebidaCocaCola: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
+  bebidaFanta: `${BASE_URL}images/dishes/bebida-limon.jpg`,
+  bebidaSidral: `${BASE_URL}images/dishes/bebida-horchata.jpg`,
+  bebidaPenafiel: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
 }
 
 const beverages = {
   title: 'Bebidas artesanales',
-  description: 'Acompaña tu pasta con aguas artesanales o refrescos del menú actual.',
+  description: 'Acompaña tu pasta con aguas artesanales o refrescos del menú actualizado.',
   sections: [
     {
       title: 'Aguas artesanales',
-      description: 'Aguas artesanales con personalidad propia para acompañar la fusión México–italiana.',
+      description: 'Jamaica, horchata y limón con chía para acompañar tu pasta con un toque fresco.',
       items: [
-        { name: 'Limón con chía', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaLimon },
-        { name: 'Horchata', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaHorchata },
         { name: 'Jamaica', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaJamaica },
+        { name: 'Horchata', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaHorchata },
+        { name: 'Limón con chía', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaLimon },
       ],
     },
     {
       title: 'Refrescos',
-      description: 'Refrescos clásicos para quienes prefieren una opción tradicional.',
+      description: 'Refrescos del menú actual para quienes prefieren una opción clásica.',
       items: [
-        { name: 'Coca Cola', description: 'Refresco frío.', price: '$35', image: DISH_IMAGES.bebidaRefresco },
+        { name: 'Coca Cola', description: 'Refresco frío.', price: '$40', image: DISH_IMAGES.bebidaCocaCola },
+        { name: 'Fanta', description: 'Refresco frío.', price: '$40', image: DISH_IMAGES.bebidaFanta },
+        { name: 'Sidral Mundet', description: 'Refresco frío.', price: '$40', image: DISH_IMAGES.bebidaSidral },
+        { name: 'Agua mineral Peñafiel', description: 'Refresco frío.', price: '$40', image: DISH_IMAGES.bebidaPenafiel },
       ],
     },
   ],
@@ -98,7 +104,7 @@ const beverages = {
 
 const HERO_IMAGE = `${BASE_URL}images/hero/spaguetti-servido.jpg`
 
-const featuredPhrases = ['Pasta fresca artesanal', 'Recetas hechas al momento', 'Pedidos por WhatsApp']
+const featuredPhrases = ['Pasta fresca artesanal', 'Menú actualizado', 'Pedidos por WhatsApp']
 
 const signatureDishes = [
   {
@@ -191,14 +197,14 @@ const orderChannels = [
 function LogoMark() {
   return (
     <>
-      <img className="logo-image" src={`${BASE_URL}logo-white-clean.png`} alt="Logo de La Mia Pasta" />
-      <span className="logo-slogan" aria-label="Pasión por la pasta">
+      <img className="logo-image" src={`${BASE_URL}logo-dark.png`} alt="Logo de La Mia Pasta" />
+      <span className="logo-slogan" aria-label="Menú actualizado y listísimo para pedir">
         <span className="logo-slogan__flag" aria-hidden="true">
           <span className="logo-slogan__green" />
           <span className="logo-slogan__white" />
           <span className="logo-slogan__red" />
         </span>
-        <span className="logo-slogan__text">Pasión por la pasta</span>
+        <span className="logo-slogan__text">Menú actualizado y listísimo para pedir</span>
       </span>
     </>
   )
@@ -291,12 +297,6 @@ function App() {
   )
 
   const activeMobileSection = mobileMenuCategories.find((category) => category.title === activeMobileCategory) ?? mobileMenuCategories[0]
-
-  useEffect(() => {
-    if (activeMobileCategory === 'Bebidas') {
-      setActiveMobileCategory('Bebidas artesanales')
-    }
-  }, [activeMobileCategory])
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -441,6 +441,27 @@ function App() {
               <span className="menu-heading__line menu-heading__line--red" />
             </div>
           </div>
+
+          <section className="about-section about-section--mobile" id="nosotros">
+            <div className="section-heading section-heading--narrow">
+              <p className="eyebrow">Nosotros</p>
+              <h2>La esencia de La Mia Pasta vive en cada receta, en su identidad visual y en la manera cercana de compartir la mesa.</h2>
+            </div>
+            <div className="about-grid">
+              <article className="about-card">
+                <h3>Misión</h3>
+                <p>{aboutContent.mission}</p>
+              </article>
+              <article className="about-card">
+                <h3>Visión</h3>
+                <p>{aboutContent.vision}</p>
+              </article>
+              <article className="about-card about-card--wide">
+                <h3>Significado del logotipo</h3>
+                <p>{aboutContent.logoMeaning}</p>
+              </article>
+            </div>
+          </section>
 
           <div className="mobile-menu-experience" aria-label="Menú móvil por categorías">
             <div className="mobile-menu-experience__header">
@@ -588,7 +609,7 @@ function App() {
               </div>
             ))}
 
-            <section className="about-section" id="nosotros">
+            <section className="about-section about-section--desktop" id="nosotros-desktop">
               <div className="section-heading section-heading--narrow">
                 <p className="eyebrow">Nosotros</p>
                 <h2>La esencia de La Mia Pasta vive en cada receta, en su identidad visual y en la manera cercana de compartir la mesa.</h2>
