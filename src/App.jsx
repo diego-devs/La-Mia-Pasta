@@ -70,33 +70,34 @@ const DISH_IMAGES = {
   bebidaJamaica: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
   bebidaLimon: `${BASE_URL}images/dishes/bebida-limon.jpg`,
   bebidaHorchata: `${BASE_URL}images/dishes/bebida-horchata.jpg`,
-  bebidaCocaCola: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
-  bebidaFanta: `${BASE_URL}images/dishes/bebida-limon.jpg`,
-  bebidaSidral: `${BASE_URL}images/dishes/bebida-horchata.jpg`,
-  bebidaPenafiel: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
+  bebidaCocaCola: `${BASE_URL}images/dishes/refresco-coca-cola-lata.png`,
+  bebidaFanta: `${BASE_URL}images/dishes/refresco-fanta-lata.png`,
+  bebidaSidral: `${BASE_URL}images/dishes/refresco-sidral-mundet-lata.png`,
+  bebidaPenafiel: `${BASE_URL}images/dishes/refresco-penafiel-lata.png`,
 }
 
 const beverages = {
-  title: 'Bebidas artesanales',
-  description: 'Acompaña tu pasta con aguas artesanales o refrescos del menú actualizado.',
+  eyebrow: 'Bebidas artesanales',
+  title: 'Bebidas',
+  description: 'El complemento perfecto para tu pasta.',
   sections: [
     {
       title: 'Aguas artesanales',
-      description: 'Jamaica, horchata y limón con chía para acompañar tu pasta con un toque fresco.',
+      description: '',
       items: [
-        { name: 'Jamaica', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaJamaica },
-        { name: 'Horchata', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaHorchata },
-        { name: 'Limón con chía', description: 'Agua artesanal fría.', price: '$35', image: DISH_IMAGES.bebidaLimon },
+        { name: 'Limón con chía', description: '', price: '$35', image: DISH_IMAGES.bebidaLimon },
+        { name: 'Horchata', description: '', price: '$35', image: DISH_IMAGES.bebidaHorchata },
+        { name: 'Jamaica', description: '', price: '$35', image: DISH_IMAGES.bebidaJamaica },
       ],
     },
     {
       title: 'Refrescos',
-      description: 'Refrescos del menú actual para quienes prefieren una opción clásica.',
+      description: 'Tus refrescos favoritos.',
       items: [
-        { name: 'Coca Cola', description: 'Refresco frío.', price: '$40', image: DISH_IMAGES.bebidaCocaCola },
-        { name: 'Fanta', description: 'Refresco frío.', price: '$40', image: DISH_IMAGES.bebidaFanta },
-        { name: 'Sidral Mundet', description: 'Refresco frío.', price: '$40', image: DISH_IMAGES.bebidaSidral },
-        { name: 'Agua mineral Peñafiel', description: 'Refresco frío.', price: '$40', image: DISH_IMAGES.bebidaPenafiel },
+        { name: 'Coca Cola', description: '', price: '$40', image: DISH_IMAGES.bebidaCocaCola },
+        { name: 'Fanta', description: '', price: '$40', image: DISH_IMAGES.bebidaFanta },
+        { name: 'Sidral Mundet', description: '', price: '$40', image: DISH_IMAGES.bebidaSidral },
+        { name: 'Agua mineral Peñafiel', description: '', price: '$40', image: DISH_IMAGES.bebidaPenafiel },
       ],
     },
   ],
@@ -104,16 +105,9 @@ const beverages = {
 
 const HERO_IMAGE = `${BASE_URL}images/hero/spaguetti-servido.jpg`
 
-const featuredPhrases = ['Pasta fresca artesanal', 'Menú actualizado', 'Pedidos por WhatsApp']
+const featuredPhrases = ['Pasta fresca artesanal', 'Sabores México–italianos', 'Pedidos por WhatsApp']
 
 const signatureDishes = [
-  {
-    name: 'Spaguetti boloñesa',
-    category: 'Clásico reconfortante',
-    description: 'Una receta cálida y generosa con salsa boloñesa, parmesano y ese sabor casero que siempre se antoja.',
-    price: '$130',
-    image: DISH_IMAGES.spaguettiBolognesa,
-  },
   {
     name: 'Spaguetti boloñesa con albóndigas',
     category: 'Con proteína',
@@ -128,19 +122,12 @@ const signatureDishes = [
     price: '$160',
     image: DISH_IMAGES.fetucciniPoblanoPollo,
   },
-  {
-    name: 'Penne chipotle con chuleta ahumada',
-    category: 'Toque mexicano',
-    description: 'Una combinación cremosa y ligeramente picante con chuleta ahumada, pensada para quienes quieren pasta con personalidad.',
-    price: '$160',
-    image: DISH_IMAGES.penneChipotleChuleta,
-  },
 ]
 
 const menuSections = [
   {
     title: 'Tradicional',
-    description: 'Pastas base de la casa con perfil italiano y guiños mexicanos como poblano y chipotle.',
+    description: 'Las recetas base de la casa: pasta fresca, salsas caseras y combinaciones que siempre se antojan.',
     items: [
       { name: 'Spaguetti boloñesa', description: '300 g de pasta fresca acompañada de 8 oz de salsa boloñesa y una pieza de pan, finalizada con queso parmesano y perejil.', price: '$130' },
       { name: 'Penne champiñones', description: '300 g de pasta fresca acompañada de 8 oz de salsa de champiñones y una pieza de pan, finalizada con queso parmesano y perejil.', price: '$130' },
@@ -151,7 +138,7 @@ const menuSections = [
   },
   {
     title: 'Especialidades',
-    description: 'Versiones más completas con proteína, más intensidad y ese sello casero de la casa.',
+    description: 'Versiones más completas con proteína y ese toque protagonista que distingue a La Mia Pasta.',
     items: [
       { name: 'Spaguetti boloñesa con albóndigas', description: '300 g de pasta fresca acompañada de 8 oz de salsa boloñesa, 80 g de proteína y una pieza de pan, finalizada con queso parmesano y perejil.', price: '$160' },
       { name: 'Penne champiñones con camarones', description: '300 g de pasta fresca acompañada de 8 oz de salsa de champiñones, 80 g de proteína y una pieza de pan, finalizada con queso parmesano y perejil.', price: '$170' },
@@ -197,14 +184,14 @@ const orderChannels = [
 function LogoMark() {
   return (
     <>
-      <img className="logo-image" src={`${BASE_URL}logo-dark.png`} alt="Logo de La Mia Pasta" />
+      <img className="logo-image" src={`${BASE_URL}logo-white-clean.png`} alt="Logo de La Mia Pasta" />
       <span className="logo-slogan" aria-label="Menú actualizado y listísimo para pedir">
         <span className="logo-slogan__flag" aria-hidden="true">
           <span className="logo-slogan__green" />
           <span className="logo-slogan__white" />
           <span className="logo-slogan__red" />
         </span>
-        <span className="logo-slogan__text">Menú actualizado y listísimo para pedir</span>
+        <span className="logo-slogan__text">Pastas con alma italiana y sabor mexicano</span>
       </span>
     </>
   )
@@ -243,7 +230,7 @@ function App() {
         title: 'Tradicional',
         shortLabel: 'Tradicional',
         icon: '◌',
-        description: 'Nuestras recetas base con sabor casero y toque italo-mexicano.',
+        description: 'Las recetas base de la casa con pasta fresca y salsas que siempre se antojan.',
         items: menuSections[0].items.map((item) => ({
           ...item,
           image:
@@ -262,7 +249,7 @@ function App() {
         title: 'Especialidades',
         shortLabel: 'Especiales',
         icon: '✦',
-        description: 'Versiones más completas y protagonistas, listas para pedir.',
+        description: 'Versiones más completas con proteína y una presencia más protagonista.',
         items: menuSections[1].items.map((item) => ({
           ...item,
           image:
@@ -287,6 +274,7 @@ function App() {
       {
         title: beverages.title,
         shortLabel: 'Bebidas',
+        eyebrow: beverages.eyebrow,
         icon: '◒',
         description: beverages.description,
         sections: beverages.sections,
@@ -326,7 +314,7 @@ function App() {
     { href: '#inicio', label: 'Inicio' },
     { href: '#especialidades', label: 'Especialidades' },
     { href: '#menu', label: 'Menú' },
-    { href: '#nosotros', label: 'Nosotros' },
+    { href: '#nosotros-desktop', label: 'Nosotros' },
     { href: '#contacto', label: 'Contacto' },
   ]
 
@@ -335,7 +323,14 @@ function App() {
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank', 'noopener,noreferrer')
   }
 
-  const handleNavClick = () => setMenuOpen(false)
+  const handleNavClick = (event, href) => {
+    setMenuOpen(false)
+
+    if (href !== '#nosotros-desktop') return
+
+    event.preventDefault()
+    document.getElementById('nosotros-desktop')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
   const openChat = () => setChatOpen(true)
   const closeChat = () => setChatOpen(false)
 
@@ -368,7 +363,7 @@ function App() {
 
         <div className={`nav-drawer ${menuOpen ? 'nav-drawer--open' : ''}`} id="site-navigation">
           {navItems.map((item) => (
-            <a href={item.href} key={item.href} onClick={handleNavClick}>
+            <a href={item.href} key={item.href} onClick={(event) => handleNavClick(event, item.href)}>
               {item.label}
             </a>
           ))}
@@ -433,35 +428,14 @@ function App() {
         <section className="section menu-section" id="menu">
           <div className="section-heading menu-heading">
             <p className="eyebrow">Menú</p>
-            <h2>Pastas tradicionales, especialidades, extras y bebidas con una propuesta México–italiana fácil de pedir y difícil de olvidar.</h2>
-            <p className="menu-heading__intro">Explora por categorías y descubre una carta visual, clara y antojable pensada para móvil.</p>
+            <h2>Pastas tradicionales, especialidades, extras y bebidas con el sabor de México e Italia, fáciles de pedir y difíciles de olvidar.</h2>
+            <p className="menu-heading__intro">Elige tu favorito y disfruta una experiencia llena de sabor.</p>
             <div className="menu-heading__accent" aria-hidden="true">
               <span className="menu-heading__line menu-heading__line--green" />
               <span className="menu-heading__line menu-heading__line--white" />
               <span className="menu-heading__line menu-heading__line--red" />
             </div>
           </div>
-
-          <section className="about-section about-section--mobile" id="nosotros">
-            <div className="section-heading section-heading--narrow">
-              <p className="eyebrow">Nosotros</p>
-              <h2>La esencia de La Mia Pasta vive en cada receta, en su identidad visual y en la manera cercana de compartir la mesa.</h2>
-            </div>
-            <div className="about-grid">
-              <article className="about-card">
-                <h3>Misión</h3>
-                <p>{aboutContent.mission}</p>
-              </article>
-              <article className="about-card">
-                <h3>Visión</h3>
-                <p>{aboutContent.vision}</p>
-              </article>
-              <article className="about-card about-card--wide">
-                <h3>Significado del logotipo</h3>
-                <p>{aboutContent.logoMeaning}</p>
-              </article>
-            </div>
-          </section>
 
           <div className="mobile-menu-experience" aria-label="Menú móvil por categorías">
             <div className="mobile-menu-experience__header">
@@ -491,7 +465,7 @@ function App() {
             <article className="mobile-category-panel" aria-live="polite">
               <div className="mobile-category-panel__top">
                 <div>
-                  <p className="mobile-category-panel__eyebrow">{activeMobileSection.title}</p>
+                  <p className="mobile-category-panel__eyebrow">{activeMobileSection.eyebrow ?? activeMobileSection.title}</p>
                   <h3>{activeMobileSection.shortLabel}</h3>
                 </div>
                 <span className="mobile-category-panel__count">{activeMobileSection.items.length} opciones</span>
@@ -503,9 +477,11 @@ function App() {
                   ? activeMobileSection.sections.map((section) => (
                       <section className="mobile-menu-subsection" key={`${activeMobileSection.title}-${section.title}`}>
                         <div className="mobile-menu-subsection__header">
+                          <span className="mobile-menu-subsection__line" aria-hidden="true" />
                           <h4>{section.title}</h4>
-                          <p>{section.description}</p>
+                          <span className="mobile-menu-subsection__line" aria-hidden="true" />
                         </div>
+                        {section.description ? <p className="mobile-menu-subsection__description">{section.description}</p> : null}
                         <div className="mobile-menu-cards">
                           {section.items.map((item) => (
                             <article className="mobile-menu-card" key={`${section.title}-${item.name}`}>
@@ -517,7 +493,7 @@ function App() {
                                   <h4>{item.name}</h4>
                                   <span>{item.price}</span>
                                 </div>
-                                <p>{item.description}</p>
+                                {item.description ? <p>{item.description}</p> : null}
                               </div>
                             </article>
                           ))}
@@ -644,19 +620,25 @@ function App() {
               </div>
 
               <div className="menu-side" key={beverages.title}>
-                <div className="menu-block__header">
-                  <h3>{beverages.title}</h3>
-                  <p>{beverages.description}</p>
-                </div>
-                {beverages.sections.map((section) => (
-                  <div className="menu-subsection" key={section.title}>
-                    <div className="menu-subsection__header">
-                      <h4>{section.title}</h4>
-                      <p>{section.description}</p>
+                    <div className="menu-block__header menu-block__header--beverages">
+                      <div>
+                        <p className="eyebrow">{beverages.eyebrow}</p>
+                        <h3>{beverages.title}</h3>
+                        <p>{beverages.description}</p>
+                      </div>
+                      <span className="menu-block__count">{beverages.sections.flatMap((section) => section.items).length} opciones</span>
                     </div>
-                    <div className="menu-grid menu-grid--compact">
-                      {section.items.map((item) => (
-                        <MenuItem item={item} key={item.name} />
+                    {beverages.sections.map((section) => (
+                      <div className="menu-subsection" key={section.title}>
+                        <div className="menu-subsection__header">
+                          <span className="menu-subsection__line" aria-hidden="true" />
+                          <h4>{section.title}</h4>
+                          <span className="menu-subsection__line" aria-hidden="true" />
+                        </div>
+                        {section.description ? <p className="menu-subsection__description">{section.description}</p> : null}
+                        <div className="menu-grid menu-grid--compact">
+                          {section.items.map((item) => (
+                            <MenuItem item={item} key={item.name} />
                       ))}
                     </div>
                   </div>

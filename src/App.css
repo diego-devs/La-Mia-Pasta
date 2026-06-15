@@ -697,6 +697,29 @@ svg {
   margin-bottom: 18px;
 }
 
+.menu-block__header--beverages {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.menu-block__count {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 170, 114, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink-soft);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .menu-block__header h3 {
   font-size: clamp(2rem, 6vw, 3rem);
 }
@@ -704,6 +727,36 @@ svg {
 .menu-block__header p {
   margin-top: 10px;
   max-width: 38rem;
+}
+
+.menu-subsection__header,
+.mobile-menu-subsection__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+}
+
+.menu-subsection__line,
+.mobile-menu-subsection__line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(212, 170, 114, 0.2);
+}
+
+.menu-subsection__header h4,
+.mobile-menu-subsection__header h4 {
+  margin: 0;
+  color: var(--gold);
+  text-align: center;
+}
+
+.menu-subsection__description,
+.mobile-menu-subsection__description {
+  margin: 12px 0 0;
+  text-align: center;
+  color: var(--ink-soft);
 }
 
 .menu-grid,
@@ -1997,6 +2050,11 @@ svg {
     line-height: 1.58;
   }
 
+  .mobile-menu-subsection {
+    display: grid;
+    gap: 14px;
+  }
+
   .mobile-menu-cards {
     display: grid;
     gap: 14px;
@@ -2047,6 +2105,12 @@ svg {
     color: var(--gold);
     font-weight: 700;
     white-space: nowrap;
+  }
+
+  .mobile-menu-card__body:has(p:empty),
+  .mobile-menu-subsection__description:empty,
+  .menu-subsection__description:empty {
+    display: none;
   }
 
   .signature-section {

@@ -23,7 +23,7 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('heading', { level: 1, name: /pasta fresca con alma italiana y sabores mexicanos/i })).toBeInTheDocument()
     expect(screen.getByText(/elegantes a la vista y fáciles de pedir para disfrutar en casa/i)).toBeInTheDocument()
     expect(screen.getAllByRole('button', { name: /pedidos por whatsapp/i }).length).toBeGreaterThan(0)
-    expect(screen.getByRole('heading', { level: 2, name: /pastas tradicionales, especialidades, extras y bebidas/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: /pastas tradicionales, especialidades, extras y bebidas con el sabor de méxico e italia, fáciles de pedir y difíciles de olvidar/i })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /^pedir ahora$/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /ver menú completo/i })).toHaveAttribute('href', '/LA_MIA_PASTA.pdf')
     expect(screen.getByText(/encuéntranos en/i)).toBeInTheDocument()
@@ -52,7 +52,7 @@ describe('La Mia Pasta main page regression coverage', () => {
     fireEvent.click(within(tablist).getByRole('tab', { name: /bebidas/i }))
 
     expect(within(tablist).getByRole('tab', { name: /bebidas/i })).toHaveAttribute('aria-selected', 'true')
-    expect(screen.getByText(/7 opciones/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/7 opciones/i)).not.toHaveLength(0)
     expect(screen.getByRole('heading', { level: 4, name: /^jamaica$/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /^horchata$/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /^fanta$/i })).toBeInTheDocument()
@@ -87,15 +87,15 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('heading', { level: 4, name: /camarones/i })).toBeInTheDocument()
   })
 
-  it('renders specialties, nosotros content and desktop ordering options', () => {
+  it('renders specialties, desktop nosotros content and desktop ordering options', () => {
     render(<App />)
 
     expect(screen.getAllByText(/fetuccini poblano con pollo/i).length).toBeGreaterThan(0)
     expect(screen.getAllByRole('link', { name: /^nosotros$/i }).length).toBeGreaterThan(0)
-    expect(screen.getAllByText(/^nosotros$/i).length).toBeGreaterThan(1)
-    expect(screen.getAllByText(/misión/i).length).toBeGreaterThan(0)
-    expect(screen.getAllByText(/visión/i).length).toBeGreaterThan(0)
-    expect(screen.getAllByText(/significado del logotipo/i).length).toBeGreaterThan(0)
+    expect(screen.getByText(/^nosotros$/i, { selector: 'p' })).toBeInTheDocument()
+    expect(screen.getByText(/misión/i)).toBeInTheDocument()
+    expect(screen.getByText(/visión/i)).toBeInTheDocument()
+    expect(screen.getByText(/significado del logotipo/i)).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 3, name: /cómo ordenar/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /pide y recoge/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /entrega a domicilio/i })).toBeInTheDocument()
@@ -116,6 +116,17 @@ describe('La Mia Pasta main page regression coverage', () => {
     fireEvent.click(screen.getByRole('link', { name: /^menú$/i }))
 
     expect(screen.getByRole('button', { name: /abrir menú/i })).toHaveAttribute('aria-expanded', 'false')
+  })
+
+  it('keeps nosotros out of the menu flow until the nav link is selected', () => {
+    window.HTMLElement.prototype.scrollIntoView = vi.fn()
+    render(<App />)
+
+    expect(screen.queryByText(/^nosotros$/i, { selector: 'p' })).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('link', { name: /^nosotros$/i }))
+
+    expect(window.HTMLElement.prototype.scrollIntoView).toHaveBeenCalled()
   })
 
   it('renders the floating WhatsApp button icon smaller and inheriting white fill', () => {
