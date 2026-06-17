@@ -746,7 +746,7 @@ function App() {
         </div>
 
         <div className="footer__actions">
-          <a className="button button--ghost" href={PDF_MENU_PATH} target="_blank" rel="noreferrer" download={DOWNLOADABLE_MENU_FILENAME}>
+          <a className="button button--ghost" href={PDF_MENU_PATH} target="_blank" rel="noreferrer">
             Ver menú completo
           </a>
           <button className="button button--primary" type="button" onClick={openChat}>
