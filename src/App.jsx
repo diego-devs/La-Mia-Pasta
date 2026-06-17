@@ -94,10 +94,10 @@ const beverages = {
       title: 'Refrescos',
       description: 'Tus refrescos favoritos.',
       items: [
-        { name: 'Coca Cola', description: '', price: '$40', image: DISH_IMAGES.bebidaCocaCola },
-        { name: 'Fanta', description: '', price: '$40', image: DISH_IMAGES.bebidaFanta },
-        { name: 'Sidral Mundet', description: '', price: '$40', image: DISH_IMAGES.bebidaSidral },
-        { name: 'Agua mineral Peñafiel', description: '', price: '$40', image: DISH_IMAGES.bebidaPenafiel },
+        { name: 'Coca Cola', description: '', price: '$40' },
+        { name: 'Fanta', description: '', price: '$40' },
+        { name: 'Sidral Mundet', description: '', price: '$40' },
+        { name: 'Agua mineral Peñafiel', description: '', price: '$40' },
       ],
     },
   ],
@@ -485,9 +485,11 @@ function App() {
                         <div className="mobile-menu-cards">
                           {section.items.map((item) => (
                             <article className="mobile-menu-card" key={`${section.title}-${item.name}`}>
-                              <div className="mobile-menu-card__media">
-                                <img src={item.image} alt={item.name} />
-                              </div>
+                              {item.image ? (
+                                <div className="mobile-menu-card__media">
+                                  <img src={item.image} alt={item.name} />
+                                </div>
+                              ) : null}
                               <div className="mobile-menu-card__body">
                                 <div className="mobile-menu-card__top">
                                   <h4>{item.name}</h4>

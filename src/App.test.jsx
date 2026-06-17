@@ -76,6 +76,10 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('heading', { level: 4, name: /^sidral mundet$/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /agua mineral peñafiel/i })).toBeInTheDocument()
 
+    const refrescosSection = screen.getAllByRole('heading', { level: 4, name: /^refrescos$/i })[0].closest('section')
+    expect(refrescosSection).not.toBeNull()
+    expect(refrescosSection.querySelectorAll('img')).toHaveLength(0)
+
     fireEvent.click(within(tablist).getByRole('tab', { name: /especiales/i }))
 
     expect(screen.queryByRole('heading', { level: 4, name: /^spaguetti boloñesa$/i })).not.toBeInTheDocument()
