@@ -191,7 +191,7 @@ function LogoMark() {
           <span className="logo-slogan__white" />
           <span className="logo-slogan__red" />
         </span>
-        <span className="logo-slogan__text">Pastas con alma italiana y sabor mexicano</span>
+        <span className="logo-slogan__text">pasión por la pasta</span>
       </span>
     </>
   )
