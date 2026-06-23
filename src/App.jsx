@@ -10,11 +10,9 @@ const DOWNLOADABLE_MENU_FILENAME = 'La_Mia_Pasta_Menu_Sin_Bordes_v2.pdf'
 
 const aboutContent = {
   mission:
-    'Crear experiencias reconfortantes con pasta fresca y sazón casera, combinando el alma italiana con sabores mexicanos en cada pedido.',
+    'Ofrecer una experiencia gastronómica única que fusiona la tradición de la pasta italiana con la riqueza de los sabores mexicanos, elaborando productos de alta calidad con dedicación artesanal para disfrutar en cualquier momento.',
   vision:
-    'Ser una referencia local de pasta hecha con pasión, reconocida por su identidad cálida, su propuesta México–italiana y su cercanía con cada cliente.',
-  logoMeaning:
-    'El logotipo representa la identidad de La Mia Pasta: una firma visual elegante que celebra la pasión por la pasta y la unión de inspiración italiana con carácter mexicano.',
+    'Ser la marca que transforme la manera en que México disfruta la pasta, haciendo accesible una experiencia gastronómica de calidad a través de puntos de venta innovadores y productos listos para consumir, presentes en millones de hogares.',
 }
 
 const SOCIAL_LINKS = [
@@ -394,9 +392,7 @@ function App() {
             <h1>
               Pasta fresca con alma <span className="hero__word hero__word--italiana">italiana</span> y sabores <span className="hero__word hero__word--mexicanos">mexicanos</span> que se disfrutan desde el primer bocado.
             </h1>
-            <p className="hero__lead">
-              Recetas caseras con una personalidad cuidada, elegantes a la vista y fáciles de pedir para disfrutar en casa.
-            </p>
+            <p className="hero__lead">Dos culturas. Un mismo sabor.</p>
 
             <div className="hero__actions">
               <button className="button button--whatsapp" type="button" onClick={openChat}>
@@ -600,10 +596,6 @@ function App() {
                 <article className="about-card">
                   <h3>Visión</h3>
                   <p>{aboutContent.vision}</p>
-                </article>
-                <article className="about-card about-card--wide">
-                  <h3>Significado del logotipo</h3>
-                  <p>{aboutContent.logoMeaning}</p>
                 </article>
               </div>
             </section>
