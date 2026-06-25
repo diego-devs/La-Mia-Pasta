@@ -68,10 +68,10 @@ const DISH_IMAGES = {
   bebidaJamaica: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
   bebidaLimon: `${BASE_URL}images/dishes/bebida-limon.jpg`,
   bebidaHorchata: `${BASE_URL}images/dishes/bebida-horchata.jpg`,
-  bebidaCocaCola: `${BASE_URL}images/dishes/refresco-coca-cola-lata.png`,
-  bebidaFanta: `${BASE_URL}images/dishes/refresco-fanta-lata.png`,
-  bebidaSidral: `${BASE_URL}images/dishes/refresco-sidral-mundet-lata.png`,
-  bebidaPenafiel: `${BASE_URL}images/dishes/refresco-penafiel-lata.png`,
+  bebidaCocaCola: 'https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg',
+  bebidaFanta: 'https://upload.wikimedia.org/wikipedia/commons/6/62/Fanta_logo_%282009%29.svg',
+  bebidaSidral: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Glass_of_apple_cider_%28transparent%29.png/640px-Glass_of_apple_cider_%28transparent%29.png',
+  bebidaPenafiel: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Bottled_water.jpg/640px-Bottled_water.jpg',
 }
 
 const beverages = {
@@ -92,10 +92,10 @@ const beverages = {
       title: 'Refrescos',
       description: 'Tus refrescos favoritos.',
       items: [
-        { name: 'Coca Cola', description: '', price: '$40' },
-        { name: 'Fanta', description: '', price: '$40' },
-        { name: 'Sidral Mundet', description: '', price: '$40' },
-        { name: 'Agua mineral Peñafiel', description: '', price: '$40' },
+        { name: 'Coca Cola', description: '', price: '$40', image: DISH_IMAGES.bebidaCocaCola },
+        { name: 'Fanta', description: '', price: '$40', image: DISH_IMAGES.bebidaFanta },
+        { name: 'Sidral Mundet', description: '', price: '$40', image: DISH_IMAGES.bebidaSidral },
+        { name: 'Agua mineral Peñafiel', description: '', price: '$40', image: DISH_IMAGES.bebidaPenafiel },
       ],
     },
   ],
@@ -178,6 +178,11 @@ const orderChannels = [
     ],
   },
 ]
+
+const publicSodaImageMap = {
+  'Coca Cola': 'https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg',
+  Fanta: 'https://upload.wikimedia.org/wikipedia/commons/6/62/Fanta_logo_%282009%29.svg',
+}
 
 function LogoMark() {
   return (
@@ -275,8 +280,19 @@ function App() {
         eyebrow: beverages.eyebrow,
         icon: '◒',
         description: beverages.description,
-        sections: beverages.sections,
-        items: beverages.sections.flatMap((section) => section.items),
+        sections: beverages.sections.map((section) => ({
+          ...section,
+          items: section.items.map((item) => ({
+            ...item,
+            image: publicSodaImageMap[item.name] ?? item.image,
+          })),
+        })),
+        items: beverages.sections.flatMap((section) =>
+          section.items.map((item) => ({
+            ...item,
+            image: publicSodaImageMap[item.name] ?? item.image,
+          })),
+        ),
       },
     ],
     [],
@@ -514,6 +530,23 @@ function App() {
                     ))}
               </div>
             </article>
+
+            <section className="about-section about-section--mobile" id="nosotros-desktop">
+              <div className="mobile-menu-experience__header">
+                <p className="mobile-menu-experience__eyebrow">Nosotros</p>
+                <h3>La esencia de La Mia Pasta vive en cada receta, en su identidad visual y en la manera cercana de compartir la mesa.</h3>
+              </div>
+              <div className="about-grid">
+                <article className="about-card">
+                  <h3>Misión</h3>
+                  <p>{aboutContent.mission}</p>
+                </article>
+                <article className="about-card">
+                  <h3>Visión</h3>
+                  <p>{aboutContent.vision}</p>
+                </article>
+              </div>
+            </section>
 
             <div className="mobile-specialties" id="especialidades">
               <div className="mobile-menu-experience__header">
