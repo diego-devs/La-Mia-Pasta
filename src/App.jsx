@@ -68,10 +68,10 @@ const DISH_IMAGES = {
   bebidaJamaica: `${BASE_URL}images/dishes/bebida-jamaica.jpg`,
   bebidaLimon: `${BASE_URL}images/dishes/bebida-limon.jpg`,
   bebidaHorchata: `${BASE_URL}images/dishes/bebida-horchata.jpg`,
-  bebidaCocaCola: 'https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg',
-  bebidaFanta: 'https://upload.wikimedia.org/wikipedia/commons/6/62/Fanta_logo_%282009%29.svg',
-  bebidaSidral: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Glass_of_apple_cider_%28transparent%29.png/640px-Glass_of_apple_cider_%28transparent%29.png',
-  bebidaPenafiel: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Bottled_water.jpg/640px-Bottled_water.jpg',
+  bebidaCocaCola: `${BASE_URL}images/dishes/refresco-coca-cola-lata.png`,
+  bebidaFanta: `${BASE_URL}images/dishes/refresco-fanta-lata.png`,
+  bebidaSidral: `${BASE_URL}images/dishes/refresco-sidral-mundet-lata.png`,
+  bebidaPenafiel: `${BASE_URL}images/dishes/refresco-penafiel-lata.png`,
 }
 
 const beverages = {
@@ -94,7 +94,7 @@ const beverages = {
       items: [
         { name: 'Coca Cola', description: '', price: '$40', image: DISH_IMAGES.bebidaCocaCola },
         { name: 'Fanta', description: '', price: '$40', image: DISH_IMAGES.bebidaFanta },
-        { name: 'Sidral Mundet', description: '', price: '$40', image: DISH_IMAGES.bebidaSidral },
+        { name: 'Sidral Mundet', description: '', price: '$40' },
         { name: 'Agua mineral Peñafiel', description: '', price: '$40', image: DISH_IMAGES.bebidaPenafiel },
       ],
     },
