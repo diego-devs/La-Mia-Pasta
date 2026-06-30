@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import '@testing-library/jest-dom/vitest'
 import App from './App'
 
@@ -87,11 +87,12 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('heading', { level: 4, name: /agua mineral peñafiel/i })).toBeInTheDocument()
 
     const refrescosHeading = screen.getAllByRole('heading', { level: 4, name: /^refrescos$/i })[0]
-    const refrescosSection = refrescosHeading.parentElement
+    const refrescosSection = refrescosHeading.closest('section')
     expect(refrescosSection).not.toBeNull()
-    expect(within(refrescosSection).queryByRole('img', { name: /^coca cola$/i })).not.toBeInTheDocument()
-    expect(within(refrescosSection).queryByRole('img', { name: /^fanta$/i })).not.toBeInTheDocument()
-    expect(within(refrescosSection).queryByRole('img', { name: /^sidral mundet$/i })).not.toBeInTheDocument()
+    expect(within(refrescosSection).getByRole('img', { name: /^coca cola$/i })).toBeInTheDocument()
+    expect(within(refrescosSection).getByRole('img', { name: /^fanta$/i })).toBeInTheDocument()
+    expect(within(refrescosSection).getByRole('img', { name: /^sidral mundet$/i })).toBeInTheDocument()
+    expect(within(refrescosSection).getByRole('img', { name: /agua mineral peñafiel/i })).toBeInTheDocument()
 
     fireEvent.click(within(tablist).getByRole('tab', { name: /especiales/i }))
 
@@ -104,16 +105,16 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('heading', { level: 4, name: /camarones/i })).toBeInTheDocument()
   })
 
-  it('renders specialties, desktop nosotros content and desktop ordering options', () => {
+  it('renders specialties and desktop ordering options while omitting nosotros mission and vision by default', () => {
     render(<App />)
 
     expect(screen.getAllByText(/fetuccini poblano con pollo/i).length).toBeGreaterThan(0)
     expect(screen.getAllByRole('link', { name: /^nosotros$/i }).length).toBeGreaterThan(0)
-    expect(screen.getAllByText(/^nosotros$/i, { selector: 'p' }).length).toBeGreaterThan(0)
-    expect(screen.getAllByText(/misión/i).length).toBeGreaterThan(0)
-    expect(screen.getAllByText(/visión/i).length).toBeGreaterThan(0)
+    expect(screen.queryAllByRole('heading', { level: 3, name: /misión/i })).toHaveLength(0)
+    expect(screen.queryAllByRole('heading', { level: 3, name: /visión/i })).toHaveLength(0)
+    expect(screen.queryByText(/la esencia de la mia pasta vive en cada receta/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/transforme la manera en que méxico disfruta la pasta/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/significado del logotipo/i)).not.toBeInTheDocument()
-    expect(screen.getAllByText(/transforme la manera en que méxico disfruta la pasta/i).length).toBeGreaterThan(0)
     expect(screen.getByRole('heading', { level: 3, name: /cómo ordenar/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /pide y recoge/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /entrega a domicilio/i })).toBeInTheDocument()
@@ -136,15 +137,30 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('button', { name: /abrir menú/i })).toHaveAttribute('aria-expanded', 'false')
   })
 
-  it('keeps nosotros out of the menu flow until the nav link is selected', () => {
+  it('reveals nosotros content only after the nav link is selected', async () => {
     window.HTMLElement.prototype.scrollIntoView = vi.fn()
     render(<App />)
 
+    expect(screen.queryAllByRole('heading', { level: 3, name: /misión/i })).toHaveLength(0)
+
+    fireEvent.click(screen.getAllByRole('link', { name: /^nosotros$/i })[0])
+
+    await waitFor(() => expect(window.HTMLElement.prototype.scrollIntoView).toHaveBeenCalled())
     expect(screen.getAllByText(/^nosotros$/i, { selector: 'p' }).length).toBeGreaterThan(0)
+    expect(screen.getAllByRole('heading', { level: 3, name: /misión/i }).length).toBeGreaterThan(0)
+    expect(screen.getAllByRole('heading', { level: 3, name: /visión/i }).length).toBeGreaterThan(0)
+  })
 
-    fireEvent.click(screen.getByRole('link', { name: /^nosotros$/i }))
+  it('renders the main logo with larger sizing classes on mobile and desktop', () => {
+    render(<App />)
 
-    expect(window.HTMLElement.prototype.scrollIntoView).toHaveBeenCalled()
+    const logos = screen.getAllByRole('img', { name: /logo de la mia pasta/i })
+
+    expect(logos.length).toBeGreaterThan(0)
+    logos.forEach((logo) => {
+      expect(logo).toHaveClass('logo-image')
+      expect(logo).toHaveAttribute('src', '/logo-white-clean.png')
+    })
   })
 
   it('renders the floating WhatsApp button icon smaller and inheriting white fill', () => {

@@ -94,7 +94,7 @@ const beverages = {
       items: [
         { name: 'Coca Cola', description: '', price: '$40', image: DISH_IMAGES.bebidaCocaCola },
         { name: 'Fanta', description: '', price: '$40', image: DISH_IMAGES.bebidaFanta },
-        { name: 'Sidral Mundet', description: '', price: '$40' },
+        { name: 'Sidral Mundet', description: '', price: '$40', image: DISH_IMAGES.bebidaSidral },
         { name: 'Agua mineral Peñafiel', description: '', price: '$40', image: DISH_IMAGES.bebidaPenafiel },
       ],
     },
@@ -232,6 +232,7 @@ function App() {
   const [chatOpen, setChatOpen] = useState(false)
   const [message, setMessage] = useState('Hola! Quiero hacer un pedido en La Mia Pasta.')
   const [activeMobileCategory, setActiveMobileCategory] = useState('Tradicional')
+  const [aboutVisible, setAboutVisible] = useState(false)
   const closeButtonRef = useRef(null)
 
   const mobileMenuCategories = useMemo(
@@ -347,10 +348,16 @@ function App() {
   const handleNavClick = (event, href) => {
     setMenuOpen(false)
 
-    if (href !== '#nosotros-desktop') return
+    if (href !== '#nosotros-desktop') {
+      return
+    }
 
     event.preventDefault()
-    document.getElementById('nosotros-desktop')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setAboutVisible(true)
+
+    requestAnimationFrame(() => {
+      document.getElementById('nosotros-desktop')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
   }
   const openChat = () => setChatOpen(true)
   const closeChat = () => setChatOpen(false)
@@ -537,22 +544,24 @@ function App() {
               </div>
             </article>
 
-            <section className="about-section about-section--mobile" id="nosotros-desktop">
-              <div className="mobile-menu-experience__header">
-                <p className="mobile-menu-experience__eyebrow">Nosotros</p>
-                <h3>La esencia de La Mia Pasta vive en cada receta, en su identidad visual y en la manera cercana de compartir la mesa.</h3>
-              </div>
-              <div className="about-grid">
-                <article className="about-card">
-                  <h3>Misión</h3>
-                  <p>{aboutContent.mission}</p>
-                </article>
-                <article className="about-card">
-                  <h3>Visión</h3>
-                  <p>{aboutContent.vision}</p>
-                </article>
-              </div>
-            </section>
+            {aboutVisible ? (
+              <section className="about-section about-section--mobile" id="nosotros-mobile">
+                <div className="mobile-menu-experience__header">
+                  <p className="mobile-menu-experience__eyebrow">Nosotros</p>
+                  <h3>La esencia de La Mia Pasta vive en cada receta, en su identidad visual y en la manera cercana de compartir la mesa.</h3>
+                </div>
+                <div className="about-grid">
+                  <article className="about-card">
+                    <h3>Misión</h3>
+                    <p>{aboutContent.mission}</p>
+                  </article>
+                  <article className="about-card">
+                    <h3>Visión</h3>
+                    <p>{aboutContent.vision}</p>
+                  </article>
+                </div>
+              </section>
+            ) : null}
 
             <div className="mobile-specialties" id="especialidades">
               <div className="mobile-menu-experience__header">
@@ -622,22 +631,24 @@ function App() {
               </div>
             ))}
 
-            <section className="about-section about-section--desktop" id="nosotros-desktop">
-              <div className="section-heading section-heading--narrow">
-                <p className="eyebrow">Nosotros</p>
-                <h2>La esencia de La Mia Pasta vive en cada receta, en su identidad visual y en la manera cercana de compartir la mesa.</h2>
-              </div>
-              <div className="about-grid">
-                <article className="about-card">
-                  <h3>Misión</h3>
-                  <p>{aboutContent.mission}</p>
-                </article>
-                <article className="about-card">
-                  <h3>Visión</h3>
-                  <p>{aboutContent.vision}</p>
-                </article>
-              </div>
-            </section>
+            {aboutVisible ? (
+              <section className="about-section about-section--desktop" id="nosotros-desktop">
+                <div className="section-heading section-heading--narrow">
+                  <p className="eyebrow">Nosotros</p>
+                  <h2>La esencia de La Mia Pasta vive en cada receta, en su identidad visual y en la manera cercana de compartir la mesa.</h2>
+                </div>
+                <div className="about-grid">
+                  <article className="about-card">
+                    <h3>Misión</h3>
+                    <p>{aboutContent.mission}</p>
+                  </article>
+                  <article className="about-card">
+                    <h3>Visión</h3>
+                    <p>{aboutContent.vision}</p>
+                  </article>
+                </div>
+              </section>
+            ) : null}
 
             <div className="menu-split">
               <div className="menu-side" key={complements[0].title}>
