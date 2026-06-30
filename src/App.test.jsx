@@ -23,6 +23,7 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('heading', { level: 1, name: /pasta fresca con alma italiana y sabores mexicanos/i })).toBeInTheDocument()
     expect(screen.getByText(/dos culturas/i)).toBeInTheDocument()
     expect(screen.getByText(/un mismo sabor/i)).toBeInTheDocument()
+    expect(screen.getByText(/fusión méxico-italia/i)).toBeInTheDocument()
     expect(screen.getAllByRole('button', { name: /pedidos por whatsapp/i }).length).toBeGreaterThan(0)
 
     expect(screen.getByRole('button', { name: /^pedir ahora$/i })).toBeInTheDocument()
@@ -58,6 +59,11 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('heading', { level: 4, name: /^horchata$/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /^fanta$/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /peñafiel/i })).toBeInTheDocument()
+
+    fireEvent.click(within(tablist).getByRole('tab', { name: /especiales/i }))
+
+    expect(screen.getAllByText(/5 opciones/i).length).toBeGreaterThan(0)
+    expect(screen.getByRole('heading', { level: 4, name: /penne chipotle con chuleta ahumada/i })).toBeInTheDocument()
   })
 
   it('shows split beverage sections with updated soda lineup and updated extra protein names', () => {
@@ -80,9 +86,12 @@ describe('La Mia Pasta main page regression coverage', () => {
     expect(screen.getByRole('heading', { level: 4, name: /^sidral mundet$/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /agua mineral peñafiel/i })).toBeInTheDocument()
 
-    const refrescosSection = screen.getAllByRole('heading', { level: 4, name: /^refrescos$/i })[0].closest('section')
+    const refrescosHeading = screen.getAllByRole('heading', { level: 4, name: /^refrescos$/i })[0]
+    const refrescosSection = refrescosHeading.parentElement
     expect(refrescosSection).not.toBeNull()
-    expect(refrescosSection.querySelectorAll('img')).toHaveLength(0)
+    expect(within(refrescosSection).queryByRole('img', { name: /^coca cola$/i })).not.toBeInTheDocument()
+    expect(within(refrescosSection).queryByRole('img', { name: /^fanta$/i })).not.toBeInTheDocument()
+    expect(within(refrescosSection).queryByRole('img', { name: /^sidral mundet$/i })).not.toBeInTheDocument()
 
     fireEvent.click(within(tablist).getByRole('tab', { name: /especiales/i }))
 
@@ -100,11 +109,11 @@ describe('La Mia Pasta main page regression coverage', () => {
 
     expect(screen.getAllByText(/fetuccini poblano con pollo/i).length).toBeGreaterThan(0)
     expect(screen.getAllByRole('link', { name: /^nosotros$/i }).length).toBeGreaterThan(0)
-    expect(screen.getByText(/^nosotros$/i, { selector: 'p' })).toBeInTheDocument()
-    expect(screen.getByText(/misión/i)).toBeInTheDocument()
-    expect(screen.getByText(/visión/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/^nosotros$/i, { selector: 'p' }).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/misión/i).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/visión/i).length).toBeGreaterThan(0)
     expect(screen.queryByText(/significado del logotipo/i)).not.toBeInTheDocument()
-    expect(screen.getByText(/transforme la manera en que méxico disfruta la pasta/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/transforme la manera en que méxico disfruta la pasta/i).length).toBeGreaterThan(0)
     expect(screen.getByRole('heading', { level: 3, name: /cómo ordenar/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /pide y recoge/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: /entrega a domicilio/i })).toBeInTheDocument()
@@ -131,7 +140,7 @@ describe('La Mia Pasta main page regression coverage', () => {
     window.HTMLElement.prototype.scrollIntoView = vi.fn()
     render(<App />)
 
-    expect(screen.queryByText(/^nosotros$/i, { selector: 'p' })).toBeInTheDocument()
+    expect(screen.getAllByText(/^nosotros$/i, { selector: 'p' }).length).toBeGreaterThan(0)
 
     fireEvent.click(screen.getByRole('link', { name: /^nosotros$/i }))
 

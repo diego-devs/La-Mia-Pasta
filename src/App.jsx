@@ -103,7 +103,7 @@ const beverages = {
 
 const HERO_IMAGE = `${BASE_URL}images/hero/spaguetti-servido.jpg`
 
-const featuredPhrases = ['Pasta fresca artesanal', 'Sabores México–italianos', 'Pedidos por WhatsApp']
+const featuredPhrases = ['Pasta fresca artesanal', 'Pedidos por WhatsApp']
 
 const signatureDishes = [
   {
@@ -119,6 +119,13 @@ const signatureDishes = [
     description: 'Salsa cremosa de chile poblano, pasta fresca y pollo a la plancha para una combinación con carácter.',
     price: '$160',
     image: DISH_IMAGES.fetucciniPoblanoPollo,
+  },
+  {
+    name: 'Penne chipotle con chuleta ahumada',
+    category: 'Favorito de la casa',
+    description: 'Salsa cremosa de chipotle, pasta fresca y chuleta ahumada para quienes quieren un toque intenso y memorable.',
+    price: '$160',
+    image: DISH_IMAGES.penneChipotleChuleta,
   },
 ]
 
@@ -403,7 +410,7 @@ function App() {
               <span>Pasta fresca artesanal</span>
               <span>Pedidos por WhatsApp</span>
             </div>
-            <p className="eyebrow">Fusión México–italiana</p>
+            <p className="eyebrow">Fusión México-Italia</p>
             <div className="hero__accent" aria-hidden="true" />
             <h1>
               Pasta fresca con alma <span className="hero__word hero__word--italiana">italiana</span> y sabores <span className="hero__word hero__word--mexicanos">mexicanos</span> que se disfrutan desde el primer bocado.
@@ -440,7 +447,6 @@ function App() {
         <section className="section menu-section" id="menu">
           <div className="section-heading menu-heading">
             <p className="eyebrow">Menú</p>
-            <h2>Pastas tradicionales, especialidades, extras y bebidas con el sabor de México e Italia, fáciles de pedir y difíciles de olvidar.</h2>
             <p className="menu-heading__intro">Elige tu favorito y disfruta una experiencia llena de sabor.</p>
             <div className="menu-heading__accent" aria-hidden="true">
               <span className="menu-heading__line menu-heading__line--green" />

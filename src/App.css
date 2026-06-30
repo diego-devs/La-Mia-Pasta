@@ -154,7 +154,7 @@ svg {
 }
 
 .logo-image {
-  width: 174px;
+  width: 210px;
   height: auto;
   object-fit: contain;
 }
@@ -212,7 +212,7 @@ svg {
 }
 
 .footer .logo-image {
-  width: 154px;
+  width: 184px;
 }
 
 .footer .logo-slogan {
@@ -1817,7 +1817,7 @@ svg {
   }
 
   .logo-image {
-    width: 136px;
+    width: 156px;
   }
 
   .hero {
