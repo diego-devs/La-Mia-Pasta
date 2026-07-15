@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 
-const WHATSAPP_NUMBER = '524424230777'
+const WHATSAPP_NUMBER = '524461009344'
 const BASE_URL = import.meta.env.BASE_URL
 const PDF_MENU_PATH = `${BASE_URL}LA_MIA_PASTA.pdf`
 const LOCATION_URL = 'https://maps.app.goo.gl/jfcreP4xnpdYLhX9A?g_st=ic'

@@ -208,7 +208,7 @@ describe('La Mia Pasta main page regression coverage', () => {
 
     expect(window.open).toHaveBeenCalledTimes(1)
     expect(window.open).toHaveBeenCalledWith(
-      'https://wa.me/524424230777?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20La%20Mia%20Pasta.',
+      'https://wa.me/524461009344?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20La%20Mia%20Pasta.',
       '_blank',
       'noopener,noreferrer',
     )
@@ -224,7 +224,7 @@ describe('La Mia Pasta main page regression coverage', () => {
     fireEvent.click(screen.getByRole('button', { name: /enviar/i }))
 
     expect(window.open).toHaveBeenCalledWith(
-      'https://wa.me/524424230777?text=Hola%2C%20quiero%202%20penne%20chipotle%20%26%201%20agua%20de%20lim%C3%B3n',
+      'https://wa.me/524461009344?text=Hola%2C%20quiero%202%20penne%20chipotle%20%26%201%20agua%20de%20lim%C3%B3n',
       '_blank',
       'noopener,noreferrer',
     )

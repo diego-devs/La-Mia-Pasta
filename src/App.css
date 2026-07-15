@@ -167,14 +167,14 @@ svg {
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.36rem;
   font-size: 0.54rem;
   font-weight: 500;
   letter-spacing: 0.26em;
   text-transform: uppercase;
   white-space: nowrap;
   line-height: 1;
-  margin-top: -2px;
+  margin-top: -10px;
 }
 
 .logo-slogan__flag {
@@ -182,6 +182,7 @@ svg {
   align-items: center;
   justify-content: center;
   gap: 12px;
+  transform: translateY(-4px);
 }
 
 .logo-slogan__flag span {
